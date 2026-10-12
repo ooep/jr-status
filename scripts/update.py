@@ -18,6 +18,7 @@ jr-status / update.py
 from __future__ import annotations
 
 import json
+import os
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -31,7 +32,8 @@ DATA = ROOT / "data"
 MAPDIR = ROOT / "mapping"
 JST = timezone(timedelta(hours=9))
 
-HEARTBEAT_SEC = int(__import__("os").environ.get("HEARTBEAT_SEC", "1800"))  # 30 分钟
+HEARTBEAT_SEC = int(os.environ.get("HEARTBEAT_SEC", "1800"))  # 30 分钟
+FORCE = str(os.environ.get("FORCE", "")).lower() in ("1", "true", "yes")
 SCHEMA = "jr-status/v1"
 MAIN_SITE = "https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/"
 
@@ -188,7 +190,7 @@ def main() -> int:
         except Exception:
             elapsed = HEARTBEAT_SEC + 1
         same = _semantic(prev) == _semantic(payload)
-        changed = (not same) or (elapsed >= HEARTBEAT_SEC)
+        changed = (not same) or (elapsed >= HEARTBEAT_SEC) or FORCE
         if not changed:
             print("[skip] 无语义变化且在心跳窗口内 -> 不改写文件（不产生提交）")
             return 0
