@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JR-Status · 全日本铁道运行情报 | Mini JapanRail</title>
+<meta name="description" content="全日本铁道线路实时运行情报：平常运营 / 晚点 / 停运一览，并与 Mini JapanRail 主站线路映射。每 10 分钟自动更新。">
+<meta name="theme-color" content="#0b1017" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef2f7" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1017'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%2338bdf8' stroke-width='2.4'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%2338bdf8'/%3E%3C/svg%3E">
+<meta property="og:title" content="JR-Status · 全日本铁道运行情报">
+<meta property="og:description" content="全日本铁道线路实时运行情报一览，与 Mini JapanRail 主站线路映射，每 10 分钟更新。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://ooep.github.io">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ── 顶栏 ───────────────────────────────────────────── -->
+  <header class="glass topbar">
+    <a class="brand" href="https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/" target="_blank" rel="noopener">
+      <span class="brand-mark">🚃</span>
+      <span>
+        <span class="brand-text" data-i18n="appName">JR-Status</span><br>
+        <span class="brand-sub" data-i18n="brandSub">全日本铁道运行情报 · Mini JapanRail</span>
+      </span>
+    </a>
+    <span class="grow"></span>
+
+    <label class="search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+      </svg>
+      <input id="q" type="search" autocomplete="off" data-i18n-ph="searchPh" placeholder="搜索线路 / 铁道公司…">
+    </label>
+
+    <button class="btn small" id="btnTheme" title="主题">
+      <span id="themeIcon">🌙</span><span id="themeTxt">深色</span>
+    </button>
+    <button class="btn small" id="btnLang" title="语言">
+      <span id="langTxt">中</span>
+    </button>
+    <button class="btn small" id="btnRefresh" title="刷新">
+      <span id="refreshIcon">↻</span><span id="refreshTxt" data-i18n="refresh">刷新</span>
+    </button>
+  </header>
+
+  <!-- ── Hero ───────────────────────────────────────────── -->
+  <section class="glass hero">
+    <h1 data-i18n="heroTitle">全日本铁道 · 运行情报</h1>
+    <div class="sub" id="heroSub">正在读取数据…</div>
+
+    <div class="headline">
+      <span class="verdict"><span class="pulse" id="verdictPulse"></span><span id="verdictText">…</span></span>
+    </div>
+
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <!-- ── 工具栏 ─────────────────────────────────────────── -->
+  <section class="glass toolbar">
+    <div class="chips" id="areaChips"></div>
+    <span class="grow"></span>
+    <div class="chips">
+      <button class="chip" id="filterAll" aria-pressed="true" data-i18n="all">全部</button>
+      <button class="chip" id="filterTrouble" aria-pressed="false" data-i18n="troubleOnly">仅异常</button>
+      <button class="chip" id="toggleMapped" aria-pressed="false" data-i18n="mappedOnly">仅已映射主站</button>
+    </div>
+  </section>
+
+  <!-- ── 结果 ───────────────────────────────────────────── -->
+  <div id="results" class="grid"></div>
+
+  <footer>
+    <div id="footMeta"></div>
+    <div>
+      <span data-i18n="srcLabel">数据来源</span>：
+      <a href="https://transit.yahoo.co.jp/diainfo" target="_blank" rel="noopener">Yahoo!路線情報</a>
+      ·
+      <a href="https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/" target="_blank" rel="noopener" data-i18n="mainSite">Mini JapanRail 主站</a>
+    </div>
+    <div data-i18n="updateNote">每 10 分钟由 GitHub Actions 自动采集更新</div>
+  </footer>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

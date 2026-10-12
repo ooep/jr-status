@@ -1,0 +1,71 @@
+name: Update JR status
+
+on:
+  schedule:
+    # 每整 10 分钟抓取一次。
+    # GitHub cron 使用 UTC；日本JST = UTC+9 为整小时偏移，分钟位保持不变，
+    # 因此 */10 天然对齐 JST 的 :00/:10/…/:50，无需补偿。
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "强制忽略心跳窗口，无论如何都提交"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: jr-status-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install deps
+        run: pip install --quiet requests beautifulsoup4
+
+      - name: Fetch & build
+        env:
+          HEARTBEAT_SEC: "1800"
+          FORCE: ${{ github.event.inputs.force }}
+        run: |
+          cd scripts
+          python3 update.py
+
+      - name: Prune old history (>60 days)
+        run: |
+          find data/history -name '*.jsonl' -type f -mtime +60 -delete 2>/dev/null || true
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "jr-status bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A data mapping
+          if git diff --quiet --cached; then
+            echo "no semantic change -> skip commit"
+            exit 0
+          fi
+          TS=$(TZ=Asia/Tokyo date +'%Y/%m/%d %H:%M')
+          TROUBLE=$(python3 -c "import json;d=json.load(open('data/summary.json'));print(d['totals']['trouble'])" 2>/dev/null || echo "?")
+          git commit -m "chore(status): update ${TS} JST (trouble=${TROUBLE})"
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin ${{ github.ref_name }} || true
+            if git push origin HEAD:${{ github.ref_name }}; then
+              echo "pushed"; exit 0
+            fi
+            echo "push attempt $i failed, retrying…"; sleep 5
+          done
+          echo "push failed after retries"; exit 1
