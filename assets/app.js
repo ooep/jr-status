@@ -123,16 +123,16 @@ function renderStats() {
   const normal = bs.normal || 0;
   const suspend = bs.suspend || 0;
   const trouble = d.totals.trouble || 0;
-  const items = [
+  const cells = [
     ['lines', d.totals.lines, ''],
     ['companies', d.totals.companies, ''],
-    ['normal', normal, 'v-normal'],
-    ['trouble', trouble, trouble ? 'v-trouble' : ''],
-    ['suspend', suspend, suspend ? 'v-suspend' : ''],
+    ['normal', normal, 'is-normal'],
+    ['trouble', trouble, trouble ? 'is-trouble' : ''],
+    ['suspend', suspend, suspend ? 'is-suspend' : ''],
     ['mapped', d.totals.mapped, '']
   ];
-  $('#stats').innerHTML = items.map(([k, v, cls]) =>
-    `<div class="stat ${cls}"><div class="k">${esc(t('stat.' + k))}</div><div class="v">${v}</div></div>`
+  $('#stats').innerHTML = cells.map(([k, v, cls]) =>
+    `<div class="scell ${cls}"><div class="k">${esc(t('stat.' + k))}</div><div class="v">${v}</div></div>`
   ).join('');
 
   // verdict
@@ -142,10 +142,14 @@ function renderStats() {
   else if (trouble > 0) { cls = 'warn'; key = 'verdict.warn'; }
   pulse.className = 'pulse ' + cls;
   $('#verdictText').textContent = t(key);
-  $('#heroSub').innerHTML =
-    `${esc(t('updated'))} <b>${esc(d.updated_at_display)}</b>（${esc(ago(d.updated_at))}） · ` +
-    `${esc(t('stat.lines'))} <b>${d.totals.lines}</b>${esc(t('count'))} · ` +
-    `${esc(t('stat.companies'))} <b>${d.totals.companies}</b>${esc(t('companyCount'))}`;
+
+  // 更新时间 + 采集频率
+  const meta = $('#meta');
+  if (meta) {
+    meta.innerHTML =
+      `<span class="live"><i></i>${esc(t('updated'))} <b>${esc(d.updated_at_display)}</b>（${esc(ago(d.updated_at))}）</span>` +
+      `<span>· ${esc(t('updateNote'))}</span>`;
+  }
   $('#footMeta').textContent = `${t('updateNote')} · ${t('updated')} ${d.updated_at_display} · data/status.json`;
 }
 
@@ -192,7 +196,7 @@ function lineRow(l) {
         ${detail}
         ${(mapped || l.url) ? `<div class="tags">
             ${mapped}
-            ${l.url ? `<span class="tag"><a href="${esc(l.url)}" target="_blank" rel="noopener">Yahoo ↗</a></span>` : ''}
+            ${l.url ? `<span class="tag"><a href="${esc(l.url)}" target="_blank" rel="noopener">原文 ↗</a></span>` : ''}
           </div>` : ''}
       </div>
     </div>`;
@@ -254,7 +258,8 @@ async function load() {
     $('#refreshTxt').textContent = t('refresh');
     $('#refreshIcon').textContent = '↻';
   } catch (e) {
-    $('#heroSub').textContent = t('loadFail');
+    const meta = $('#meta');
+    if (meta) meta.innerHTML = `<span>${esc(t('loadFail'))}</span>`;
     $('#refreshIcon').textContent = '⚠';
   }
 }
@@ -313,7 +318,8 @@ function boot() {
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
 
-  $('#heroSub').textContent = t('loading');
+  const meta = $('#meta');
+  if (meta) meta.innerHTML = `<span class="live"><i></i>${esc(t('loading'))}</span>`;
   load();
   refreshTimer = setInterval(load, 60000);            // 每分钟检查新数据
   countTimer = setInterval(() => { if (state.data) renderStats(); }, 20000);

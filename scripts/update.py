@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 jr-status / update.py
-编排一次完整更新：采集 Yahoo -> 映射到主站线路 -> 落盘格式化数据。
+编排一次完整更新：采集运行情报源 -> 映射到主站线路 -> 落盘格式化数据。
+（数据源按品牌中立化原则处理：功能 URL 保留，文案与对外字段去品牌。）
 
 产出：
   data/status.json            最新快照（前端消费的主数据）
@@ -52,7 +53,7 @@ SEVERITY = {"normal": 0, "plan": 1, "resume": 2, "other": 2, "delay": 3, "irregu
 
 
 def classify(label: str) -> Tuple[str, int]:
-    """把 Yahoo 原文状况标签归一化。"""
+    """把 源站 原文状况标签归一化。"""
     t = (label or "").strip()
     for kw, cat, sev in STATUS_RULES:
         if kw in t:
@@ -95,7 +96,7 @@ def build() -> dict:
                 "site": MAIN_SITE,
             })
         obj = {
-            "id": ln.yahoo_id,
+            "id": ln.src_id,
             "company": ln.company,
             "area": ln.area,
             "name": ln.line_name,
@@ -110,7 +111,7 @@ def build() -> dict:
         records.append(obj)
         if not mains:
             unmatched.append({
-                "yahoo_id": ln.yahoo_id, "company": ln.company, "area": ln.area,
+                "id": ln.src_id, "company": ln.company, "area": ln.area,
                 "name": ln.line_name, "label": ln.status_label,
             })
 
@@ -125,7 +126,7 @@ def build() -> dict:
         "schema": SCHEMA,
         "updated_at": now.strftime("%Y-%m-%dT%H:%M:%S%z"),
         "updated_at_display": now.strftime("%Y/%m/%d %H:%M"),
-        "source": "https://transit.yahoo.co.jp/diainfo",
+        "source": "公开运行情报源（日本鉄道 運行情報）",
         "totals": {
             "lines": len(records),
             "companies": len(companies),
@@ -216,7 +217,7 @@ def main() -> int:
     MAPDIR.mkdir(exist_ok=True)
     (MAPDIR / "unmapped.json").write_text(
         json.dumps({"generated_at": payload["updated_at"], "count": len(unmatched),
-                    "note": "Yahoo 线路未能映射到主站线路。多为服务名（湘南新宿ライン）或主站暂无该线。"
+                    "note": "源站 线路未能映射到主站线路。多为服务名（湘南新宿ライン）或主站暂无该线。"
                             "可补充 mapping/aliases.json 提高覆盖率。",
                     "lines": unmatched}, ensure_ascii=False, indent=1), encoding="utf-8")
 

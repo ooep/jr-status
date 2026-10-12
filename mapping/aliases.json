@@ -1,5 +1,5 @@
 {
-  "_note": "手动维护的别名表：key = Yahoo 线路名（已去 [区间]/(注记) 后的 NFKC 形式），value = 主站 lines_reference.json 中的权威线路名。仅收录可确认的愛称/异名，寧可留未映射也不臆造。补充后请重跑 update.py。",
+  "_note": "手动维护的别名表：key = 源站 线路名（已去 [区间]/(注记) 后的 NFKC 形式），value = 主站 lines_reference.json 中的权威线路名。仅收录可确认的愛称/异名，寧可留未映射也不臆造。补充后请重跑 update.py。",
   "_source": "https://transit.yahoo.co.jp/diainfo  ->  https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/",
 
   "学園都市線": "札沼線",

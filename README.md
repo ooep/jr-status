@@ -1,6 +1,6 @@
 # jr-status · 全日本铁道运行情报
 
-自动采集 **Yahoo!路線情報**（`transit.yahoo.co.jp/diainfo`）全国各铁道公司及其线路的运行状况，
+自动采集 **公开运行情报源**（`transit.yahoo.co.jp/diainfo`）全国各铁道公司及其线路的运行状况，
 格式化落库，并**与主站 [Mini JapanRail 3D](https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/)** 的线路做映射，
 最后用一个液态玻璃风格的网页把全国运行情报呈现出来。
 
@@ -12,7 +12,7 @@
 ## 它做什么
 
 ```
-Yahoo 路線情報 ──(每 10 分钟 GitHub Actions)──> scripts/fetch_status.py
+公开运行情报源 ──(每 10 分钟 GitHub Actions)──> scripts/fetch_status.py
                                                     ↓ 原始记录（公司 / 线路 / 状况 / 详情）
                                                scripts/map_lines.py
                                                     ↓ 映射到主站 577 条权威线路
@@ -34,7 +34,7 @@ Yahoo 路線情報 ──(每 10 分钟 GitHub Actions)──> scripts/fetch_sta
   "schema": "jr-status/v1",
   "updated_at": "2026-10-13T00:58:00+0900",   // ISO8601，JST
   "updated_at_display": "2026/10/13 00:58",
-  "source": "https://transit.yahoo.co.jp/diainfo",
+  "source": "公开运行情报源（日本鉄道 運行情報）",   // 品牌中立化后的来源标注
   "totals": {
     "lines": 513, "companies": 166, "mapped": 421, "unmapped": 92, "trouble": 40,
     "by_status": { "normal": 473, "delay": 12, "irregular": 5, "other": 20, "plan": 3 }
@@ -43,13 +43,13 @@ Yahoo 路線情報 ──(每 10 分钟 GitHub Actions)──> scripts/fetch_sta
   "areas": ["北海道", "東北", "関東", "中部", "近畿", "中国", "四国", "九州"],
   "lines": [
     {
-      "id": "21",                     // Yahoo 线路 ID
+      "id": "21",                     // 源站线路 ID
       "company": "JR東日本",
       "area": "関東",
-      "name": "山手線",                // Yahoo 原文名
+      "name": "山手線",                // 源站原文名
       "status": "delay",              // 归一化分类（见下表）
       "severity": 3,                  // 0 正常，越大越严重
-      "label": "列車遅延",             // Yahoo 原文状况标签
+      "label": "列車遅延",             // 源站原文状况标签
       "detail": "接続待ちの影響で、一部列車に遅れが出ています",
       "url": "https://transit.yahoo.co.jp/diainfo/21/0",
       "mainline": {                   // ★ 与主站线路的映射，null 表示未映射
@@ -66,7 +66,7 @@ Yahoo 路線情報 ──(每 10 分钟 GitHub Actions)──> scripts/fetch_sta
 
 ### 状态分类（`status` 字段）
 
-| status | 含义 | Yahoo 原文标签 | severity |
+| status | 含义 | 源站原文标签 | severity |
 |---|---|---|---|
 | `normal` | 平常运营 | 平常運転 | 0 |
 | `plan` | 计划调整 / 施工 | 運転計画 | 2 |
@@ -156,7 +156,7 @@ python3 scripts/map_lines.py       # 打印若干典型线路的映射结果与�
 - `robots.txt` 仅禁止 `/diainfo/search`；本项目只请求 `/diainfo` 与 `/diainfo/area/*`（均允许）。
 - robots.txt 仅对 `GPTBot` 有全域禁令，本脚本使用常规浏览器 UA，不自称爬虫。
 - 每次请求间隔限速 + 失败退避重试；**只读**，不向源站写入任何内容。
-- 数据版权归 Yahoo!路線情報 及各铁道事业者，本页面保留原始来源链接。
+- 数据版权归运行情报源及各铁道事业者，本页面保留原始来源链接。
 
 ---
 
@@ -175,7 +175,7 @@ jr-status/
 │   ├── aliases.json           # ★ 人工别名表（可补充提升覆盖率）
 │   └── unmapped.json          # 未映射清单（生成）
 ├── scripts/
-│   ├── fetch_status.py        # 采集 Yahoo
+│   ├── fetch_status.py        # 采集运行情报源
 │   ├── map_lines.py           # 映射引擎
 │   └── update.py              # 编排
 └── .github/workflows/update.yml

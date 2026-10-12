@@ -1,647 +1,647 @@
 {
- "generated_at": "2026-10-13T08:08:41+0900",
+ "generated_at": "2026-10-13T08:18:40+0900",
  "count": 92,
- "note": "Yahoo 线路未能映射到主站线路。多为服务名（湘南新宿ライン）或主站暂无该线。可补充 mapping/aliases.json 提高覆盖率。",
+ "note": "源站 线路未能映射到主站线路。多为服务名（湘南新宿ライン）或主站暂无该线。可补充 mapping/aliases.json 提高覆盖率。",
  "lines": [
   {
-   "yahoo_id": "545",
+   "id": "545",
    "company": "札幌市交通事業振興公社",
    "area": "北海道",
    "name": "札幌市電",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "555",
+   "id": "555",
    "company": "由利高原鉄道",
    "area": "東北",
    "name": "由利高原鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "22",
+   "id": "22",
    "company": "JR東日本",
    "area": "関東",
    "name": "京浜東北根岸線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "25",
+   "id": "25",
    "company": "JR東日本",
    "area": "関東",
    "name": "湘南新宿ライン",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "40",
+   "id": "40",
    "company": "JR東日本",
    "area": "関東",
    "name": "中央総武線(各停)",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "46",
+   "id": "46",
    "company": "JR東日本",
    "area": "関東",
    "name": "宇都宮線[東京～宇都宮]",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "50",
+   "id": "50",
    "company": "JR東日本",
    "area": "関東",
    "name": "埼京川越線[羽沢横浜国大～川越]",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "52",
+   "id": "52",
    "company": "JR東日本",
    "area": "関東",
    "name": "八高川越線[八王子～川越]",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "627",
+   "id": "627",
    "company": "JR東日本",
    "area": "関東",
    "name": "上野東京ライン",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "622",
+   "id": "622",
    "company": "京成電鉄",
    "area": "関東",
    "name": "成田スカイアクセス線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "140",
+   "id": "140",
    "company": "横浜市交通局",
    "area": "関東",
    "name": "ブルーライン",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "539",
+   "id": "539",
    "company": "横浜市交通局",
    "area": "関東",
    "name": "グリーンライン",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "146",
+   "id": "146",
    "company": "秩父鉄道",
    "area": "関東",
    "name": "秩父鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "150",
+   "id": "150",
    "company": "いすみ鉄道",
    "area": "関東",
    "name": "いすみ鉄道線",
    "label": "その他"
   },
   {
-   "yahoo_id": "151",
+   "id": "151",
    "company": "富士山麓電鉄",
    "area": "関東",
    "name": "富士急行線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "154",
+   "id": "154",
    "company": "東京モノレール",
    "area": "関東",
    "name": "東京モノレール線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "155",
+   "id": "155",
    "company": "湘南モノレール",
    "area": "関東",
    "name": "湘南モノレール線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "159",
+   "id": "159",
    "company": "横浜シーサイドライン",
    "area": "関東",
    "name": "シーサイドライン",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "160",
+   "id": "160",
    "company": "ゆりかもめ",
    "area": "関東",
    "name": "ゆりかもめ線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "161",
+   "id": "161",
    "company": "埼玉新都市交通",
    "area": "関東",
    "name": "ニューシャトル",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "179",
+   "id": "179",
    "company": "上信電鉄",
    "area": "関東",
    "name": "上信電鉄線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "180",
+   "id": "180",
    "company": "上毛電鉄",
    "area": "関東",
    "name": "上毛電鉄線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "187",
+   "id": "187",
    "company": "真岡鐵道",
    "area": "関東",
    "name": "真岡鐵道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "483",
+   "id": "483",
    "company": "JR西日本",
    "area": "中部",
    "name": "九頭竜線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "240",
+   "id": "240",
    "company": "名古屋市交通局",
    "area": "中部",
    "name": "名古屋市営東山線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "241",
+   "id": "241",
    "company": "名古屋市交通局",
    "area": "中部",
    "name": "名古屋市営名城線・名港線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "242",
+   "id": "242",
    "company": "名古屋市交通局",
    "area": "中部",
    "name": "名古屋市営鶴舞線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "243",
+   "id": "243",
    "company": "名古屋市交通局",
    "area": "中部",
    "name": "名古屋市営桜通線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "574",
+   "id": "574",
    "company": "富山地方鉄道",
    "area": "中部",
    "name": "富山地方鉄道富山市内軌道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "251",
+   "id": "251",
    "company": "豊橋鉄道",
    "area": "中部",
    "name": "豊橋鉄道市内線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "246",
+   "id": "246",
    "company": "静岡鉄道",
    "area": "中部",
    "name": "静岡鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "247",
+   "id": "247",
    "company": "大井川鐵道",
    "area": "中部",
    "name": "大井川鉄道大井川本線",
    "label": "その他"
   },
   {
-   "yahoo_id": "253",
+   "id": "253",
    "company": "JR東海交通事業",
    "area": "中部",
    "name": "城北線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "256",
+   "id": "256",
    "company": "樽見鉄道",
    "area": "中部",
    "name": "樽見鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "257",
+   "id": "257",
    "company": "明知鉄道",
    "area": "中部",
    "name": "明知鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "260",
+   "id": "260",
    "company": "伊勢鉄道",
    "area": "中部",
    "name": "伊勢鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "262",
+   "id": "262",
    "company": "名古屋ガイドウェイバス",
    "area": "中部",
    "name": "ゆとりーとライン",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "408",
+   "id": "408",
    "company": "愛知高速交通",
    "area": "中部",
    "name": "リニモ",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "548",
+   "id": "548",
    "company": "名古屋臨海高速鉄道",
    "area": "中部",
    "name": "あおなみ線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "563",
+   "id": "563",
    "company": "養老鉄道",
    "area": "中部",
    "name": "養老鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "565",
+   "id": "565",
    "company": "福井鉄道",
    "area": "中部",
    "name": "福井鉄道線",
    "label": "その他"
   },
   {
-   "yahoo_id": "576",
+   "id": "576",
    "company": "万葉線",
    "area": "中部",
    "name": "万葉線",
    "label": "その他"
   },
   {
-   "yahoo_id": "632",
+   "id": "632",
    "company": "IRいしかわ鉄道",
    "area": "中部",
    "name": "IRいしかわ鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "635",
+   "id": "635",
    "company": "四日市あすなろう鉄道",
    "area": "中部",
    "name": "四日市あすなろう鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "264",
+   "id": "264",
    "company": "JR西日本",
    "area": "近畿",
    "name": "JRゆめ咲線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "265",
+   "id": "265",
    "company": "JR西日本",
    "area": "近畿",
    "name": "JR宝塚線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "266",
+   "id": "266",
    "company": "JR西日本",
    "area": "近畿",
    "name": "琵琶湖線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "267",
+   "id": "267",
    "company": "JR西日本",
    "area": "近畿",
    "name": "JR京都線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "270",
+   "id": "270",
    "company": "JR西日本",
    "area": "近畿",
    "name": "嵯峨野線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "271",
+   "id": "271",
    "company": "JR西日本",
    "area": "近畿",
    "name": "学研都市線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "273",
+   "id": "273",
    "company": "JR西日本",
    "area": "近畿",
    "name": "JR神戸線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "276",
+   "id": "276",
    "company": "JR西日本",
    "area": "近畿",
    "name": "羽衣線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "277",
+   "id": "277",
    "company": "JR西日本",
    "area": "近畿",
    "name": "大和路線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "283",
+   "id": "283",
    "company": "JR西日本",
    "area": "近畿",
    "name": "和田岬線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "333",
+   "id": "333",
    "company": "JR西日本",
    "area": "近畿",
    "name": "きのくに線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "310",
+   "id": "310",
    "company": "阪急電鉄",
    "area": "近畿",
    "name": "阪急神戸本線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "320",
+   "id": "320",
    "company": "大阪メトロ",
    "area": "近畿",
    "name": "ニュートラム",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "347",
+   "id": "347",
    "company": "南海電鉄",
    "area": "近畿",
    "name": "南海汐見橋線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "384",
+   "id": "384",
    "company": "神戸新交通",
    "area": "近畿",
    "name": "ポートライナー",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "385",
+   "id": "385",
    "company": "神戸新交通",
    "area": "近畿",
    "name": "六甲ライナー",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "358",
+   "id": "358",
    "company": "京福電鉄",
    "area": "近畿",
    "name": "嵐電",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "360",
+   "id": "360",
    "company": "叡山電鉄",
    "area": "近畿",
    "name": "叡山電鉄線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "362",
+   "id": "362",
    "company": "阪堺電気軌道",
    "area": "近畿",
    "name": "阪堺電気軌道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "367",
+   "id": "367",
    "company": "水間鉄道",
    "area": "近畿",
    "name": "水間鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "370",
+   "id": "370",
    "company": "能勢電鉄",
    "area": "近畿",
    "name": "能勢電鉄線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "376",
+   "id": "376",
    "company": "信楽高原鐵道",
    "area": "近畿",
    "name": "信楽高原鐵道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "377",
+   "id": "377",
    "company": "北条鉄道",
    "area": "近畿",
    "name": "北条鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "621",
+   "id": "621",
    "company": "伊賀鉄道",
    "area": "近畿",
    "name": "伊賀鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "389",
+   "id": "389",
    "company": "JR九州",
    "area": "九州",
    "name": "福北ゆたか線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "390",
+   "id": "390",
    "company": "JR九州",
    "area": "九州",
    "name": "原田線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "391",
+   "id": "391",
    "company": "JR九州",
    "area": "九州",
    "name": "若松線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "413",
+   "id": "413",
    "company": "西日本鉄道",
    "area": "九州",
    "name": "西鉄天神大牟田線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "604",
+   "id": "604",
    "company": "北九州高速鉄道",
    "area": "九州",
    "name": "北九州モノレール線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "610",
+   "id": "610",
    "company": "松浦鉄道",
    "area": "九州",
    "name": "松浦鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "614",
+   "id": "614",
    "company": "南阿蘇鉄道",
    "area": "九州",
    "name": "南阿蘇鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "615",
+   "id": "615",
    "company": "くま川鉄道",
    "area": "九州",
    "name": "くま川鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "617",
+   "id": "617",
    "company": "熊本電鉄",
    "area": "九州",
    "name": "熊本電鉄線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "620",
+   "id": "620",
    "company": "沖縄都市モノレール",
    "area": "九州",
    "name": "ゆいレール",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "491",
+   "id": "491",
    "company": "JR西日本",
    "area": "中国",
    "name": "瀬戸大橋線[岡山～児島]",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "589",
+   "id": "589",
    "company": "広島電鉄",
    "area": "中国",
    "name": "広島電鉄市内線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "379",
+   "id": "379",
    "company": "智頭急行",
    "area": "中国",
    "name": "智頭急行線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "585",
+   "id": "585",
    "company": "岡山電気軌道",
    "area": "中国",
    "name": "岡山電気軌道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "586",
+   "id": "586",
    "company": "水島臨海鉄道",
    "area": "中国",
    "name": "水島臨海鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "587",
+   "id": "587",
    "company": "井原鉄道",
    "area": "中国",
    "name": "井原鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "590",
+   "id": "590",
    "company": "広島高速交通",
    "area": "中国",
    "name": "アストラムライン",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "591",
+   "id": "591",
    "company": "錦川鉄道",
    "area": "中国",
    "name": "錦川鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "592",
+   "id": "592",
    "company": "若桜鉄道",
    "area": "中国",
    "name": "若桜鉄道線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "593",
+   "id": "593",
    "company": "一畑電車",
    "area": "中国",
    "name": "一畑電車線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "509",
+   "id": "509",
    "company": "JR四国",
    "area": "四国",
    "name": "瀬戸大橋線[児島～高松]",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "603",
+   "id": "603",
    "company": "伊予鉄道",
    "area": "四国",
    "name": "伊予鉄松山市内線",
    "label": "平常運転"
   },
   {
-   "yahoo_id": "544",
+   "id": "544",
    "company": "土佐くろしお鉄道",
    "area": "四国",
    "name": "土佐くろしお鉄道ごめん・なはり線",
    "label": "その他"
   },
   {
-   "yahoo_id": "598",
+   "id": "598",
    "company": "とさでん交通",
    "area": "四国",
    "name": "とさでん交通線",

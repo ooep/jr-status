@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 jr-status / map_lines.py
-把 Yahoo!路線情報 的「公司 + 线路名」映射到主站 Mini JapanRail 的权威线路表。
+把 公开运行情报源 的「公司 + 线路名」映射到主站 Mini JapanRail 的权威线路表。
 
 映射阶梯（越靠前置信度越高）：
   L1 exact      : NFKC + 去 [区间]/(注记) 后完全一致
@@ -267,7 +267,7 @@ class Mapper:
 
     # -------------------------------------------------------------- 单条匹配
     def compatible(self, ref_name: str, company: str) -> bool:
-        """归属校验：只有当候选线路名与 Yahoo 公司两侧都识别出「族」且互不相交时才拒绝。
+        """归属校验：只有当候选线路名与 源站 公司两侧都识别出「族」且互不相交时才拒绝。
         两侧任一为空（无法判定）则放行，避免因信息缺失误杀正确映射。"""
         fam_ref = families_of(ref_name)
         fam_cmp = families_of(company)
@@ -296,22 +296,22 @@ class Mapper:
                 narrower = matched
         return None
 
-    def map_one(self, yahoo_name: str, company: str = "") -> Tuple[Optional[dict], str, float]:
-        base = clean(yahoo_name)
+    def map_one(self, src_name: str, company: str = "") -> Tuple[Optional[dict], str, float]:
+        base = clean(src_name)
 
         # L1 exact
         if base in self.exact:
             return self.exact[base], "exact", CONFIDENCE["exact"]
 
         # L2 alias
-        tgt = self.aliases.get(base) or self.aliases.get(nfkc(yahoo_name)) or self.aliases.get(yahoo_name)
+        tgt = self.aliases.get(base) or self.aliases.get(nfkc(src_name)) or self.aliases.get(src_name)
         if tgt:
             rec = self.exact.get(clean(tgt))
             if rec:
                 return rec, "alias", CONFIDENCE["alias"]
 
         # L3..L5 variants（按剥离强度递增尝试）
-        var = name_variants(yahoo_name, company)
+        var = name_variants(src_name, company)
         for k, how in sorted(var.items(), key=lambda kv: LEVEL_ORDER.get(kv[1], 9)):
             cands = self.index.get(k)
             if not cands:
@@ -326,11 +326,11 @@ class Mapper:
             return rec, "fuzzy", CONFIDENCE["fuzzy"]
         return None, "unmapped", 0.0
 
-    def map_composite(self, yahoo_name: str, company: str = "") -> List[Tuple[dict, str, float]]:
+    def map_composite(self, src_name: str, company: str = "") -> List[Tuple[dict, str, float]]:
         """返回全部映射结果。
         先按**整名**匹配（日暮里・舎人ライナー 等含「・」的名称必须整名优先），
         整名失败时才按「・」「、」拆成多条分别匹配（西武池袋線・秩父線）。"""
-        whole = clean(yahoo_name)
+        whole = clean(src_name)
         rec, m, c = self.map_one(whole, company)
         if rec:
             return [(rec, m, c)]

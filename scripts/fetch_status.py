@@ -2,14 +2,17 @@
 # -*- coding: utf-8 -*-
 """
 jr-status / fetch_status.py
-采集 Yahoo!路線情報 (transit.yahoo.co.jp/diainfo) 全部地区 -> 公司 -> 线路 的运行状况。
+采集「公开运行情报源 / diainfo」全部地区 -> 公司 -> 线路 的运行状况。
+
+（数据源为公开的运行情报站点，按品牌中立化原则，仓库与界面文案中不出现品牌名；
+  功能用 URL 与目录路径保留原样，仅去除表述层面的品牌信息。）
 
 合规说明：
-  - robots.txt 仅禁止 /diainfo/search，公开的 /diainfo 与 /diainfo/area/* 均允许抓取。
-  - robots.txt 仅对 GPTBot 有全域禁令，本脚本使用常规浏览器 UA（不自称爬虫机器人）。
-  - 请求间 SLEEP 限速 + 失败退避重试，对源站友好；只读，不写入任何第三方。
+  - 数据源 robots.txt 仅禁止 /diainfo/search，公开的 /diainfo 与 /diainfo/area/* 均允许抓取。
+  - 其 robots.txt 仅对 GPTBot 有全域禁令，本脚本使用常规浏览器 UA（不自称爬虫机器人）。
+  - 请求间 SLEEP 限速 + 失败退避重试，对源站友好；只读，不向源站写入任何内容。
 
-输出：原始记录列表（company / line / status raw / detail raw / yahoo url ...）
+输出：原始记录列表（company / line / status raw / detail raw / source url ...）
 """
 
 import re
@@ -41,13 +44,13 @@ SKIP_TITLE_MARK = "現在運行情報"
 
 @dataclass
 class LineRecord:
-    yahoo_id: str
+    src_id: str
     company: str
     area: str
     line_name: str
-    status_label: str          # Yahoo 原文状况标签，如「平常運転」「列車遅延」
+    status_label: str          # 源站 原文状况标签，如「平常運転」「列車遅延」
     trouble: bool              # 是否 lil 解释为异常（colTrouble / icnAlert）
-    detail: str                # Yahoo 原文详情（可能被截断）
+    detail: str                # 源站 原文详情（可能被截断）
     url: str
 
 
@@ -152,7 +155,7 @@ def parse_area(html: str, area_label: str) -> List[CompanyRecord]:
             detail = _clean(tds[2].get_text(" ", strip=True))
             comp.lines.append(
                 LineRecord(
-                    yahoo_id=lid,
+                    src_id=lid,
                     company=cur_title,
                     area=area,
                     line_name=name,
@@ -191,11 +194,11 @@ def fetch_all(verbose: bool = True) -> List[CompanyRecord]:
 
 
 def all_lines(companies: List[CompanyRecord]) -> List[LineRecord]:
-    """展平为线路列表，按 Yahoo 线路 ID 去重（保留首次出现）。"""
+    """展平为线路列表，按 源站 线路 ID 去重（保留首次出现）。"""
     out: Dict[str, LineRecord] = {}
     for c in companies:
         for ln in c.lines:
-            out.setdefault(ln.yahoo_id, ln)
+            out.setdefault(ln.src_id, ln)
     return list(out.values())
 
 
