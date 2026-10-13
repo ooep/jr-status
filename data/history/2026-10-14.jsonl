@@ -5,3 +5,4 @@
 {"at": "2026-10-14T00:20:57+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T00:31:07+0900", "id": "310", "company": "阪急電鉄", "name": "阪急神戸本線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "00:02頃、王子公園駅で発生し..."}
 {"at": "2026-10-14T00:35:50+0900", "id": "57", "company": "JR東日本", "name": "常磐線(快速)[品川～取手]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T01:31:07+0900", "id": "310", "company": "阪急電鉄", "name": "阪急神戸本線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "王子公園駅で発生した人身事故の影..."}
