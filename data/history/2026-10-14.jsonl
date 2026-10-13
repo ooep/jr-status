@@ -22,3 +22,4 @@
 {"at": "2026-10-14T07:55:08+0900", "id": "109", "company": "小田急電鉄", "name": "小田急小田原線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "06:25頃、小田急江ノ島線内で..."}
 {"at": "2026-10-14T07:55:08+0900", "id": "110", "company": "小田急電鉄", "name": "小田急江ノ島線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "藤沢本町〜藤沢駅間で発生した人身..."}
 {"at": "2026-10-14T08:01:18+0900", "id": "139", "company": "東京メトロ", "name": "東京メトロ南北線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "07:43頃、東大前駅でのドア点..."}
+{"at": "2026-10-14T08:05:55+0900", "id": "136", "company": "東京メトロ", "name": "東京メトロ千代田線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "06:25頃、小田急江ノ島線内で..."}
