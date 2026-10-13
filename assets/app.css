@@ -163,14 +163,17 @@ body::after {
 
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; border-radius: 14px; }
 .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* 品牌标：直接使用主站同款彩色线路图（assets/logo.png），
+   圆角全幅呈现 + 发丝内描边，深浅主题下都能浮在玻璃上 */
 .brand-mark {
   width: 34px; height: 34px; flex: 0 0 34px;
-  border-radius: 11px;
-  display: grid; place-items: center;
-  background: linear-gradient(150deg, var(--accent), var(--accent-2));
-  box-shadow: 0 4px 16px rgba(56, 189, 248, .32), inset 0 1px 0 rgba(255, 255, 255, .35);
+  border-radius: 10px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 4px 14px rgba(2, 6, 23, .30), inset 0 0 0 1px rgba(255, 255, 255, .22);
+  transition: transform .25s var(--spring-out);
 }
-.brand-mark svg { width: 19px; height: 19px; display: block; }
+.brand:hover .brand-mark { transform: scale(1.06) rotate(-2deg); }
 .brand-body { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
 .brand-text { font-weight: 700; letter-spacing: .2px; font-size: 15px; line-height: 1.25; }
 .brand-sub  {
