@@ -112,3 +112,5 @@
 {"at": "2026-10-13T20:46:03+0900", "id": "54", "company": "JR東日本", "name": "八高線[高麗川～高崎]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:40現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T20:46:03+0900", "id": "336", "company": "JR西日本", "name": "播但線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:45現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T20:50:57+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:45現在、ほぼ平常通り運転..."}
+{"at": "2026-10-13T20:55:57+0900", "id": "336", "company": "JR西日本", "name": "播但線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "生野〜新井駅間での車両点検の影響..."}
+{"at": "2026-10-13T20:55:57+0900", "id": "557", "company": "青い森鉄道", "name": "青い森鉄道線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
