@@ -1,2 +1,4 @@
 {"at": "2026-10-14T00:05:55+0900", "id": "528", "company": "JR九州", "name": "久大本線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T00:05:55+0900", "id": "388", "company": "JR九州", "name": "日豊本線[小倉～大分]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T00:10:58+0900", "id": "489", "company": "JR西日本", "name": "小浜線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T00:10:58+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
