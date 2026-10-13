@@ -91,3 +91,4 @@
 {"at": "2026-10-13T19:06:02+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "18:46頃、久世〜中国勝山駅間..."}
 {"at": "2026-10-13T19:11:02+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "19:05現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T19:11:02+0900", "id": "157", "company": "千葉都市モノレール", "name": "千葉都市モノレール線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-13T19:16:04+0900", "id": "481", "company": "JR西日本", "name": "北陸本線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "19:05現在、ほぼ平常通り運転..."}
