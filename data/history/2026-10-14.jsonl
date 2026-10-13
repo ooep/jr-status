@@ -9,3 +9,4 @@
 {"at": "2026-10-14T02:05:54+0900", "id": "59", "company": "JR東日本", "name": "常磐線[品川～水戸]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T02:05:54+0900", "id": "311", "company": "阪急電鉄", "name": "阪急宝塚本線", "from": "resume", "to": "normal", "from_label": "運転再開", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T02:05:54+0900", "id": "310", "company": "阪急電鉄", "name": "阪急神戸本線", "from": "resume", "to": "normal", "from_label": "運転再開", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T05:05:50+0900", "id": "576", "company": "万葉線", "name": "万葉線", "from": "plan", "to": "plan", "from_label": "運転計画（他1件）", "to_label": "運転計画（他1件）", "detail": "レール交換工事の影響で、09:0..."}
