@@ -46,3 +46,6 @@
 {"at": "2026-10-13T16:16:16+0900", "id": "580", "company": "しなの鉄道", "name": "しなの鉄道線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-13T16:16:16+0900", "id": "179", "company": "上信電鉄", "name": "上信電鉄線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-13T16:16:16+0900", "id": "295", "company": "近畿日本鉄道", "name": "近鉄南大阪線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "16:00現在、ほぼ平常通り運転..."}
+{"at": "2026-10-13T16:21:52+0900", "id": "265", "company": "JR西日本", "name": "JR宝塚線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "15:14頃、学研都市線内での踏..."}
+{"at": "2026-10-13T16:21:52+0900", "id": "272", "company": "JR西日本", "name": "JR東西線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "15:14頃、学研都市線内での踏..."}
+{"at": "2026-10-13T16:21:52+0900", "id": "299", "company": "近畿日本鉄道", "name": "近鉄長野線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "16:20現在、ほぼ平常通り運転..."}
