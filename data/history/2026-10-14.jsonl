@@ -14,3 +14,4 @@
 {"at": "2026-10-14T05:40:56+0900", "id": "643", "company": "ハピラインふくい", "name": "ハピラインふくい線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "大雨の影響で、福井〜大聖寺駅間の..."}
 {"at": "2026-10-14T06:01:11+0900", "id": "133", "company": "東京メトロ", "name": "東京メトロ丸ノ内線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "05:42頃、後楽園駅での救護活..."}
 {"at": "2026-10-14T06:05:53+0900", "id": "547", "company": "JR西日本", "name": "山陰本線[園部～鳥取]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "大雨の影響で、豊岡〜鳥取駅間の一..."}
+{"at": "2026-10-14T06:20:55+0900", "id": "632", "company": "IRいしかわ鉄道", "name": "IRいしかわ鉄道線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "大雨の影響で、大聖寺〜金沢駅間の..."}
