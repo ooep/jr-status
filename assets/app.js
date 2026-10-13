@@ -16,6 +16,7 @@ const I18N = {
     srcLabel: '数据来源', mainSite: 'Mini JapanRail 主站',
     theme: '主题', langLabel: '语言', clear: '清除',
     viewOriginal: '查看原文', modalOk: '确定', noDetail: '（暂无更详细的说明）',
+    publishLabel: '发布于',
     stat: { lines: '线路总数', normal: '平常运营', trouble: '异常合计', suspend: '停运', companies: '铁道公司', mapped: '已映射主站' },
     st: { normal: '平常运营', delay: '列车晚点', suspend: '停运', irregular: '运行异常', plan: '计划调整', resume: '恢复运行', other: '其他', unknown: '未知' },
     verdict: { ok: '全国线路基本正常运营', warn: '部分线路出现异常，出行前请确认', bad: '多条线路停运，请务必确认' },
@@ -34,6 +35,7 @@ const I18N = {
     srcLabel: 'データ元', mainSite: 'Mini JapanRail 本サイト',
     theme: 'テーマ', langLabel: '言語', clear: 'クリア',
     viewOriginal: '原文を表示', modalOk: 'OK', noDetail: '（詳細な説明はありません）',
+    publishLabel: '掲載',
     stat: { lines: '路線数', normal: '平常運転', trouble: '異常計', suspend: '運転見合わせ', companies: '鉄道会社', mapped: 'マッピング済み' },
     st: { normal: '平常運転', delay: '列車遅延', suspend: '運転見合わせ', irregular: '運転状況', plan: '運転計画', resume: '運転再開', other: 'その他', unknown: '不明' },
     verdict: { ok: '全国の路線はおおむね平常運転です', warn: '一部路線に乱れがあります。お出かけ前にご確認ください', bad: '複数の路線で運転見合わせが発生しています' },
@@ -52,6 +54,7 @@ const I18N = {
     srcLabel: 'Source', mainSite: 'Mini JapanRail main site',
     theme: 'Theme', langLabel: 'Language', clear: 'Clear',
     viewOriginal: 'View original', modalOk: 'OK', noDetail: '(No further details)',
+    publishLabel: 'Published',
     stat: { lines: 'Lines', normal: 'Normal', trouble: 'Disrupted', suspend: 'Suspended', companies: 'Operators', mapped: 'Mapped' },
     st: { normal: 'Normal', delay: 'Delayed', suspend: 'Suspended', irregular: 'Irregular', plan: 'Planned change', resume: 'Resuming', other: 'Other', unknown: 'Unknown' },
     verdict: { ok: 'Lines nationwide are running normally', warn: 'Some lines are disrupted — check before you travel', bad: 'Multiple lines suspended — please check carefully' },
@@ -76,6 +79,12 @@ const CAT_COLOR = {
   suspend: 'var(--c-suspend)', irregular: 'var(--c-irr)', delay: 'var(--c-delay)',
   resume: 'var(--c-resume)', other: 'var(--c-other)', plan: 'var(--c-plan)',
   normal: 'var(--c-normal)', unknown: 'var(--fg-faint)'
+};
+/* 与 CAT_COLOR 对应的原始 RGB，用于生成半透明底色（避免依赖 color-mix） */
+const CAT_RGB = {
+  suspend: '248,113,113', irregular: '251,146,60', delay: '251,191,36',
+  resume: '45,212,191', other: '192,132,252', plan: '96,165,250',
+  normal: '52,211,153', unknown: '160,174,192'
 };
 
 /* ───────── state ───────── */
@@ -220,6 +229,7 @@ function lineRow(l) {
   const viewBtn = l.url
     ? `<button type="button" class="tag tag-act" data-view="1"
          data-name="${esc(l.name)}" data-status="${esc(l.status)}" data-label="${esc(l.label)}"
+         data-company="${esc(l.company)}" data-area="${esc(l.area)}"
          data-detail="${esc(l.detail_full || l.detail)}">${esc(t('viewOriginal'))}</button>`
     : '';
   return `<div class="lrow">
@@ -285,24 +295,54 @@ function render() {
 /* ───────── 原文弹窗 ───────── */
 let modalLastFocus = null;
 
+/* 从原文末尾剥离「（10月13日 12時30分掲載）」时间戳，单独展示 */
+const PUBLISH_RE = /（(\d{1,2}月\d{1,2}日\s*\d{1,2}時\d{1,2}分)掲載）\s*$/;
+function splitPublished(txt) {
+  const m = (txt || '').match(PUBLISH_RE);
+  if (!m) return { text: txt || '', published: '' };
+  return { text: txt.slice(0, m.index).trim(), published: m[1].replace(/\s+/g, ' ') };
+}
+
+/* 滚动位置 -> 顶/底渐隐提示 */
+function updateModalFades() {
+  const sc = $('#srcModalScroll'), body = $('#srcModalBody');
+  sc.classList.toggle('can-up', body.scrollTop > 4);
+  sc.classList.toggle('can-down', body.scrollTop + body.clientHeight < body.scrollHeight - 4);
+}
+
 function openSourceModal(el) {
   const d = el.dataset;
   const col = CAT_COLOR[d.status] || CAT_COLOR.unknown;
   $('#srcModalDot').style.background = col;
   $('#srcModalTitle').textContent = d.name || '';
-  $('#srcModalSub').textContent = [stLabel(d.status), d.label].filter(Boolean).join(' · ');
-  const txt = (d.detail || '').trim();
-  $('#srcModalBody').textContent = txt || t('noDetail');
+  $('#srcModalSub').textContent = [d.company, d.area].filter(Boolean).join(' · ');
+  // 状态徽标：状态色文字 + 同色淡底 + 同色细边
+  const chip = $('#srcModalStatus');
+  const rgb = CAT_RGB[d.status] || CAT_RGB.unknown;
+  chip.textContent = stLabel(d.status);
+  chip.style.color = col;
+  chip.style.background = `rgba(${rgb}, .13)`;
+  chip.style.borderColor = `rgba(${rgb}, .34)`;
+  // 正文：剥离掲載时间；无内容给兜底文案
+  const { text, published } = splitPublished(d.detail || '');
+  $('#srcModalBody').textContent = text.trim() || t('noDetail');
+  $('#srcModalPub').textContent = published ? `${t('publishLabel')} ${published}` : '';
+
   modalLastFocus = el;
   $('#srcModal').hidden = false;
   document.body.style.overflow = 'hidden';   // 锁背后滚动
+  $('#srcModalBody').scrollTop = 0;
+  updateModalFades();
   $('#srcModalOk').focus();
 }
 
 function closeSourceModal() {
-  $('#srcModal').hidden = true;
+  const ov = $('#srcModal');
+  if (ov.hidden) return;
   document.body.style.overflow = '';
   if (modalLastFocus) { modalLastFocus.focus(); modalLastFocus = null; }
+  ov.classList.add('closing');
+  setTimeout(() => { ov.hidden = true; ov.classList.remove('closing'); }, 180);
 }
 
 /* ───────── data ───────── */
@@ -390,11 +430,12 @@ function boot() {
     }
   });
 
-  /* 原文弹窗：行内按钮打开；确定/遮罩/Esc 关闭 */
+  /* 原文弹窗：行内按钮打开；确定/遮罩/Esc 关闭；滚动联动顶底渐隐 */
   $('#results').addEventListener('click', (e) => {
     const b = e.target.closest('[data-view]');
     if (b) openSourceModal(b);
   });
+  $('#srcModalBody').addEventListener('scroll', updateModalFades, { passive: true });
   $('#srcModalOk').addEventListener('click', closeSourceModal);
   $('#srcModal').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) closeSourceModal();   // 点遮罩关闭
