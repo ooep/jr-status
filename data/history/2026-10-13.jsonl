@@ -30,3 +30,4 @@
 {"at": "2026-10-13T14:36:17+0900", "id": "179", "company": "上信電鉄", "name": "上信電鉄線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:30現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T14:46:12+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "古見〜久世駅間での線路内点検の影..."}
 {"at": "2026-10-13T14:46:12+0900", "id": "580", "company": "しなの鉄道", "name": "しなの鉄道線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:40現在、ほぼ平常通り運転..."}
+{"at": "2026-10-13T14:56:14+0900", "id": "504", "company": "JR西日本", "name": "岩徳線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:45現在、ほぼ平常通り運転..."}
