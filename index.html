@@ -81,6 +81,23 @@
   <!-- ── 结果 ───────────────────────────────────────────── -->
   <div id="results" class="grid"></div>
 
+  <!-- ── 原文弹窗（液态玻璃） ───────────────────────────── -->
+  <div class="modal-overlay" id="srcModal" hidden>
+    <div class="modal glass" role="dialog" aria-modal="true" aria-labelledby="srcModalTitle">
+      <div class="modal-head">
+        <span class="dotc" id="srcModalDot" aria-hidden="true"></span>
+        <div class="modal-titles">
+          <div class="modal-title" id="srcModalTitle"></div>
+          <div class="modal-sub" id="srcModalSub"></div>
+        </div>
+      </div>
+      <div class="modal-body" id="srcModalBody"></div>
+      <div class="modal-foot">
+        <button class="btn btn-ok" id="srcModalOk" type="button" data-i18n="modalOk">确定</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div id="footMeta"></div>
     <div>

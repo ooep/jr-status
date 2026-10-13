@@ -15,6 +15,7 @@ const I18N = {
     all: '全部', troubleOnly: '仅异常', mappedOnly: '仅已映射主站',
     srcLabel: '数据来源', mainSite: 'Mini JapanRail 主站',
     theme: '主题', langLabel: '语言', clear: '清除',
+    viewOriginal: '查看原文', modalOk: '确定', noDetail: '（暂无更详细的说明）',
     stat: { lines: '线路总数', normal: '平常运营', trouble: '异常合计', suspend: '停运', companies: '铁道公司', mapped: '已映射主站' },
     st: { normal: '平常运营', delay: '列车晚点', suspend: '停运', irregular: '运行异常', plan: '计划调整', resume: '恢复运行', other: '其他', unknown: '未知' },
     verdict: { ok: '全国线路基本正常运营', warn: '部分线路出现异常，出行前请确认', bad: '多条线路停运，请务必确认' },
@@ -32,6 +33,7 @@ const I18N = {
     all: 'すべて', troubleOnly: '異常のみ', mappedOnly: 'マッピング済みのみ',
     srcLabel: 'データ元', mainSite: 'Mini JapanRail 本サイト',
     theme: 'テーマ', langLabel: '言語', clear: 'クリア',
+    viewOriginal: '原文を表示', modalOk: 'OK', noDetail: '（詳細な説明はありません）',
     stat: { lines: '路線数', normal: '平常運転', trouble: '異常計', suspend: '運転見合わせ', companies: '鉄道会社', mapped: 'マッピング済み' },
     st: { normal: '平常運転', delay: '列車遅延', suspend: '運転見合わせ', irregular: '運転状況', plan: '運転計画', resume: '運転再開', other: 'その他', unknown: '不明' },
     verdict: { ok: '全国の路線はおおむね平常運転です', warn: '一部路線に乱れがあります。お出かけ前にご確認ください', bad: '複数の路線で運転見合わせが発生しています' },
@@ -49,6 +51,7 @@ const I18N = {
     all: 'All', troubleOnly: 'Disrupted only', mappedOnly: 'Mapped only',
     srcLabel: 'Source', mainSite: 'Mini JapanRail main site',
     theme: 'Theme', langLabel: 'Language', clear: 'Clear',
+    viewOriginal: 'View original', modalOk: 'OK', noDetail: '(No further details)',
     stat: { lines: 'Lines', normal: 'Normal', trouble: 'Disrupted', suspend: 'Suspended', companies: 'Operators', mapped: 'Mapped' },
     st: { normal: 'Normal', delay: 'Delayed', suspend: 'Suspended', irregular: 'Irregular', plan: 'Planned change', resume: 'Resuming', other: 'Other', unknown: 'Unknown' },
     verdict: { ok: 'Lines nationwide are running normally', warn: 'Some lines are disrupted — check before you travel', bad: 'Multiple lines suspended — please check carefully' },
@@ -213,6 +216,12 @@ function lineRow(l) {
   const mapped = l.mainline
     ? `<span class="tag map">${esc(t('mappedTag'))}${esc(l.mainline.line)}</span>` : '';
   const detail = l.detail ? `<div class="dt">${esc(l.detail)}</div>` : '';
+  // 「查看原文」：不再跳转源站，改为站内弹窗展示完整原文
+  const viewBtn = l.url
+    ? `<button type="button" class="tag tag-act" data-view="1"
+         data-name="${esc(l.name)}" data-status="${esc(l.status)}" data-label="${esc(l.label)}"
+         data-detail="${esc(l.detail_full || l.detail)}">${esc(t('viewOriginal'))}</button>`
+    : '';
   return `<div class="lrow">
       <span class="dotc" style="background:${col}"></span>
       <div class="body">
@@ -222,9 +231,9 @@ function lineRow(l) {
           <span class="tag">${esc(l.label)}</span>
         </div>
         ${detail}
-        ${(mapped || l.url) ? `<div class="tags">
+        ${(mapped || viewBtn) ? `<div class="tags">
             ${mapped}
-            ${l.url ? `<span class="tag"><a href="${esc(l.url)}" target="_blank" rel="noopener">原文 ↗</a></span>` : ''}
+            ${viewBtn}
           </div>` : ''}
       </div>
     </div>`;
@@ -271,6 +280,29 @@ function render() {
         ${okHtml}
       </article>`;
   }).join('');
+}
+
+/* ───────── 原文弹窗 ───────── */
+let modalLastFocus = null;
+
+function openSourceModal(el) {
+  const d = el.dataset;
+  const col = CAT_COLOR[d.status] || CAT_COLOR.unknown;
+  $('#srcModalDot').style.background = col;
+  $('#srcModalTitle').textContent = d.name || '';
+  $('#srcModalSub').textContent = [stLabel(d.status), d.label].filter(Boolean).join(' · ');
+  const txt = (d.detail || '').trim();
+  $('#srcModalBody').textContent = txt || t('noDetail');
+  modalLastFocus = el;
+  $('#srcModal').hidden = false;
+  document.body.style.overflow = 'hidden';   // 锁背后滚动
+  $('#srcModalOk').focus();
+}
+
+function closeSourceModal() {
+  $('#srcModal').hidden = true;
+  document.body.style.overflow = '';
+  if (modalLastFocus) { modalLastFocus.focus(); modalLastFocus = null; }
 }
 
 /* ───────── data ───────── */
@@ -348,6 +380,7 @@ function boot() {
   document.addEventListener('keydown', (e) => {
     const tag = (document.activeElement || {}).tagName || '';
     const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(tag);
+    if (e.key === 'Escape' && !$('#srcModal').hidden) { closeSourceModal(); return; }
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault(); qEl.focus(); qEl.select();
     } else if (e.key === '/' && !typing) {
@@ -355,6 +388,16 @@ function boot() {
     } else if (e.key === 'Escape' && document.activeElement === qEl) {
       clearSearch(); qEl.blur();
     }
+  });
+
+  /* 原文弹窗：行内按钮打开；确定/遮罩/Esc 关闭 */
+  $('#results').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-view]');
+    if (b) openSourceModal(b);
+  });
+  $('#srcModalOk').addEventListener('click', closeSourceModal);
+  $('#srcModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeSourceModal();   // 点遮罩关闭
   });
 
   /* 顶栏滚动状态：越过阈值后加深阴影，给出悬浮层次 */

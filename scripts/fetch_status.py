@@ -52,6 +52,7 @@ class LineRecord:
     trouble: bool              # 是否 lil 解释为异常（colTrouble / icnAlert）
     detail: str                # 源站 原文详情（可能被截断）
     url: str
+    detail_full: str = ""      # 详情页完整原文（异常线路补抓，见 enrich_trouble_details）
 
 
 @dataclass
@@ -200,6 +201,48 @@ def all_lines(companies: List[CompanyRecord]) -> List[LineRecord]:
         for ln in c.lines:
             out.setdefault(ln.src_id, ln)
     return list(out.values())
+
+
+def fetch_detail_full(session: requests.Session, src_id: str) -> str:
+    """抓取线路详情页 /diainfo/{id}/0，提取完整原文（dd.trouble）。
+    列表页只给截断摘要（固定以…结尾），全文在详情页。失败返回空串。"""
+    html = _get(f"{BASE}/diainfo/{src_id}/0", session)
+    if html is None:
+        return ""
+    soup = BeautifulSoup(html, "html.parser")
+    dd = soup.select_one("dd.trouble")
+    if dd is not None:
+        txt = _clean(dd.get_text(" ", strip=True))
+        if txt:
+            return txt
+    # 兜底：#main 内第一个足够长的正文段落（排除推文流 p.tweet）
+    main = soup.select_one("#main")
+    if main is not None:
+        for p in main.select("p"):
+            if "tweet" in (p.get("class") or []):
+                continue
+            txt = _clean(p.get_text(" ", strip=True))
+            if len(txt) >= 30:
+                return txt
+    return ""
+
+
+def enrich_trouble_details(lines: List[LineRecord], verbose: bool = True) -> int:
+    """为异常线路补抓详情页完整原文（仅异常线路，通常 ~30 条，控制请求量）。
+    非异常线路没有「查看原文」入口，无需补抓。"""
+    session = requests.Session()
+    n = 0
+    for ln in lines:
+        if not ln.trouble:
+            continue
+        full = fetch_detail_full(session, ln.src_id)
+        if full:
+            ln.detail_full = full
+            n += 1
+        time.sleep(SLEEP)
+    if verbose:
+        print(f"[info] enriched full detail for {n} trouble lines")
+    return n
 
 
 if __name__ == "__main__":

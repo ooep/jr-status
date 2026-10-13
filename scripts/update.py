@@ -25,7 +25,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List, Tuple
 
-from fetch_status import fetch_all, all_lines, LineRecord
+from fetch_status import fetch_all, all_lines, enrich_trouble_details, LineRecord
 from map_lines import Mapper
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -75,6 +75,7 @@ def build() -> dict:
     mapper = Mapper()
     companies = fetch_all(verbose=False)
     lines = all_lines(companies)
+    enrich_trouble_details(lines, verbose=True)   # 异常线路补抓详情页全文（供「查看原文」弹窗）
     now = datetime.now(JST)
 
     records: List[dict] = []
@@ -108,6 +109,8 @@ def build() -> dict:
             "mainline": mains[0] if mains else None,
             "mainlines": mains if len(mains) > 1 else None,
         }
+        if ln.detail_full:
+            obj["detail_full"] = ln.detail_full
         records.append(obj)
         if not mains:
             unmatched.append({
