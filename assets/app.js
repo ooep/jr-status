@@ -21,7 +21,10 @@ const I18N = {
     st: { normal: '平常运营', delay: '列车晚点', suspend: '停运', irregular: '运行异常', plan: '计划调整', resume: '恢复运行', other: '其他', unknown: '未知' },
     verdict: { ok: '全国线路基本正常运营', warn: '部分线路出现异常，出行前请确认', bad: '多条线路停运，请务必确认' },
     updated: '更新于', ago: '前', justNow: '刚刚', sec: '秒', min: '分钟', hour: '小时',
-    count: '条', opBadge: '条线路', mappedTag: '已映射主站：', noResult: '没有匹配的线路', loading: '正在读取数据…',
+    count: '条', opBadge: '条线路', mappedTag: '已映射主站：', noResult: '没有匹配的线路',
+    noResultSub: '换个关键词，或切换地区与筛选条件试试',
+    skipToResults: '跳到线路列表',
+    loading: '正在读取数据…',
     loadFail: '数据读取失败，请稍后重试', autoRefresh: '自动刷新', companyCount: '家公司'
   },
   ja: {
@@ -40,7 +43,10 @@ const I18N = {
     st: { normal: '平常運転', delay: '列車遅延', suspend: '運転見合わせ', irregular: '運転状況', plan: '運転計画', resume: '運転再開', other: 'その他', unknown: '不明' },
     verdict: { ok: '全国の路線はおおむね平常運転です', warn: '一部路線に乱れがあります。お出かけ前にご確認ください', bad: '複数の路線で運転見合わせが発生しています' },
     updated: '更新', ago: '前', justNow: 'たった今', sec: '秒', min: '分', hour: '時間',
-    count: '件', opBadge: '路線', mappedTag: 'マッピング：', noResult: '該当する路線がありません', loading: '読み込み中…',
+    count: '件', opBadge: '路線', mappedTag: 'マッピング：', noResult: '該当する路線がありません',
+    noResultSub: '別のキーワードや地域・条件でお試しください',
+    skipToResults: '路線一覧へスキップ',
+    loading: '読み込み中…',
     loadFail: 'データ取得に失敗しました', autoRefresh: '自動更新', companyCount: '社'
   },
   en: {
@@ -59,7 +65,10 @@ const I18N = {
     st: { normal: 'Normal', delay: 'Delayed', suspend: 'Suspended', irregular: 'Irregular', plan: 'Planned change', resume: 'Resuming', other: 'Other', unknown: 'Unknown' },
     verdict: { ok: 'Lines nationwide are running normally', warn: 'Some lines are disrupted — check before you travel', bad: 'Multiple lines suspended — please check carefully' },
     updated: 'Updated', ago: 'ago', justNow: 'just now', sec: 's', min: 'm', hour: 'h',
-    count: '', opBadge: 'lines', mappedTag: 'Mapped: ', noResult: 'No matching lines', loading: 'Loading…',
+    count: '', opBadge: 'lines', mappedTag: 'Mapped: ', noResult: 'No matching lines',
+    noResultSub: 'Try a different keyword, region or filter',
+    skipToResults: 'Skip to line list',
+    loading: 'Loading…',
     loadFail: 'Failed to load data', autoRefresh: 'Auto refresh', companyCount: 'operators'
   }
 };
@@ -85,6 +94,12 @@ const CAT_RGB = {
   suspend: '248,113,113', irregular: '251,146,60', delay: '251,191,36',
   resume: '45,212,191', other: '192,132,252', plan: '96,165,250',
   normal: '52,211,153', unknown: '160,174,192'
+};
+
+/* 组标题警示标的颜色：按最高严重度取色 */
+const WARN_COLOR = {
+  4: CAT_COLOR.suspend, 3: CAT_COLOR.irregular,
+  2: CAT_COLOR.resume, 1: CAT_COLOR.plan
 };
 
 /* ───────── state ───────── */
@@ -258,7 +273,16 @@ function render() {
   const lines = state.data.lines.filter(lineMatch);
   const box = $('#results');
 
-  if (!lines.length) { box.innerHTML = `<div class="empty glass">${esc(t('noResult'))}</div>`; return; }
+  if (!lines.length) {
+    box.innerHTML = `<div class="empty glass">
+        <svg class="empty-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.7-4.7" stroke-linecap="round"/>
+        </svg>
+        <div class="empty-t">${esc(t('noResult'))}</div>
+        <div class="empty-s">${esc(t('noResultSub'))}</div>
+      </div>`;
+    return;
+  }
 
   const byCompany = new Map();
   lines.forEach(l => {
@@ -280,11 +304,11 @@ function render() {
       ? `<div>${g.trouble.map(lineRow).join('')}</div>` : '';
     const okHtml = (state.troubleOnly || !g.ok.length) ? '' :
       `<div class="lines">${g.ok.map(linePill).join('')}</div>`;
-    return `<article class="card glass ${g.trouble.length ? '' : 'compact'}">
+    return `<article class="card glass">
         <div class="card-head">
           <span class="op">${esc(g.company)}</span>
           <span class="area">${esc(g.area)}</span>
-          <span class="badge">${g.lines.length} ${esc(t('opBadge'))}${g.trouble.length ? ` · ${g.trouble.length} ⚠` : ''}</span>
+          <span class="badge">${g.lines.length} ${esc(t('opBadge'))}${g.trouble.length ? ` · <span class="warn" style="color:${WARN_COLOR[g.maxSev] || CAT_COLOR.irregular}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.6 22.2 20.4H1.8z"/></svg>${g.trouble.length}</span>` : ''}</span>
         </div>
         ${troubleHtml}
         ${okHtml}
