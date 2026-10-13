@@ -1,5 +1,5 @@
 /* jr-status — UI logic
-   读取 data/status.json（GitHub Actions 每 10 分钟更新），渲染全国线路运行情报。 */
+   读取 data/status.json（定期更新），渲染全国线路运行情报。 */
 
 'use strict';
 
@@ -14,7 +14,6 @@ const I18N = {
     heroTitle: '全日本铁道 · 运行情报',
     all: '全部', troubleOnly: '仅异常', mappedOnly: '仅已映射主站',
     srcLabel: '数据来源', mainSite: 'Mini JapanRail 主站',
-    updateNote: '每 10 分钟由 GitHub Actions 自动采集更新',
     theme: '主题', langLabel: '语言', clear: '清除',
     stat: { lines: '线路总数', normal: '平常运营', trouble: '异常合计', suspend: '停运', companies: '铁道公司', mapped: '已映射主站' },
     st: { normal: '平常运营', delay: '列车晚点', suspend: '停运', irregular: '运行异常', plan: '计划调整', resume: '恢复运行', other: '其他', unknown: '未知' },
@@ -32,7 +31,6 @@ const I18N = {
     heroTitle: '全国鉄道 · 運行情報',
     all: 'すべて', troubleOnly: '異常のみ', mappedOnly: 'マッピング済みのみ',
     srcLabel: 'データ元', mainSite: 'Mini JapanRail 本サイト',
-    updateNote: 'GitHub Actions が10分ごとに自動取得・更新',
     theme: 'テーマ', langLabel: '言語', clear: 'クリア',
     stat: { lines: '路線数', normal: '平常運転', trouble: '異常計', suspend: '運転見合わせ', companies: '鉄道会社', mapped: 'マッピング済み' },
     st: { normal: '平常運転', delay: '列車遅延', suspend: '運転見合わせ', irregular: '運転状況', plan: '運転計画', resume: '運転再開', other: 'その他', unknown: '不明' },
@@ -50,7 +48,6 @@ const I18N = {
     heroTitle: 'Japan Railways · Live Status',
     all: 'All', troubleOnly: 'Disrupted only', mappedOnly: 'Mapped only',
     srcLabel: 'Source', mainSite: 'Mini JapanRail main site',
-    updateNote: 'Auto-collected every 10 minutes by GitHub Actions',
     theme: 'Theme', langLabel: 'Language', clear: 'Clear',
     stat: { lines: 'Lines', normal: 'Normal', trouble: 'Disrupted', suspend: 'Suspended', companies: 'Operators', mapped: 'Mapped' },
     st: { normal: 'Normal', delay: 'Delayed', suspend: 'Suspended', irregular: 'Irregular', plan: 'Planned change', resume: 'Resuming', other: 'Other', unknown: 'Unknown' },
@@ -175,14 +172,13 @@ function renderStats() {
   pulse.className = 'pulse ' + cls;
   $('#verdictText').textContent = t(key);
 
-  // 更新时间 + 采集频率
+  // 更新时间
   const meta = $('#meta');
   if (meta) {
     meta.innerHTML =
-      `<span class="live"><i></i>${esc(t('updated'))} <b>${esc(d.updated_at_display)}</b>（${esc(ago(d.updated_at))}）</span>` +
-      `<span>· ${esc(t('updateNote'))}</span>`;
+      `<span class="live"><i></i>${esc(t('updated'))} <b>${esc(d.updated_at_display)}</b>（${esc(ago(d.updated_at))}）</span>`;
   }
-  $('#footMeta').textContent = `${t('updateNote')} · ${t('updated')} ${d.updated_at_display} · data/status.json`;
+  $('#footMeta').textContent = `${t('updated')} ${d.updated_at_display} · data/status.json`;
 }
 
 function renderAreaChips() {
