@@ -12,3 +12,4 @@
 {"at": "2026-10-14T05:05:50+0900", "id": "576", "company": "万葉線", "name": "万葉線", "from": "plan", "to": "plan", "from_label": "運転計画（他1件）", "to_label": "運転計画（他1件）", "detail": "レール交換工事の影響で、09:0..."}
 {"at": "2026-10-14T05:40:56+0900", "id": "632", "company": "IRいしかわ鉄道", "name": "IRいしかわ鉄道線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "大雨の影響で、大聖寺〜金沢駅間の..."}
 {"at": "2026-10-14T05:40:56+0900", "id": "643", "company": "ハピラインふくい", "name": "ハピラインふくい線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "大雨の影響で、福井〜大聖寺駅間の..."}
+{"at": "2026-10-14T06:01:11+0900", "id": "133", "company": "東京メトロ", "name": "東京メトロ丸ノ内線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "05:42頃、後楽園駅での救護活..."}
