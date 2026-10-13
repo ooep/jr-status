@@ -94,3 +94,4 @@
 {"at": "2026-10-13T19:16:04+0900", "id": "481", "company": "JR西日本", "name": "北陸本線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "19:05現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T19:21:03+0900", "id": "490", "company": "JR西日本", "name": "福知山線[篠山口～福知山]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "線路内点検の影響で、一部列車に遅..."}
 {"at": "2026-10-13T19:31:08+0900", "id": "265", "company": "JR西日本", "name": "JR宝塚線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "福知山線内での線路内点検の影響で..."}
+{"at": "2026-10-13T19:46:02+0900", "id": "498", "company": "JR西日本", "name": "芸備線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
