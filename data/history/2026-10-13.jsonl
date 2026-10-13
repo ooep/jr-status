@@ -97,3 +97,4 @@
 {"at": "2026-10-13T19:46:02+0900", "id": "498", "company": "JR西日本", "name": "芸備線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-13T19:55:59+0900", "id": "557", "company": "青い森鉄道", "name": "青い森鉄道線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "19:50現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T20:01:20+0900", "id": "336", "company": "JR西日本", "name": "播但線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "和田山駅での接続待ちの影響で、寺..."}
+{"at": "2026-10-13T20:05:06+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "20:00現在、ほぼ平常通り運転..."}
