@@ -124,3 +124,4 @@
 {"at": "2026-10-13T21:31:09+0900", "id": "388", "company": "JR九州", "name": "日豊本線[小倉～大分]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "20:55頃、東別府〜西大分駅間..."}
 {"at": "2026-10-13T21:31:09+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-13T21:31:09+0900", "id": "330", "company": "JR西日本", "name": "赤穂線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-13T21:35:53+0900", "id": "496", "company": "JR西日本", "name": "伯備線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
