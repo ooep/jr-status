@@ -49,3 +49,5 @@
 {"at": "2026-10-13T16:21:52+0900", "id": "265", "company": "JR西日本", "name": "JR宝塚線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "15:14頃、学研都市線内での踏..."}
 {"at": "2026-10-13T16:21:52+0900", "id": "272", "company": "JR西日本", "name": "JR東西線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "15:14頃、学研都市線内での踏..."}
 {"at": "2026-10-13T16:21:52+0900", "id": "299", "company": "近畿日本鉄道", "name": "近鉄長野線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "16:20現在、ほぼ平常通り運転..."}
+{"at": "2026-10-13T16:25:55+0900", "id": "265", "company": "JR西日本", "name": "JR宝塚線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "16:25現在、ほぼ平常通り運転..."}
+{"at": "2026-10-13T16:25:55+0900", "id": "271", "company": "JR西日本", "name": "学研都市線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "16:25現在、ほぼ平常通り運転..."}
