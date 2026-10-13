@@ -131,6 +131,39 @@
 
 > ⚠️ 定时任务是**尽力而为**语义，高峰期可能延迟或丢跑，因此页面显示更新时间戳供核对。
 
+### 外部触发器（推荐，解决 schedule 延迟/丢跑）
+
+GitHub 的 `schedule` 事件在高峰期可能延迟数十分钟甚至被跳过。可靠的做法是让**外部定时服务**每隔 10 分钟直接调用 GitHub API 的 `workflow_dispatch` 接口，秒级触发、不受调度积压影响。以免费服务 [cron-job.org](https://cron-job.org) 为例：
+
+| 配置项 | 值 |
+| --- | --- |
+| URL | `https://api.github.com/repos/ooep/jr-status/actions/workflows/update.yml/dispatches` |
+| 方法 | `POST` |
+| 执行周期 | 每 10 分钟（`*/10 * * * *`） |
+| 请求体 | `{"ref":"main"}` |
+
+请求头（Headers）：
+
+```
+Authorization: Bearer <PAT>
+Accept: application/vnd.github+json
+X-GitHub-Api-Version: 2022-11-28
+Content-Type: application/json
+```
+
+**两个关键点：**
+
+1. **成功状态码要包含 204**：GitHub 触发成功返回的是 `204 No Content`，默认只认 200 会误报失败。
+   在 cron-job.org 的 Advanced → "Treat these status codes as success" 里填 `200-299`（或 `204`）。
+2. **PAT 权限**：经典 token 勾选 `workflow` scope；或细粒度 token 仅授权本仓库、
+   Actions 权限设为 `write`。token 有过期时间，到期前记得换。
+
+其它可选服务：EasyCron、Cloudflare Workers（Cron Triggers，PAT 存为 Secret）。
+UptimeRobot 等纯 GET 监控无法携带认证头，不适用。
+
+> 安全提示：token 只填写到服务商后台，不要提交进仓库或贴到聊天里；怀疑泄露立即在
+> GitHub → Settings → Developer settings 中吊销并重新生成。
+
 ---
 
 ## 本地运行
