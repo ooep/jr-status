@@ -66,3 +66,6 @@
 {"at": "2026-10-13T16:56:00+0900", "id": "495", "company": "JR西日本", "name": "吉備線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "16:29頃、大安寺駅での線路内..."}
 {"at": "2026-10-13T16:56:00+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "16:28頃、JR京都線内での踏..."}
 {"at": "2026-10-13T16:56:00+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "16:55現在、ほぼ平常通り運転..."}
+{"at": "2026-10-13T17:06:03+0900", "id": "265", "company": "JR西日本", "name": "JR宝塚線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "16:28頃、JR京都線内での踏..."}
+{"at": "2026-10-13T17:06:03+0900", "id": "557", "company": "青い森鉄道", "name": "青い森鉄道線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "浅虫温泉〜野内駅間で発生した発煙..."}
+{"at": "2026-10-13T17:06:03+0900", "id": "295", "company": "近畿日本鉄道", "name": "近鉄南大阪線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
