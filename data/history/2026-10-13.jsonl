@@ -13,3 +13,6 @@
 {"at": "2026-10-13T12:29:13+0900", "id": "179", "company": "上信電鉄", "name": "上信電鉄線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "車両故障の影響で、一部列車に遅れ..."}
 {"at": "2026-10-13T12:39:16+0900", "id": "179", "company": "上信電鉄", "name": "上信電鉄線", "from": "delay", "to": "suspend", "from_label": "列車遅延", "to_label": "運転見合わせ", "detail": "車両故障の影響で、運転を見合わせ..."}
 {"at": "2026-10-13T12:49:18+0900", "id": "130", "company": "東京都交通局", "name": "都営新宿線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-13T13:09:46+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "12:38頃、古見〜久世駅間での..."}
+{"at": "2026-10-13T13:09:46+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "新倉敷〜金光駅間で発生した人身事..."}
+{"at": "2026-10-13T13:09:46+0900", "id": "277", "company": "JR西日本", "name": "大和路線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
