@@ -17,3 +17,4 @@
 {"at": "2026-10-14T06:20:55+0900", "id": "632", "company": "IRいしかわ鉄道", "name": "IRいしかわ鉄道線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "大雨の影響で、大聖寺〜金沢駅間の..."}
 {"at": "2026-10-14T06:40:54+0900", "id": "643", "company": "ハピラインふくい", "name": "ハピラインふくい線", "from": "irregular", "to": "irregular", "from_label": "運転状況", "to_label": "運転状況", "detail": "大雨の影響で、一部列車に遅れや運..."}
 {"at": "2026-10-14T06:40:54+0900", "id": "133", "company": "東京メトロ", "name": "東京メトロ丸ノ内線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "06:35現在、ほぼ平常通り運転..."}
+{"at": "2026-10-14T07:01:10+0900", "id": "110", "company": "小田急電鉄", "name": "小田急江ノ島線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "06:25頃、藤沢本町〜藤沢駅間..."}
