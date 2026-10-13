@@ -16,3 +16,6 @@
 {"at": "2026-10-13T13:09:46+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "12:38頃、古見〜久世駅間での..."}
 {"at": "2026-10-13T13:09:46+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "新倉敷〜金光駅間で発生した人身事..."}
 {"at": "2026-10-13T13:09:46+0900", "id": "277", "company": "JR西日本", "name": "大和路線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-13T13:19:49+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "resume", "to": "irregular", "from_label": "運転再開", "to_label": "運転状況", "detail": "11:15頃、新倉敷〜金光駅間で..."}
+{"at": "2026-10-13T13:19:49+0900", "id": "179", "company": "上信電鉄", "name": "上信電鉄線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "車両故障の影響で、運転を見合わせ..."}
+{"at": "2026-10-13T13:19:49+0900", "id": "50", "company": "JR東日本", "name": "埼京川越線[羽沢横浜国大～川越]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
