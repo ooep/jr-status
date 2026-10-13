@@ -36,3 +36,13 @@
 {"at": "2026-10-13T15:06:19+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "resume", "to": "delay", "from_label": "運転再開", "to_label": "列車遅延", "detail": "12:38頃、古見〜久世駅間での..."}
 {"at": "2026-10-13T15:06:19+0900", "id": "576", "company": "万葉線", "name": "万葉線", "from": "other", "to": "plan", "from_label": "その他", "to_label": "運転計画（他1件）", "detail": "レール交換工事の影響で、14日0..."}
 {"at": "2026-10-13T15:06:19+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-13T16:16:16+0900", "id": "557", "company": "青い森鉄道", "name": "青い森鉄道線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "浅虫温泉〜野内駅間で発生した発煙..."}
+{"at": "2026-10-13T16:16:16+0900", "id": "271", "company": "JR西日本", "name": "学研都市線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "15:14頃、同志社前〜京田辺駅..."}
+{"at": "2026-10-13T16:16:16+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "15:18頃、糸崎駅での車内安全..."}
+{"at": "2026-10-13T16:16:16+0900", "id": "498", "company": "JR西日本", "name": "芸備線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "電力設備点検の影響で、新見〜東城..."}
+{"at": "2026-10-13T16:16:16+0900", "id": "299", "company": "近畿日本鉄道", "name": "近鉄長野線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "15:14頃、近鉄南大阪線内での..."}
+{"at": "2026-10-13T16:16:16+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "15:30現在、ほぼ平常通り運転..."}
+{"at": "2026-10-13T16:16:16+0900", "id": "504", "company": "JR西日本", "name": "岩徳線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-13T16:16:16+0900", "id": "580", "company": "しなの鉄道", "name": "しなの鉄道線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-13T16:16:16+0900", "id": "179", "company": "上信電鉄", "name": "上信電鉄線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-13T16:16:16+0900", "id": "295", "company": "近畿日本鉄道", "name": "近鉄南大阪線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "16:00現在、ほぼ平常通り運転..."}
