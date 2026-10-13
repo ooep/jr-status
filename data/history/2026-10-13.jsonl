@@ -70,3 +70,4 @@
 {"at": "2026-10-13T17:06:03+0900", "id": "557", "company": "青い森鉄道", "name": "青い森鉄道線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "浅虫温泉〜野内駅間で発生した発煙..."}
 {"at": "2026-10-13T17:06:03+0900", "id": "295", "company": "近畿日本鉄道", "name": "近鉄南大阪線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-13T17:16:04+0900", "id": "157", "company": "千葉都市モノレール", "name": "千葉都市モノレール線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "16:49頃、桜木駅での救護活動..."}
+{"at": "2026-10-13T17:25:58+0900", "id": "299", "company": "近畿日本鉄道", "name": "近鉄長野線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
