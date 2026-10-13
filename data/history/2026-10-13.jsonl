@@ -31,3 +31,8 @@
 {"at": "2026-10-13T14:46:12+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "古見〜久世駅間での線路内点検の影..."}
 {"at": "2026-10-13T14:46:12+0900", "id": "580", "company": "しなの鉄道", "name": "しなの鉄道線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:40現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T14:56:14+0900", "id": "504", "company": "JR西日本", "name": "岩徳線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:45現在、ほぼ平常通り運転..."}
+{"at": "2026-10-13T15:06:19+0900", "id": "386", "company": "JR九州", "name": "鹿児島本線[門司港～大牟田]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "14:08頃、小倉駅で発生したド..."}
+{"at": "2026-10-13T15:06:19+0900", "id": "496", "company": "JR西日本", "name": "伯備線", "from": "delay", "to": "delay", "from_label": "列車遅延", "to_label": "列車遅延", "detail": "新見駅での車両点検の影響で、一部..."}
+{"at": "2026-10-13T15:06:19+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "resume", "to": "delay", "from_label": "運転再開", "to_label": "列車遅延", "detail": "12:38頃、古見〜久世駅間での..."}
+{"at": "2026-10-13T15:06:19+0900", "id": "576", "company": "万葉線", "name": "万葉線", "from": "other", "to": "plan", "from_label": "その他", "to_label": "運転計画（他1件）", "detail": "レール交換工事の影響で、14日0..."}
+{"at": "2026-10-13T15:06:19+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
