@@ -69,6 +69,26 @@
     <div class="meta" id="meta"></div>
   </section>
 
+  <!-- ── 全国态势图 ─────────────────────────────────────── -->
+  <section class="glass mapcard">
+    <div class="map-head">
+      <div class="map-title" data-i18n="mapTitle">全国运行态势图</div>
+      <div class="map-legend2">
+        <span class="lg2 lg2-bad"><i></i><span data-i18n="mapSuspend">停运</span></span>
+        <span class="lg2 lg2-warn"><i></i><span data-i18n="mapDelay">延迟 · 异常</span></span>
+        <span class="lg2 lg2-ok"><i></i><span data-i18n="mapOk">正常</span></span>
+      </div>
+    </div>
+    <div class="map-flex">
+      <div class="map-beams" id="mapBeamsL"></div>
+      <div class="map-stage">
+        <svg id="jpMap" viewBox="30 40 960 700" role="img" aria-label="Japan region status map"></svg>
+        <div class="map-note" data-i18n="mapNote">点击地区可筛选 · 示意地图非精确比例</div>
+      </div>
+      <div class="map-beams" id="mapBeamsR"></div>
+    </div>
+  </section>
+
   <!-- ── 工具栏 ─────────────────────────────────────────── -->
   <section class="glass toolbar">
     <div class="chips" id="areaChips"></div>
@@ -112,10 +132,13 @@
       <span data-i18n="srcLabel">数据来源</span>：<b>公开运行情报源</b>
       ·
       <a href="https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/" target="_blank" rel="noopener" data-i18n="mainSite">Mini JapanRail 主站</a>
+      ·
+      <a href="https://simplemaps.com" target="_blank" rel="noopener" title="Map data: simplemaps.com">Map: simplemaps</a>
     </div>
   </footer>
 </div>
 
+<script src="assets/japan-paths.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

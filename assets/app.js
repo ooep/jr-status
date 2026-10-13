@@ -24,6 +24,9 @@ const I18N = {
     count: '条', opBadge: '条线路', mappedTag: '已映射主站：', noResult: '没有匹配的线路',
     noResultSub: '换个关键词，或切换地区与筛选条件试试',
     skipToResults: '跳到线路列表',
+    mapTitle: '全国运行态势图', mapSuspend: '停运', mapDelay: '延迟 · 异常', mapOk: '正常',
+    mapNote: '点击地区筛选 · 示意地图，非精确比例',
+    mapAllOk: '这一侧暂无异常线路',
     loading: '正在读取数据…',
     loadFail: '数据读取失败，请稍后重试', autoRefresh: '自动刷新', companyCount: '家公司'
   },
@@ -46,6 +49,9 @@ const I18N = {
     count: '件', opBadge: '路線', mappedTag: 'マッピング：', noResult: '該当する路線がありません',
     noResultSub: '別のキーワードや地域・条件でお試しください',
     skipToResults: '路線一覧へスキップ',
+    mapTitle: '全国運行状況マップ', mapSuspend: '見合わせ', mapDelay: '遅延・乱れ', mapOk: '平常',
+    mapNote: '地域クリックで絞り込み · 概略地図',
+    mapAllOk: 'こちらに異常はありません',
     loading: '読み込み中…',
     loadFail: 'データ取得に失敗しました', autoRefresh: '自動更新', companyCount: '社'
   },
@@ -68,6 +74,9 @@ const I18N = {
     count: '', opBadge: 'lines', mappedTag: 'Mapped: ', noResult: 'No matching lines',
     noResultSub: 'Try a different keyword, region or filter',
     skipToResults: 'Skip to line list',
+    mapTitle: 'Live Status Map', mapSuspend: 'Suspended', mapDelay: 'Delayed · Irregular', mapOk: 'Normal',
+    mapNote: 'Click a region to filter · schematic map, not to scale',
+    mapAllOk: 'No disruptions on this side',
     loading: 'Loading…',
     loadFail: 'Failed to load data', autoRefresh: 'Auto refresh', companyCount: 'operators'
   }
@@ -150,6 +159,7 @@ function applyLang() {
   $('#btnRefresh').title = t('refresh');
   $('#qClear').setAttribute('aria-label', t('clear'));
   $('#qClear').title = t('clear');
+  renderMap();   // 光带状态文案随语言刷新
   applyTheme();   // 主题按钮文字随语言刷新
 }
 
@@ -316,6 +326,134 @@ function render() {
   }).join('');
 }
 
+/* ───────── 全国态势图（日本八地区 + 异常线路光带） ───────── */
+const AREAS8 = [
+  { key: 'kyushu',   area: '九州',   side: 'L' },
+  { key: 'chugoku',  area: '中国',   side: 'L' },
+  { key: 'shikoku',  area: '四国',   side: 'L' },
+  { key: 'kinki',    area: '近畿',   side: 'L' },
+  { key: 'chubu',    area: '中部',   side: 'R' },
+  { key: 'kanto',    area: '関東',   side: 'R' },
+  { key: 'tohoku',   area: '東北',   side: 'R' },
+  { key: 'hokkaido', area: '北海道', side: 'R' },
+];
+const SVG_NS = 'http://www.w3.org/2000/svg';
+let mapBuilt = false;
+
+function buildMap() {
+  const svg = $('#jpMap');
+  if (!svg || mapBuilt) return;
+  svg.innerHTML = AREAS8.map(a =>
+    `<g class="region" data-key="${a.key}" data-area="${esc(a.area)}" tabindex="0" role="button" aria-label="${esc(a.area)}">
+       ${(window.JP_REGION_PATHS && JP_REGION_PATHS[a.key] && JP_REGION_PATHS[a.key].paths) || ''}
+     </g>`).join('') +
+    `<g id="mapPins"></g>`;
+  mapBuilt = true;
+
+  /* 地区点击 / 回车：切换地区筛选（再点一次取消），并滚到列表 */
+  $$('#jpMap .region').forEach(g => {
+    g.addEventListener('click', () => toggleArea(g.dataset.area));
+    g.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleArea(g.dataset.area); }
+    });
+  });
+
+  /* 光带点击 → 原文弹窗（与结果列表同一 data-view 机制） */
+  $('.mapcard').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-view]');
+    if (b) openSourceModal(b);
+  });
+}
+
+function toggleArea(area) {
+  state.area = state.area === area ? 'ALL' : area;
+  renderAreaChips(); render();
+  $('#results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* 地区严重度：bad=有停运，warn=有其它异常，ok=全正常 */
+function regionSev(lines) {
+  const trouble = lines.filter(l => l.severity > 0);
+  if (!trouble.length) return 'ok';
+  if (trouble.some(l => l.status === 'suspend')) return 'bad';
+  return 'warn';
+}
+
+/* 地区锚点：各 path 的包围盒中心若远离中位数（冲绳/小笠原等远岛），剔除后再取联合包围盒 */
+function regionAnchor(g) {
+  const bs = [...g.querySelectorAll('path')].map(p => p.getBBox());
+  if (!bs.length) return [0, 0];
+  const cx = bs.map(b => b.x + b.width / 2), cy = bs.map(b => b.y + b.height / 2);
+  const med = a => { const s = [...a].sort((x, y) => x - y); return s[Math.floor(s.length / 2)] || 0; };
+  const mx = med(cx), my = med(cy);
+  const keep = bs.filter((b, i) => Math.hypot(cx[i] - mx, cy[i] - my) < 200);
+  const use = keep.length ? keep : bs;
+  const x0 = Math.min(...use.map(b => b.x)), x1 = Math.max(...use.map(b => b.x + b.width));
+  const y0 = Math.min(...use.map(b => b.y)), y1 = Math.max(...use.map(b => b.y + b.height));
+  return [x0 + (x1 - x0) / 2, y0 + (y1 - y0) / 2];
+}
+
+function renderMap() {
+  if (!state.data || !mapBuilt) return;
+  const lines = state.data.lines;
+  const svg = $('#jpMap');
+  const pins = [];
+
+  $$('#jpMap .region').forEach(g => {
+    const ls = lines.filter(l => l.area === g.dataset.area);
+    const trouble = ls.filter(l => l.severity > 0);
+    const sev = regionSev(ls);
+    g.dataset.sev = sev;
+    g.classList.toggle('sel', state.area === g.dataset.area);
+    g.setAttribute('aria-pressed', String(state.area === g.dataset.area));
+    if (trouble.length) {
+      const [cx, cy] = regionAnchor(g);
+      pins.push({ cx, cy, n: trouble.length, sev, area: g.dataset.area });
+    }
+  });
+
+  /* 异常徽标：地区包围盒中心 */
+  $('#mapPins').innerHTML = pins.map(p => {
+    const col = p.sev === 'bad' ? 'var(--c-suspend)' : 'var(--c-delay)';
+    return `<g class="pin" data-sev="${p.sev}" data-area="${esc(p.area)}" transform="translate(${p.cx.toFixed(1)},${p.cy.toFixed(1)})">
+        <circle class="halo" r="12"/>
+        <circle class="core" r="7" style="fill:${col}"/>
+        <text>${p.n}</text>
+      </g>`;
+  }).join('');
+  $$('#mapPins .pin').forEach(p => {
+    p.addEventListener('click', (e) => { e.stopPropagation(); toggleArea(p.dataset.area); });
+  });
+
+  renderBeams();
+}
+
+/* 异常线路光带：左列=日本海侧地区，右列=太平洋侧；红=停运、黄=延迟/异常 */
+function renderBeams() {
+  const trouble = state.data.lines.filter(l => l.severity > 0)
+    .sort((a, b) => (b.severity - a.severity) || a.name.localeCompare(b.name, 'ja'));
+  const beamHtml = (l) => {
+    const sev = l.status === 'suspend' ? 'bad' : 'warn';
+    const col = CAT_COLOR[l.status] || CAT_COLOR.unknown;
+    return `<button type="button" class="beam" data-sev="${sev}" data-view="1"
+        data-name="${esc(l.name)}" data-status="${esc(l.status)}" data-label="${esc(l.label)}"
+        data-company="${esc(l.company)}" data-area="${esc(l.area)}"
+        data-detail="${esc(l.detail_full || l.detail)}">
+        <span class="dotc" style="background:${col}"></span>
+        <span class="beam-name">${esc(l.name)}</span>
+        <span class="beam-st">${esc(stLabel(l.status))}</span>
+      </button>`;
+  };
+  const west = [], east = [];
+  trouble.forEach(l => {
+    const meta = AREAS8.find(a => a.area === l.area);
+    (meta && meta.side === 'L' ? west : east).push(beamHtml(l));
+  });
+  const empty = `<div class="beams-empty"><i></i>${esc(t('mapAllOk'))}</div>`;
+  $('#mapBeamsL').innerHTML = west.join('') || empty;
+  $('#mapBeamsR').innerHTML = east.join('') || empty;
+}
+
 /* ───────── 原文弹窗 ───────── */
 let modalLastFocus = null;
 
@@ -380,7 +518,7 @@ async function load() {
     const r = await fetch('data/status.json?t=' + Date.now(), { cache: 'no-store' });
     if (!r.ok) throw new Error(r.status);
     state.data = await r.json();
-    renderStats(); renderAreaChips(); render();
+    renderStats(); renderAreaChips(); render(); renderMap();
     $('#refreshTxt').textContent = t('refresh');
   } catch (e) {
     const meta = $('#meta');
@@ -405,6 +543,7 @@ function detectLang() {
 function boot() {
   state.lang = state.lang || detectLang();
   applyTheme(); applyLang();
+  buildMap();
   $('#langIcon').innerHTML = ICONS.globe;
   $('#refreshIcon').innerHTML = ICONS.refresh;
 
