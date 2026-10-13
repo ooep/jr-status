@@ -3,3 +3,4 @@
 {"at": "2026-10-14T00:10:58+0900", "id": "489", "company": "JR西日本", "name": "小浜線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T00:10:58+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T00:20:57+0900", "id": "335", "company": "JR西日本", "name": "姫新線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T00:31:07+0900", "id": "310", "company": "阪急電鉄", "name": "阪急神戸本線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "00:02頃、王子公園駅で発生し..."}
