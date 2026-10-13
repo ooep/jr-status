@@ -27,3 +27,4 @@
 {"at": "2026-10-14T08:40:59+0900", "id": "136", "company": "東京メトロ", "name": "東京メトロ千代田線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "06:25頃、小田急江ノ島線内で..."}
 {"at": "2026-10-14T08:46:06+0900", "id": "25", "company": "JR東日本", "name": "湘南新宿ライン", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "高崎線内での踏切内点検の影響で、..."}
 {"at": "2026-10-14T08:46:06+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "08:31頃、有楽町駅でのドア点..."}
+{"at": "2026-10-14T08:51:03+0900", "id": "206", "company": "JR東海", "name": "参宮線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "伊勢市駅構内で発生した踏切支障の..."}
