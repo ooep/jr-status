@@ -103,3 +103,5 @@
 {"at": "2026-10-13T20:11:01+0900", "id": "490", "company": "JR西日本", "name": "福知山線[篠山口～福知山]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:05現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T20:16:02+0900", "id": "496", "company": "JR西日本", "name": "伯備線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "接続待ちの影響で、新見〜米子駅間..."}
 {"at": "2026-10-13T20:21:05+0900", "id": "495", "company": "JR西日本", "name": "吉備線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "19:58頃、備前三門駅での線路..."}
+{"at": "2026-10-13T20:25:58+0900", "id": "528", "company": "JR九州", "name": "久大本線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "19:41頃、豊後中村〜野矢駅間..."}
+{"at": "2026-10-13T20:25:58+0900", "id": "54", "company": "JR東日本", "name": "八高線[高麗川～高崎]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "明覚〜小川町駅間で発生した動物支..."}
