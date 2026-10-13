@@ -105,3 +105,4 @@
 {"at": "2026-10-13T20:21:05+0900", "id": "495", "company": "JR西日本", "name": "吉備線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "19:58頃、備前三門駅での線路..."}
 {"at": "2026-10-13T20:25:58+0900", "id": "528", "company": "JR九州", "name": "久大本線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "19:41頃、豊後中村〜野矢駅間..."}
 {"at": "2026-10-13T20:25:58+0900", "id": "54", "company": "JR東日本", "name": "八高線[高麗川～高崎]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "明覚〜小川町駅間で発生した動物支..."}
+{"at": "2026-10-13T20:31:14+0900", "id": "547", "company": "JR西日本", "name": "山陰本線[園部～鳥取]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "福知山線内での線路内点検の影響で..."}
