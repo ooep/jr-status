@@ -18,43 +18,59 @@
 <div class="wrap">
 
   <!-- ── 顶栏 ───────────────────────────────────────────── -->
-  <header class="glass topbar">
+  <header class="glass topbar" id="topbar">
     <a class="brand" href="https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/" target="_blank" rel="noopener">
-      <span class="brand-mark">🚃</span>
-      <span>
-        <span class="brand-text" data-i18n="appName">JR-Status</span><br>
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 3h10a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z"/>
+          <path d="M8.4 7.4h7.2A1.9 1.9 0 0 1 17.5 9.3v1.4a1.9 1.9 0 0 1-1.9 1.9H8.4a1.9 1.9 0 0 1-1.9-1.9V9.3a1.9 1.9 0 0 1 1.9-1.9Z"/>
+          <path d="M9.3 14.6h.01M14.7 14.6h.01"/>
+          <path d="M9.2 17.6 7.6 21M14.8 17.6 16.4 21"/>
+        </svg>
+      </span>
+      <span class="brand-body">
+        <span class="brand-text" data-i18n="appName">JR-Status</span>
         <span class="brand-sub" data-i18n="brandSub">全日本铁道运行情报 · Mini JapanRail</span>
       </span>
     </a>
     <span class="grow"></span>
 
-    <label class="search">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+    <label class="search" id="searchBox">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
         <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
       </svg>
-      <input id="q" type="search" autocomplete="off" data-i18n-ph="searchPh" placeholder="搜索线路 / 铁道公司…">
+      <input id="q" type="search" autocomplete="off" spellcheck="false" data-i18n-ph="searchPh" placeholder="搜索线路 / 铁道公司…">
+      <span class="kbd" id="kbdHint" aria-hidden="true"></span>
+      <button class="search-clear" id="qClear" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
     </label>
 
-    <button class="btn small" id="btnTheme" title="主题">
-      <span id="themeIcon">🌙</span><span id="themeTxt">深色</span>
-    </button>
-    <button class="btn small" id="btnLang" title="语言">
-      <span id="langTxt">中</span>
-    </button>
-    <button class="btn small" id="btnRefresh" title="刷新">
-      <span id="refreshIcon">↻</span><span id="refreshTxt" data-i18n="refresh">刷新</span>
-    </button>
+    <span class="grow"></span>
+
+    <div class="topbtns">
+      <button class="btn small" id="btnTheme" type="button" title="主题">
+        <span class="ic" id="themeIcon" aria-hidden="true"></span><span class="txt" id="themeTxt">深色</span>
+      </button>
+      <button class="btn small btn-lang" id="btnLang" type="button" title="语言">
+        <span class="ic" id="langIcon" aria-hidden="true"></span><span class="txt" id="langTxt">中</span>
+      </button>
+      <button class="btn small" id="btnRefresh" type="button" title="刷新">
+        <span class="ic" id="refreshIcon" aria-hidden="true"></span><span class="txt" id="refreshTxt" data-i18n="refresh">刷新</span>
+      </button>
+    </div>
   </header>
 
   <!-- ── Hero ───────────────────────────────────────────── -->
   <section class="glass hero">
-    <div class="eyebrow">Mini JapanRail · Status</div>
+    <div class="eyebrow"><i class="live-i" aria-hidden="true"></i><span data-i18n="eyebrow">MINI JAPANRAIL · STATUS</span></div>
     <h1 data-i18n="heroTitle">全日本铁道 · 运行情报</h1>
     <div class="verdict">
       <span class="pulse" id="verdictPulse"></span>
       <span id="verdictText">…</span>
     </div>
     <div class="statstrip" id="stats"></div>
+    <div class="legend" id="legend"></div>
     <div class="meta" id="meta"></div>
   </section>
 

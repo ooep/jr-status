@@ -10,10 +10,12 @@ const I18N = {
     brandSub: '全日本铁道运行情报 · Mini JapanRail',
     searchPh: '搜索线路 / 铁道公司…',
     refresh: '刷新',
+    eyebrow: 'MINI JAPANRAIL · STATUS',
     heroTitle: '全日本铁道 · 运行情报',
     all: '全部', troubleOnly: '仅异常', mappedOnly: '仅已映射主站',
     srcLabel: '数据来源', mainSite: 'Mini JapanRail 主站',
     updateNote: '每 10 分钟由 GitHub Actions 自动采集更新',
+    theme: '主题', langLabel: '语言', clear: '清除',
     stat: { lines: '线路总数', normal: '平常运营', trouble: '异常合计', suspend: '停运', companies: '铁道公司', mapped: '已映射主站' },
     st: { normal: '平常运营', delay: '列车晚点', suspend: '停运', irregular: '运行异常', plan: '计划调整', resume: '恢复运行', other: '其他', unknown: '未知' },
     verdict: { ok: '全国线路基本正常运营', warn: '部分线路出现异常，出行前请确认', bad: '多条线路停运，请务必确认' },
@@ -26,10 +28,12 @@ const I18N = {
     brandSub: '全国鉄道 運行情報 · Mini JapanRail',
     searchPh: '路線・鉄道会社を検索…',
     refresh: '更新',
+    eyebrow: 'MINI JAPANRAIL · STATUS',
     heroTitle: '全国鉄道 · 運行情報',
     all: 'すべて', troubleOnly: '異常のみ', mappedOnly: 'マッピング済みのみ',
     srcLabel: 'データ元', mainSite: 'Mini JapanRail 本サイト',
     updateNote: 'GitHub Actions が10分ごとに自動取得・更新',
+    theme: 'テーマ', langLabel: '言語', clear: 'クリア',
     stat: { lines: '路線数', normal: '平常運転', trouble: '異常計', suspend: '運転見合わせ', companies: '鉄道会社', mapped: 'マッピング済み' },
     st: { normal: '平常運転', delay: '列車遅延', suspend: '運転見合わせ', irregular: '運転状況', plan: '運転計画', resume: '運転再開', other: 'その他', unknown: '不明' },
     verdict: { ok: '全国の路線はおおむね平常運転です', warn: '一部路線に乱れがあります。お出かけ前にご確認ください', bad: '複数の路線で運転見合わせが発生しています' },
@@ -42,10 +46,12 @@ const I18N = {
     brandSub: 'Japan Railway Service Status · Mini JapanRail',
     searchPh: 'Search lines / operators…',
     refresh: 'Refresh',
+    eyebrow: 'MINI JAPANRAIL · STATUS',
     heroTitle: 'Japan Railways · Live Status',
     all: 'All', troubleOnly: 'Disrupted only', mappedOnly: 'Mapped only',
     srcLabel: 'Source', mainSite: 'Mini JapanRail main site',
     updateNote: 'Auto-collected every 10 minutes by GitHub Actions',
+    theme: 'Theme', langLabel: 'Language', clear: 'Clear',
     stat: { lines: 'Lines', normal: 'Normal', trouble: 'Disrupted', suspend: 'Suspended', companies: 'Operators', mapped: 'Mapped' },
     st: { normal: 'Normal', delay: 'Delayed', suspend: 'Suspended', irregular: 'Irregular', plan: 'Planned change', resume: 'Resuming', other: 'Other', unknown: 'Unknown' },
     verdict: { ok: 'Lines nationwide are running normally', warn: 'Some lines are disrupted — check before you travel', bad: 'Multiple lines suspended — please check carefully' },
@@ -53,6 +59,16 @@ const I18N = {
     count: '', opBadge: 'lines', mappedTag: 'Mapped: ', noResult: 'No matching lines', loading: 'Loading…',
     loadFail: 'Failed to load data', autoRefresh: 'Auto refresh', companyCount: 'operators'
   }
+};
+
+/* ───────── 图标（内联 SVG，避免 emoji 的跨平台观感差异） ───────── */
+const ICONS = {
+  moon:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>',
+  sun:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>',
+  auto:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor" stroke="none"/></svg>',
+  refresh:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36L21 8"/><path d="M21 3v5h-5"/></svg>',
+  alert:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 10v4M12 17.5h.01"/></svg>',
+  globe:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13.5 13.5 0 0 1 3.5 9A13.5 13.5 0 0 1 12 21a13.5 13.5 0 0 1-3.5-9A13.5 13.5 0 0 1 12 3Z"/></svg>'
 };
 
 const CAT = ['suspend', 'irregular', 'delay', 'resume', 'other', 'plan', 'normal', 'unknown'];
@@ -89,18 +105,28 @@ function resolveTheme() {
 function applyTheme() {
   const mode = resolveTheme();
   document.documentElement.dataset.theme = mode;
-  $('#themeIcon').textContent = mode === 'dark' ? '🌙' : '☀️';
+  // 跟随系统时用「半明半暗」图标，与显式深/浅区分
+  $('#themeIcon').innerHTML = state.theme === 'auto' ? ICONS.auto : (mode === 'dark' ? ICONS.moon : ICONS.sun);
   $('#themeTxt').textContent = state.theme === 'auto'
     ? (state.lang === 'en' ? 'Auto' : state.lang === 'ja' ? '自動' : '跟随')
     : (mode === 'dark'
       ? (state.lang === 'en' ? 'Dark' : state.lang === 'ja' ? 'ダーク' : '深色')
       : (state.lang === 'en' ? 'Light' : state.lang === 'ja' ? 'ライト' : '浅色'));
+  $('#btnTheme').setAttribute('aria-label', t('theme'));
+  $('#btnTheme').title = t('theme');
 }
 function applyLang() {
   document.documentElement.lang = state.lang === 'ja' ? 'ja' : state.lang === 'en' ? 'en' : 'zh';
   $$('[data-i18n]').forEach(el => { const v = t(el.dataset.i18n); if (v) el.textContent = v; });
   $$('[data-i18n-ph]').forEach(el => { const v = t(el.dataset.i18nPh); if (v) el.placeholder = v; });
   $('#langTxt').textContent = state.lang === 'ja' ? '日' : state.lang === 'en' ? 'EN' : '中';
+  $('#btnLang').setAttribute('aria-label', t('langLabel'));
+  $('#btnLang').title = t('langLabel');
+  $('#btnRefresh').setAttribute('aria-label', t('refresh'));
+  $('#btnRefresh').title = t('refresh');
+  $('#qClear').setAttribute('aria-label', t('clear'));
+  $('#qClear').title = t('clear');
+  applyTheme();   // 主题按钮文字随语言刷新
 }
 
 /* ───────── helpers ───────── */
@@ -133,6 +159,12 @@ function renderStats() {
   ];
   $('#stats').innerHTML = cells.map(([k, v, cls]) =>
     `<div class="scell ${cls}"><div class="k">${esc(t('stat.' + k))}</div><div class="v">${v}</div></div>`
+  ).join('');
+
+  // 状态图例（解释下方卡片中圆点色的语义）
+  const LEG = ['normal', 'delay', 'irregular', 'suspend'];
+  $('#legend').innerHTML = LEG.map(k =>
+    `<span class="lg"><i style="background:${CAT_COLOR[k]}"></i>${esc(t('st.' + k))}</span>`
   ).join('');
 
   // verdict
@@ -249,18 +281,22 @@ function render() {
 let refreshTimer = null, countTimer = null;
 
 async function load() {
-  $('#refreshIcon').textContent = '⟳';
+  const rBtn = $('#btnRefresh');
+  rBtn.classList.add('loading');
+  rBtn.classList.remove('err');
   try {
     const r = await fetch('data/status.json?t=' + Date.now(), { cache: 'no-store' });
     if (!r.ok) throw new Error(r.status);
     state.data = await r.json();
     renderStats(); renderAreaChips(); render();
     $('#refreshTxt').textContent = t('refresh');
-    $('#refreshIcon').textContent = '↻';
   } catch (e) {
     const meta = $('#meta');
     if (meta) meta.innerHTML = `<span>${esc(t('loadFail'))}</span>`;
-    $('#refreshIcon').textContent = '⚠';
+    $('#refreshIcon').innerHTML = ICONS.alert;
+    rBtn.classList.add('err');
+  } finally {
+    rBtn.classList.remove('loading');
   }
 }
 
@@ -277,6 +313,8 @@ function detectLang() {
 function boot() {
   state.lang = state.lang || detectLang();
   applyTheme(); applyLang();
+  $('#langIcon').innerHTML = ICONS.globe;
+  $('#refreshIcon').innerHTML = ICONS.refresh;
 
   $('#btnTheme').onclick = () => {
     const seq = ['auto', 'dark', 'light'];
@@ -292,12 +330,42 @@ function boot() {
   };
   $('#btnRefresh').onclick = () => load();
 
+  /* 搜索：输入态显隐（快捷键提示 ⇄ 清除按钮）、防抖过滤、Esc 清空 */
+  const qEl = $('#q'), searchBox = $('#searchBox');
   let qTimer = null;
-  $('#q').oninput = (e) => {
+  qEl.addEventListener('input', () => {
+    searchBox.classList.toggle('has-value', !!qEl.value);
     clearTimeout(qTimer);
-    const v = e.target.value;
+    const v = qEl.value;
     qTimer = setTimeout(() => { state.q = v; render(); }, 160);
+  });
+  const clearSearch = () => {
+    qEl.value = '';
+    searchBox.classList.remove('has-value');
+    if (state.q) { state.q = ''; render(); }
   };
+  $('#qClear').addEventListener('click', () => { clearSearch(); qEl.focus(); });
+
+  /* 快捷键：⌘K / Ctrl+K 聚焦，/ 聚焦，Esc 清空失焦 */
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+  $('#kbdHint').textContent = isMac ? '⌘K' : 'Ctrl K';
+  document.addEventListener('keydown', (e) => {
+    const tag = (document.activeElement || {}).tagName || '';
+    const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(tag);
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault(); qEl.focus(); qEl.select();
+    } else if (e.key === '/' && !typing) {
+      e.preventDefault(); qEl.focus();
+    } else if (e.key === 'Escape' && document.activeElement === qEl) {
+      clearSearch(); qEl.blur();
+    }
+  });
+
+  /* 顶栏滚动状态：越过阈值后加深阴影，给出悬浮层次 */
+  const topbar = $('#topbar');
+  const onScroll = () => topbar.classList.toggle('scrolled', window.scrollY > 6);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   const link = (id, key) => {
     $(id).onclick = () => {
