@@ -11,3 +11,4 @@
 {"at": "2026-10-13T12:09:06+0900", "id": "277", "company": "JR西日本", "name": "大和路線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "12:05現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T12:19:10+0900", "id": "50", "company": "JR東日本", "name": "埼京川越線[羽沢横浜国大～川越]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "12:10現在、ほぼ平常通り運転..."}
 {"at": "2026-10-13T12:29:13+0900", "id": "179", "company": "上信電鉄", "name": "上信電鉄線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "車両故障の影響で、一部列車に遅れ..."}
+{"at": "2026-10-13T12:39:16+0900", "id": "179", "company": "上信電鉄", "name": "上信電鉄線", "from": "delay", "to": "suspend", "from_label": "列車遅延", "to_label": "運転見合わせ", "detail": "車両故障の影響で、運転を見合わせ..."}
