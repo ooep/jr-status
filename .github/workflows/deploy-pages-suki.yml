@@ -25,13 +25,13 @@ jobs:
           rm -rf _deploy && mkdir -p _deploy
           cp -r index.html assets data _deploy/
           cat > _deploy/_headers << 'EOF'
-/index.html
-  Cache-Control: public, max-age=300
-/data/*
-  Cache-Control: no-cache
-/assets/*
-  Cache-Control: public, max-age=3600
-EOF
+          /index.html
+            Cache-Control: public, max-age=300
+          /data/*
+            Cache-Control: no-cache
+          /assets/*
+            Cache-Control: public, max-age=3600
+          EOF
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
