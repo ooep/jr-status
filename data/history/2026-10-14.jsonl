@@ -148,3 +148,7 @@
 {"at": "2026-10-14T18:05:53+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "18:05現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T18:16:07+0900", "id": "43", "company": "JR東日本", "name": "青梅線[立川～青梅]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "中央線(快速)内での救護活動の影..."}
 {"at": "2026-10-14T18:31:07+0900", "id": "25", "company": "JR東日本", "name": "湘南新宿ライン", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "武蔵小杉〜新川崎駅間での踏切内点..."}
+{"at": "2026-10-14T18:41:04+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "15:38頃、JR神戸線内での線..."}
+{"at": "2026-10-14T18:41:04+0900", "id": "22", "company": "JR東日本", "name": "京浜東北根岸線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T18:41:04+0900", "id": "27", "company": "JR東日本", "name": "東海道本線[東京～熱海]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T18:41:04+0900", "id": "61", "company": "JR東日本", "name": "総武線(快速)[東京～千葉]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
