@@ -1,2 +1,4 @@
 {"at": "2026-10-15T00:06:00+0900", "id": "487", "company": "JR西日本", "name": "高山本線[猪谷～富山]", "from": "suspend", "to": "suspend", "from_label": "運転見合わせ", "to_label": "運転見合わせ", "detail": "設備故障の影響で、終日、猪谷〜越..."}
 {"at": "2026-10-15T00:11:00+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T00:31:07+0900", "id": "54", "company": "JR東日本", "name": "八高線[高麗川～高崎]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T00:31:07+0900", "id": "195", "company": "JR東海", "name": "御殿場線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
