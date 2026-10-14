@@ -145,3 +145,4 @@
 {"at": "2026-10-14T18:01:21+0900", "id": "46", "company": "JR東日本", "name": "宇都宮線[東京～宇都宮]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "18:00現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T18:01:21+0900", "id": "48", "company": "JR東日本", "name": "高崎線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "18:00現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T18:01:21+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "18:00現在、ほぼ平常通り運転..."}
+{"at": "2026-10-14T18:05:53+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "18:05現在、ほぼ平常通り運転..."}
