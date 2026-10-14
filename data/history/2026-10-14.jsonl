@@ -73,3 +73,6 @@
 {"at": "2026-10-14T12:35:55+0900", "id": "274", "company": "JR西日本", "name": "阪和線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "12:17頃、百舌鳥〜上野芝駅間..."}
 {"at": "2026-10-14T12:50:59+0900", "id": "136", "company": "東京メトロ", "name": "東京メトロ千代田線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T12:50:59+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T13:01:11+0900", "id": "449", "company": "JR東日本", "name": "大船渡線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "停電の影響で、一ノ関〜千厩駅間の..."}
+{"at": "2026-10-14T13:01:11+0900", "id": "468", "company": "JR東日本", "name": "羽越本線[新津～酒田]", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "大雨の影響で、あつみ温泉〜三瀬駅..."}
+{"at": "2026-10-14T13:01:11+0900", "id": "111", "company": "小田急電鉄", "name": "小田急多摩線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
