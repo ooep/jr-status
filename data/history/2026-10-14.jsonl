@@ -124,3 +124,4 @@
 {"at": "2026-10-14T16:25:59+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "delay", "to": "delay", "from_label": "列車遅延", "to_label": "列車遅延", "detail": "JR東日本管内で発生した踏切内立..."}
 {"at": "2026-10-14T16:46:01+0900", "id": "469", "company": "JR東日本", "name": "白新線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "16:40現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T16:46:01+0900", "id": "263", "company": "JR西日本", "name": "大阪環状線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T16:51:05+0900", "id": "182", "company": "伊豆急行", "name": "伊豆急行線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
