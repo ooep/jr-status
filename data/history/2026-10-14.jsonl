@@ -133,3 +133,5 @@
 {"at": "2026-10-14T17:26:03+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "15:38頃、JR神戸線内での線..."}
 {"at": "2026-10-14T17:26:03+0900", "id": "93", "company": "西武鉄道", "name": "西武拝島線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "17:01頃、西武新宿線内での線..."}
 {"at": "2026-10-14T17:26:03+0900", "id": "86", "company": "西武鉄道", "name": "西武新宿線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "17:01頃、田無〜花小金井駅間..."}
+{"at": "2026-10-14T17:36:03+0900", "id": "93", "company": "西武鉄道", "name": "西武拝島線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "17:01頃、西武新宿線内での線..."}
+{"at": "2026-10-14T17:36:03+0900", "id": "86", "company": "西武鉄道", "name": "西武新宿線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "17:01頃、田無〜花小金井駅間..."}
