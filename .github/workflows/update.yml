@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # 提交后主动触发 Cloudflare Pages 部署（GITHUB_TOKEN 的 push 不触发其他 workflow）
 
 concurrency:
   group: jr-status-update
@@ -50,6 +51,7 @@ jobs:
           find data/history -name '*.jsonl' -type f -mtime +60 -delete 2>/dev/null || true
 
       - name: Commit if changed
+        id: commit
         run: |
           git config user.name  "jr-status bot"
           git config user.email "bot@users.noreply.github.com"
@@ -64,8 +66,18 @@ jobs:
           for i in 1 2 3; do
             git pull --rebase --autostash origin ${{ github.ref_name }} || true
             if git push origin HEAD:${{ github.ref_name }}; then
-              echo "pushed"; exit 0
+              echo "pushed"
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
             fi
             echo "push attempt $i failed, retrying…"; sleep 5
           done
           echo "push failed after retries"; exit 1
+
+      - name: Trigger Cloudflare Pages deploy (jrstatus.jr.suki.ing)
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run deploy-pages-suki.yml --ref ${{ github.ref_name }}
+          echo "deploy workflow triggered"

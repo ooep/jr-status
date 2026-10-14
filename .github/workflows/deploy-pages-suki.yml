@@ -10,7 +10,7 @@ permissions:
 
 concurrency:
   group: cf-jr-status-deploy
-  cancel-in-progress: false
+  cancel-in-progress: true   # 新触发即取代旧部署，始终部署最新
 
 jobs:
   deploy:
