@@ -48,3 +48,5 @@
 {"at": "2026-10-14T10:25:59+0900", "id": "547", "company": "JR西日本", "name": "山陰本線[園部～鳥取]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T10:31:15+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "08:55頃、東京メトロ有楽町線..."}
 {"at": "2026-10-14T10:35:51+0900", "id": "632", "company": "IRいしかわ鉄道", "name": "IRいしかわ鉄道線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T10:46:03+0900", "id": "643", "company": "ハピラインふくい", "name": "ハピラインふくい線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "10:40現在、ほぼ平常通り運転..."}
+{"at": "2026-10-14T10:46:03+0900", "id": "139", "company": "東京メトロ", "name": "東京メトロ南北線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "10:40現在、ほぼ平常通り運転..."}
