@@ -175,3 +175,6 @@
 {"at": "2026-10-14T20:25:55+0900", "id": "486", "company": "JR西日本", "name": "城端線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:20現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T20:25:55+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "20:20現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T20:31:08+0900", "id": "38", "company": "JR東日本", "name": "中央線(快速)[東京～高尾]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "阿佐ケ谷駅でのホームドア点検の影..."}
+{"at": "2026-10-14T20:35:54+0900", "id": "25", "company": "JR東日本", "name": "湘南新宿ライン", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T20:35:54+0900", "id": "468", "company": "JR東日本", "name": "羽越本線[新津～酒田]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T20:35:54+0900", "id": "489", "company": "JR西日本", "name": "小浜線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:30現在、ほぼ平常通り運転..."}
