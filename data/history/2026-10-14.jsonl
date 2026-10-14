@@ -99,3 +99,5 @@
 {"at": "2026-10-14T14:25:57+0900", "id": "282", "company": "JR西日本", "name": "関西空港線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "14:25現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T14:31:06+0900", "id": "469", "company": "JR東日本", "name": "白新線", "from": "resume", "to": "delay", "from_label": "運転再開", "to_label": "列車遅延", "detail": "早通〜豊栄駅間で発生した線路支障..."}
 {"at": "2026-10-14T14:31:06+0900", "id": "330", "company": "JR西日本", "name": "赤穂線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:30現在、ほぼ平常通り運転..."}
+{"at": "2026-10-14T14:35:53+0900", "id": "449", "company": "JR東日本", "name": "大船渡線", "from": "suspend", "to": "normal", "from_label": "運転見合わせ", "to_label": "平常運転", "detail": "14:30現在、運転を再開し、ほ..."}
+{"at": "2026-10-14T14:35:53+0900", "id": "274", "company": "JR西日本", "name": "阪和線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:30現在、ほぼ平常通り運転..."}
