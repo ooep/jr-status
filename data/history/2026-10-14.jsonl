@@ -58,3 +58,5 @@
 {"at": "2026-10-14T11:16:05+0900", "id": "192", "company": "JR東海", "name": "東海道本線[熱海～豊橋]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T11:26:01+0900", "id": "439", "company": "JR北海道", "name": "花咲線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "厚岸〜茶内駅間で発生した動物支障..."}
 {"at": "2026-10-14T11:31:15+0900", "id": "269", "company": "JR西日本", "name": "草津線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "10:48頃、三雲〜甲西駅間で発..."}
+{"at": "2026-10-14T11:46:06+0900", "id": "643", "company": "ハピラインふくい", "name": "ハピラインふくい線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T11:46:06+0900", "id": "139", "company": "東京メトロ", "name": "東京メトロ南北線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
