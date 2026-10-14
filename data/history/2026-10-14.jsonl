@@ -65,3 +65,6 @@
 {"at": "2026-10-14T11:51:03+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "11:45現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T12:01:20+0900", "id": "111", "company": "小田急電鉄", "name": "小田急多摩線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "11:55現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T12:05:58+0900", "id": "200", "company": "JR東海", "name": "高山本線[岐阜～猪谷]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "12:00現在、ほぼ平常通り運転..."}
+{"at": "2026-10-14T12:10:59+0900", "id": "269", "company": "JR西日本", "name": "草津線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "12:05現在、ほぼ平常通り運転..."}
+{"at": "2026-10-14T12:10:59+0900", "id": "90", "company": "西武鉄道", "name": "西武有楽町線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "12:05現在、ほぼ平常通り運転..."}
+{"at": "2026-10-14T12:10:59+0900", "id": "84", "company": "西武鉄道", "name": "西武池袋線・秩父線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "12:05現在、ほぼ平常通り運転..."}
