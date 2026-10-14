@@ -27,3 +27,7 @@
 {"at": "2026-10-15T08:26:02+0900", "id": "25", "company": "JR東日本", "name": "湘南新宿ライン", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "宇都宮線内での線路内点検の影響で..."}
 {"at": "2026-10-15T08:31:07+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "08:12頃、姫路駅で発生した車..."}
 {"at": "2026-10-15T08:31:07+0900", "id": "330", "company": "JR西日本", "name": "赤穂線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "08:12頃、山陽本線内で発生し..."}
+{"at": "2026-10-15T08:50:43+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "08:12頃、山陽本線内で発生し..."}
+{"at": "2026-10-15T08:50:43+0900", "id": "507", "company": "JR西日本", "name": "山口線", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "06:00頃、津和野駅での車両点..."}
+{"at": "2026-10-15T08:50:43+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "08:12頃、姫路駅で発生した車..."}
+{"at": "2026-10-15T08:50:43+0900", "id": "330", "company": "JR西日本", "name": "赤穂線", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "08:12頃、山陽本線内で発生し..."}
