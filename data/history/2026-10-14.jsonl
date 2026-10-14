@@ -91,3 +91,4 @@
 {"at": "2026-10-14T13:35:55+0900", "id": "282", "company": "JR西日本", "name": "関西空港線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "12:17頃、阪和線内で発生した..."}
 {"at": "2026-10-14T13:35:55+0900", "id": "274", "company": "JR西日本", "name": "阪和線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "12:17頃、百舌鳥〜上野芝駅間..."}
 {"at": "2026-10-14T13:41:01+0900", "id": "469", "company": "JR東日本", "name": "白新線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "早通〜豊栄駅間で発生した線路支障..."}
+{"at": "2026-10-14T14:01:13+0900", "id": "469", "company": "JR東日本", "name": "白新線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "早通〜豊栄駅間で発生した線路支障..."}
