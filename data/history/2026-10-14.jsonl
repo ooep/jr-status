@@ -190,3 +190,4 @@
 {"at": "2026-10-14T21:25:59+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T21:31:13+0900", "id": "274", "company": "JR西日本", "name": "阪和線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "20:55頃、和泉鳥取〜山中渓駅..."}
 {"at": "2026-10-14T21:31:13+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "21:06頃、東武練馬〜下赤塚駅..."}
+{"at": "2026-10-14T21:35:57+0900", "id": "489", "company": "JR西日本", "name": "小浜線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
