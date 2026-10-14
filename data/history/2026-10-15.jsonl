@@ -7,3 +7,4 @@
 {"at": "2026-10-15T00:51:01+0900", "id": "196", "company": "JR東海", "name": "身延線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T01:01:22+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "00:31頃、武蔵嵐山〜小川町駅..."}
 {"at": "2026-10-15T01:16:13+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "武蔵嵐山〜小川町駅間で発生した動..."}
+{"at": "2026-10-15T02:01:21+0900", "id": "576", "company": "万葉線", "name": "万葉線", "from": "plan", "to": "other", "from_label": "運転計画（他1件）", "to_label": "その他", "detail": "乗務員不足の影響で、07:40頃..."}
