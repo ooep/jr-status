@@ -158,3 +158,4 @@
 {"at": "2026-10-14T19:05:59+0900", "id": "46", "company": "JR東日本", "name": "宇都宮線[東京～宇都宮]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T19:05:59+0900", "id": "48", "company": "JR東日本", "name": "高崎線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T19:05:59+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T19:11:05+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
