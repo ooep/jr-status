@@ -217,3 +217,5 @@
 {"at": "2026-10-14T23:31:14+0900", "id": "54", "company": "JR東日本", "name": "八高線[高麗川～高崎]", "from": "resume", "to": "normal", "from_label": "運転再開", "to_label": "平常運転", "detail": "23:25現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T23:31:14+0900", "id": "195", "company": "JR東海", "name": "御殿場線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "23:25現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T23:41:01+0900", "id": "279", "company": "JR西日本", "name": "奈良線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "23:29頃、玉水〜棚倉駅間で発..."}
+{"at": "2026-10-14T23:46:00+0900", "id": "388", "company": "JR九州", "name": "日豊本線[小倉～大分]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T23:46:00+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "23:40現在、ほぼ平常通り運転..."}
