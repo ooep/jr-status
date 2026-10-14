@@ -159,3 +159,6 @@
 {"at": "2026-10-14T19:05:59+0900", "id": "48", "company": "JR東日本", "name": "高崎線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T19:05:59+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T19:11:05+0900", "id": "332", "company": "JR西日本", "name": "山陽本線[姫路～三原]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T19:31:06+0900", "id": "267", "company": "JR西日本", "name": "JR京都線", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "15:38頃、JR神戸線内での線..."}
+{"at": "2026-10-14T19:31:06+0900", "id": "25", "company": "JR東日本", "name": "湘南新宿ライン", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "19:30現在、ほぼ平常通り運転..."}
+{"at": "2026-10-14T19:31:06+0900", "id": "468", "company": "JR東日本", "name": "羽越本線[新津～酒田]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "19:30現在、ほぼ平常通り運転..."}
