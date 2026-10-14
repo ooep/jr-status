@@ -84,3 +84,4 @@
 {"at": "2026-10-14T13:10:59+0900", "id": "90", "company": "西武鉄道", "name": "西武有楽町線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T13:10:59+0900", "id": "84", "company": "西武鉄道", "name": "西武池袋線・秩父線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T13:15:59+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T13:21:03+0900", "id": "468", "company": "JR東日本", "name": "羽越本線[新津～酒田]", "from": "resume", "to": "delay", "from_label": "運転再開", "to_label": "列車遅延", "detail": "大雨の影響で、村上〜酒田駅間の一..."}
