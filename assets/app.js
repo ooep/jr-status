@@ -116,7 +116,8 @@ const state = {
   data: null,
   lang: localStorage.getItem('jrs_lang') || null,
   theme: localStorage.getItem('jrs_theme') || 'auto',
-  q: '', area: 'ALL', troubleOnly: false, mappedOnly: false
+  q: '', area: 'ALL', troubleOnly: false, mappedOnly: false,
+  statsKey: null, statsVals: null
 };
 
 const $ = (s) => document.querySelector(s);
@@ -198,6 +199,19 @@ function ago(iso) {
 }
 
 /* ───────── render ───────── */
+/* 统计数字滚动（ease-out cubic），值不变时不重播，避免 20s 心跳重绘闪动 */
+function countUp(el, from, to) {
+  const dur = 720, t0 = performance.now();
+  el.textContent = from;
+  const step = (now) => {
+    const p = Math.min(1, (now - t0) / dur);
+    el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = to;
+  };
+  requestAnimationFrame(step);
+}
+
 function renderStats() {
   const d = state.data;
   const bs = d.totals.by_status || {};
@@ -215,6 +229,20 @@ function renderStats() {
   $('#stats').innerHTML = cells.map(([k, v, cls]) =>
     `<div class="scell ${cls}"><div class="k">${esc(t('stat.' + k))}</div><div class="v">${v}</div></div>`
   ).join('');
+
+  // 统计值变化时播放滚动；首屏从 0 滚到目标
+  const skey = cells.map(c => c[1]).join('|');
+  const first = state.statsKey === null;
+  if (first || state.statsKey !== skey) {
+    const prev = state.statsVals || [0, 0, 0, 0, 0, 0];
+    $$('#stats .v').forEach((el, i) => {
+      const to = Number(el.textContent);
+      if (to !== prev[i]) countUp(el, prev[i], to);
+      prev[i] = to;
+    });
+    state.statsVals = prev;
+    state.statsKey = skey;
+  }
 
   // 状态图例（解释下方卡片中圆点色的语义）
   const LEG = ['normal', 'delay', 'irregular', 'suspend'];
@@ -330,12 +358,12 @@ function render() {
   });
   cards.sort((a, b) => (b.maxSev - a.maxSev) || a.company.localeCompare(b.company, 'ja'));
 
-  box.innerHTML = cards.map(g => {
+  box.innerHTML = cards.map((g, i) => {
     const troubleHtml = g.trouble.length
       ? `<div>${g.trouble.map(lineRow).join('')}</div>` : '';
     const okHtml = (state.troubleOnly || !g.ok.length) ? '' :
       `<div class="lines">${g.ok.map(linePill).join('')}</div>`;
-    return `<article class="card glass" style="--bc:${companyColor(g.company)}">
+    return `<article class="card glass" style="--bc:${companyColor(g.company)};--i:${Math.min(i, 11)}">
         <div class="card-head">
           ${companyLogoHTML(g.company)}
           <span class="op" title="${esc(g.company)}">${esc(g.company)}</span>
@@ -539,8 +567,13 @@ async function load() {
   try {
     const r = await fetch('data/status.json?t=' + Date.now(), { cache: 'no-store' });
     if (!r.ok) throw new Error(r.status);
-    state.data = await r.json();
-    renderStats(); renderAreaChips(); render(); renderMap();
+    const data = await r.json();
+    /* 数据未变时不重建列表/地图，避免每 60s 心跳造成卡片动效空闪；
+       统计区仍刷新（ago 文案），count-up 有值比较保护不会重播 */
+    const unchanged = state.data && state.data.updated_at === data.updated_at;
+    state.data = data;
+    if (!unchanged) { renderStats(); renderAreaChips(); render(); renderMap(); }
+    else { renderStats(); }
     $('#refreshTxt').textContent = t('refresh');
   } catch (e) {
     const meta = $('#meta');
