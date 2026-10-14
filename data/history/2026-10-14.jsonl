@@ -86,3 +86,4 @@
 {"at": "2026-10-14T13:15:59+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T13:21:03+0900", "id": "468", "company": "JR東日本", "name": "羽越本線[新津～酒田]", "from": "resume", "to": "delay", "from_label": "運転再開", "to_label": "列車遅延", "detail": "大雨の影響で、村上〜酒田駅間の一..."}
 {"at": "2026-10-14T13:25:51+0900", "id": "110", "company": "小田急電鉄", "name": "小田急江ノ島線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T13:31:09+0900", "id": "330", "company": "JR西日本", "name": "赤穂線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "13:07頃、西片上〜伊部駅間で..."}
