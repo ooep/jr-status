@@ -1,0 +1,41 @@
+name: Deploy jr-status to Cloudflare Pages (jrstatus.jr.suki.ing)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cf-jr-status-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare deploy dir (纯静态)
+        run: |
+          rm -rf _deploy && mkdir -p _deploy
+          cp -r index.html assets data _deploy/
+          cat > _deploy/_headers << 'EOF'
+/index.html
+  Cache-Control: public, max-age=300
+/data/*
+  Cache-Control: no-cache
+/assets/*
+  Cache-Control: public, max-age=3600
+EOF
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy _deploy --project-name jr-status --branch main --commit-dirty=true
