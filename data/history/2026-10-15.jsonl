@@ -19,3 +19,5 @@
 {"at": "2026-10-15T06:10:55+0900", "id": "278", "company": "JR西日本", "name": "関西本線[亀山～加茂]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "05:45頃、月ケ瀬口〜大河原駅..."}
 {"at": "2026-10-15T06:10:55+0900", "id": "50", "company": "JR東日本", "name": "埼京川越線[羽沢横浜国大～川越]", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "06:05現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T07:01:14+0900", "id": "507", "company": "JR西日本", "name": "山口線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "06:00頃、津和野駅での車両点..."}
+{"at": "2026-10-15T07:11:10+0900", "id": "507", "company": "JR西日本", "name": "山口線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "06:00頃、津和野駅での車両点..."}
+{"at": "2026-10-15T07:11:10+0900", "id": "50", "company": "JR東日本", "name": "埼京川越線[羽沢横浜国大～川越]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
