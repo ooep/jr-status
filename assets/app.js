@@ -166,6 +166,27 @@ function applyLang() {
 /* ───────── helpers ───────── */
 function esc(s) { return String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 
+/* ───────── 公司 logo ─────────
+   LOGO_FILES / LOGO_COLORS 由 assets/logo-map.js 提供；
+   logo 加载失败时自动降级为「品牌色首字圆标」。 */
+function companyColor(company) {
+  const c = LOGO_COLORS[company];
+  return (Array.isArray(c) && c.length === 3 ? c : [56, 189, 248]).join(',');
+}
+function logoShort(name) {
+  const n = String(name || '');
+  return /^JR/.test(n) ? 'JR' : (n.slice(0, 1) || '?');
+}
+function companyLogoHTML(company, size) {
+  const file = LOGO_FILES[company];
+  const style = `--bc:${companyColor(company)}${size ? `;--ls:${size}px` : ''}`;
+  const short = esc(logoShort(company));
+  if (!file) return `<span class="op-logo" style="${style}" data-short="${short}"></span>`;
+  return `<span class="op-logo" style="${style}" data-short="${short}">
+    <img src="assets/logos/${encodeURIComponent(file)}" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+  </span>`;
+}
+
 function ago(iso) {
   const then = new Date(iso).getTime();
   if (!then) return '';
@@ -314,9 +335,10 @@ function render() {
       ? `<div>${g.trouble.map(lineRow).join('')}</div>` : '';
     const okHtml = (state.troubleOnly || !g.ok.length) ? '' :
       `<div class="lines">${g.ok.map(linePill).join('')}</div>`;
-    return `<article class="card glass">
+    return `<article class="card glass" style="--bc:${companyColor(g.company)}">
         <div class="card-head">
-          <span class="op">${esc(g.company)}</span>
+          ${companyLogoHTML(g.company)}
+          <span class="op" title="${esc(g.company)}">${esc(g.company)}</span>
           <span class="area">${esc(g.area)}</span>
           <span class="badge">${g.lines.length} ${esc(t('opBadge'))}${g.trouble.length ? ` · <span class="warn" style="color:${WARN_COLOR[g.maxSev] || CAT_COLOR.irregular}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.6 22.2 20.4H1.8z"/></svg>${g.trouble.length}</span>` : ''}</span>
         </div>
@@ -477,7 +499,7 @@ function openSourceModal(el) {
   const col = CAT_COLOR[d.status] || CAT_COLOR.unknown;
   $('#srcModalDot').style.background = col;
   $('#srcModalTitle').textContent = d.name || '';
-  $('#srcModalSub').textContent = [d.company, d.area].filter(Boolean).join(' · ');
+  $('#srcModalSub').innerHTML = `${companyLogoHTML(d.company, 18)}<span>${esc(d.company)}</span>${d.area ? ` · ${esc(d.area)}` : ''}`;
   // 状态徽标：状态色文字 + 同色淡底 + 同色细边
   const chip = $('#srcModalStatus');
   const rgb = CAT_RGB[d.status] || CAT_RGB.unknown;

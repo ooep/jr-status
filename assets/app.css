@@ -347,14 +347,47 @@ body::after {
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: var(--gap); margin-top: 18px; }
 
 .card {
+  --bc: 56, 189, 248;   /* 公司品牌色，行内由 JS 覆盖 */
   padding: 18px 18px 16px;
   border-radius: var(--r-lg);
   display: flex; flex-direction: column; gap: 12px;
+  box-shadow: var(--glass-sh), inset 2.5px 0 0 rgba(var(--bc), .34), inset 0 1px 0 var(--glass-hi);
   transition: transform .28s var(--spring-out), box-shadow .28s var(--spring-out);
 }
-.card:hover { transform: translateY(-2px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.55), inset 0 1px 0 var(--glass-hi); }
-.card-head { display: flex; align-items: center; gap: 10px; }
-.card-head .op { font-weight: 660; font-size: 14.5px; letter-spacing: .01em; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.55), inset 2.5px 0 0 rgba(var(--bc), .68), inset 0 1px 0 var(--glass-hi); }
+.card-head { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.card-head .op {
+  font-weight: 700; font-size: 14.5px; letter-spacing: .01em;
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* ── 公司 logo：圆角徽章 + 发丝描边，加载失败降级为品牌色首字圆标 ── */
+.op-logo {
+  --ls: 30px;
+  position: relative;
+  flex: 0 0 var(--ls); width: var(--ls); height: var(--ls);
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 9px;
+  border: 1px solid var(--hair-2);
+  background: var(--glass);
+  overflow: hidden;
+  transition: transform .2s var(--spring-out), border-color .2s var(--spring-out), background .2s var(--spring-out);
+}
+.op-logo img { width: 74%; height: 74%; object-fit: contain; display: block; }
+.op-logo:not(:has(img)) {
+  background: rgba(var(--bc), .13);
+  box-shadow: inset 0 0 0 1px rgba(var(--bc), .38);
+}
+.op-logo:not(:has(img))::after {
+  content: attr(data-short);
+  font-size: calc(var(--ls) * .36);
+  font-weight: 750;
+  color: rgba(var(--bc), 1);
+  letter-spacing: -.02em;
+}
+.card:hover .op-logo { transform: scale(1.07); border-color: rgba(var(--bc), .45); }
+.modal-sub .op-logo { --ls: 18px; border-radius: 6px; }
+.modal-sub .op-logo img { width: 78%; height: 78%; }
 .card-head .area {
   font-size: 11px; color: var(--fg-faint); padding: 2px 8px;
   border: 1px solid var(--hair-2); border-radius: 999px;
@@ -432,7 +465,7 @@ button.tag:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px
 .modal-head .dotc { margin-top: 7px; }
 .modal-titles { flex: 1 1 auto; min-width: 0; }
 .modal-title { font-weight: 700; font-size: 16.5px; letter-spacing: .01em; line-height: 1.35; word-break: break-word; }
-.modal-sub { font-size: 12px; color: var(--fg-faint); margin-top: 3px; }
+.modal-sub { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--fg-faint); margin-top: 3px; min-width: 0; }
 .modal-status {
   flex: none; margin-top: 1px;
   font-size: 11.5px; font-weight: 620;
