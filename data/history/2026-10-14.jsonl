@@ -122,3 +122,5 @@
 {"at": "2026-10-14T16:01:20+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "15:38頃、須磨〜塩屋駅間での..."}
 {"at": "2026-10-14T16:11:07+0900", "id": "507", "company": "JR西日本", "name": "山口線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-14T16:25:59+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "delay", "to": "delay", "from_label": "列車遅延", "to_label": "列車遅延", "detail": "JR東日本管内で発生した踏切内立..."}
+{"at": "2026-10-14T16:46:01+0900", "id": "469", "company": "JR東日本", "name": "白新線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "16:40現在、ほぼ平常通り運転..."}
+{"at": "2026-10-14T16:46:01+0900", "id": "263", "company": "JR西日本", "name": "大阪環状線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
