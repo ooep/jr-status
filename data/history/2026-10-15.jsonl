@@ -23,3 +23,4 @@
 {"at": "2026-10-15T07:11:10+0900", "id": "50", "company": "JR東日本", "name": "埼京川越線[羽沢横浜国大～川越]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T08:10:58+0900", "id": "474", "company": "JR東日本", "name": "信越本線[直江津～新潟]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "救護活動の影響で、長岡〜新潟駅間..."}
 {"at": "2026-10-15T08:10:58+0900", "id": "46", "company": "JR東日本", "name": "宇都宮線[東京～宇都宮]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "小山〜小金井駅間での線路内点検の..."}
+{"at": "2026-10-15T08:15:54+0900", "id": "200", "company": "JR東海", "name": "高山本線[岐阜～猪谷]", "from": "suspend", "to": "suspend", "from_label": "運転見合わせ", "to_label": "運転見合わせ", "detail": "上麻生〜白川口駅間で発生した落石..."}
