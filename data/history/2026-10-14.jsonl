@@ -141,3 +141,4 @@
 {"at": "2026-10-14T17:41:05+0900", "id": "61", "company": "JR東日本", "name": "総武線(快速)[東京～千葉]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "17:35現在、ほぼ平常通り運転..."}
 {"at": "2026-10-14T17:46:04+0900", "id": "38", "company": "JR東日本", "name": "中央線(快速)[東京～高尾]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "新宿駅での救護活動の影響で、一部..."}
 {"at": "2026-10-14T17:46:04+0900", "id": "469", "company": "JR東日本", "name": "白新線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-14T17:56:02+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
