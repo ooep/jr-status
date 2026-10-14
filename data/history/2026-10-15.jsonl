@@ -21,3 +21,5 @@
 {"at": "2026-10-15T07:01:14+0900", "id": "507", "company": "JR西日本", "name": "山口線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "06:00頃、津和野駅での車両点..."}
 {"at": "2026-10-15T07:11:10+0900", "id": "507", "company": "JR西日本", "name": "山口線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "06:00頃、津和野駅での車両点..."}
 {"at": "2026-10-15T07:11:10+0900", "id": "50", "company": "JR東日本", "name": "埼京川越線[羽沢横浜国大～川越]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T08:10:58+0900", "id": "474", "company": "JR東日本", "name": "信越本線[直江津～新潟]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "救護活動の影響で、長岡〜新潟駅間..."}
+{"at": "2026-10-15T08:10:58+0900", "id": "46", "company": "JR東日本", "name": "宇都宮線[東京～宇都宮]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "小山〜小金井駅間での線路内点検の..."}
