@@ -11,3 +11,4 @@
 {"at": "2026-10-16T06:35:52+0900", "id": "204", "company": "JR東海", "name": "関西本線[名古屋～亀山]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "桑名駅での線路内点検の影響で、一..."}
 {"at": "2026-10-16T06:55:56+0900", "id": "638", "company": "道南いさりび鉄道", "name": "道南いさりび鉄道線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "設備故障の影響で、木古内〜上磯駅..."}
 {"at": "2026-10-16T07:01:14+0900", "id": "109", "company": "小田急電鉄", "name": "小田急小田原線", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "05:25頃、東海大学前〜秦野駅..."}
+{"at": "2026-10-16T07:10:58+0900", "id": "362", "company": "阪堺電気軌道", "name": "阪堺電気軌道線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "設備点検の影響で、我孫子道〜浜寺..."}
