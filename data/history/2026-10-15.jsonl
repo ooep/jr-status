@@ -175,3 +175,5 @@
 {"at": "2026-10-15T19:56:02+0900", "id": "68", "company": "JR東日本", "name": "成田線[千葉～成田空港・銚子]", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "佐倉駅でのポイント点検の影響で、..."}
 {"at": "2026-10-15T19:56:02+0900", "id": "62", "company": "JR東日本", "name": "総武本線[千葉～銚子]", "from": "irregular", "to": "delay", "from_label": "運転状況（他1件）", "to_label": "列車遅延（他1件）", "detail": "佐倉駅でのポイント点検の影響で、..."}
 {"at": "2026-10-15T19:56:02+0900", "id": "464", "company": "JR東日本", "name": "花輪線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "車輪空転の影響で、一部列車に遅れ..."}
+{"at": "2026-10-15T20:06:02+0900", "id": "201", "company": "JR東海", "name": "中央本線[名古屋～中津川]", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "武並〜恵那駅間で発生した動物支障..."}
+{"at": "2026-10-15T20:06:02+0900", "id": "205", "company": "JR東海", "name": "紀勢本線[亀山～新宮]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "他列車遅延の影響で、一部列車に遅..."}
