@@ -55,3 +55,4 @@
 {"at": "2026-10-15T10:21:00+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "二俣川駅で発生したドア故障の影響..."}
 {"at": "2026-10-15T10:21:00+0900", "id": "507", "company": "JR西日本", "name": "山口線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T10:25:59+0900", "id": "281", "company": "JR西日本", "name": "和歌山線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "笠田駅での旅客対応の影響で、一部..."}
+{"at": "2026-10-15T10:31:20+0900", "id": "267", "company": "JR西日本", "name": "JR京都線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "08:12頃、JR神戸線内で発生..."}
