@@ -147,3 +147,4 @@
 {"at": "2026-10-15T18:25:58+0900", "id": "50", "company": "JR東日本", "name": "埼京川越線[羽沢横浜国大～川越]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "指扇〜南古谷駅間での線路内点検の..."}
 {"at": "2026-10-15T18:25:58+0900", "id": "263", "company": "JR西日本", "name": "大阪環状線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "17:56頃、鶴橋〜玉造駅間での..."}
 {"at": "2026-10-15T18:31:16+0900", "id": "201", "company": "JR東海", "name": "中央本線[名古屋～中津川]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "武並〜恵那駅間で発生した動物支障..."}
+{"at": "2026-10-15T18:35:58+0900", "id": "551", "company": "山形鉄道", "name": "山形鉄道フラワー長井線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
