@@ -16,3 +16,4 @@
 {"at": "2026-10-16T07:25:52+0900", "id": "81", "company": "東武鉄道", "name": "東武アーバンパークライン", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "江戸川台〜初石駅間で発生した人身..."}
 {"at": "2026-10-16T07:31:05+0900", "id": "142", "company": "東葉高速鉄道", "name": "東葉高速線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "06:57頃、村上駅での車両点検..."}
 {"at": "2026-10-16T07:35:55+0900", "id": "362", "company": "阪堺電気軌道", "name": "阪堺電気軌道線", "from": "resume", "to": "irregular", "from_label": "運転再開", "to_label": "運転状況", "detail": "設備点検の影響で、一部列車のダイ..."}
+{"at": "2026-10-16T07:41:00+0900", "id": "69", "company": "JR東日本", "name": "京葉線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "蘇我駅でのドア点検の影響で、東京..."}
