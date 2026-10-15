@@ -58,3 +58,6 @@
 {"at": "2026-10-15T10:31:20+0900", "id": "267", "company": "JR西日本", "name": "JR京都線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "08:12頃、JR神戸線内で発生..."}
 {"at": "2026-10-15T10:41:03+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "二俣川駅で発生したドア故障の影響..."}
 {"at": "2026-10-15T10:46:04+0900", "id": "46", "company": "JR東日本", "name": "宇都宮線[東京～宇都宮]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T11:04:17+0900", "id": "588", "company": "広島電鉄", "name": "広島電鉄宮島線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T11:04:17+0900", "id": "589", "company": "広島電鉄", "name": "広島電鉄市内線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T11:04:17+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
