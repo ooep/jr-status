@@ -6,3 +6,4 @@
 {"at": "2026-10-16T02:05:54+0900", "id": "192", "company": "JR東海", "name": "東海道本線[熱海～豊橋]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T05:35:52+0900", "id": "81", "company": "東武鉄道", "name": "東武アーバンパークライン", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "05:22頃、江戸川台〜初石駅間..."}
 {"at": "2026-10-16T05:40:57+0900", "id": "109", "company": "小田急電鉄", "name": "小田急小田原線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "05:25頃、東海大学前〜秦野駅..."}
+{"at": "2026-10-16T06:25:55+0900", "id": "109", "company": "小田急電鉄", "name": "小田急小田原線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "05:25頃、東海大学前〜秦野駅..."}
