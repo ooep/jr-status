@@ -139,3 +139,5 @@
 {"at": "2026-10-15T17:41:06+0900", "id": "135", "company": "東京メトロ", "name": "東京メトロ東西線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "17:22頃、中野駅での車両点検..."}
 {"at": "2026-10-15T17:50:57+0900", "id": "200", "company": "JR東海", "name": "高山本線[岐阜～猪谷]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "発車準備作業遅延の影響で、一部列..."}
 {"at": "2026-10-15T18:01:16+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "17:44頃、豊洲駅での荷物挟ま..."}
+{"at": "2026-10-15T18:05:54+0900", "id": "68", "company": "JR東日本", "name": "成田線[千葉～成田空港・銚子]", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "佐倉駅でのポイント点検の影響で、..."}
+{"at": "2026-10-15T18:05:54+0900", "id": "62", "company": "JR東日本", "name": "総武本線[千葉～銚子]", "from": "delay", "to": "irregular", "from_label": "列車遅延（他1件）", "to_label": "運転状況（他1件）", "detail": "佐倉駅でのポイント点検の影響で、..."}
