@@ -105,3 +105,4 @@
 {"at": "2026-10-15T14:31:02+0900", "id": "200", "company": "JR東海", "name": "高山本線[岐阜～猪谷]", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "14:25現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T14:35:53+0900", "id": "481", "company": "JR西日本", "name": "北陸本線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T14:55:53+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "14:50現在、ほぼ平常通り運転..."}
+{"at": "2026-10-15T15:01:15+0900", "id": "471", "company": "JR東日本", "name": "小海線", "from": "plan", "to": "normal", "from_label": "運転計画", "to_label": "平常運転", "detail": "14:55現在、ほぼ平常通り運転..."}
