@@ -37,3 +37,4 @@
 {"at": "2026-10-15T09:05:58+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "08:12頃、姫路駅で発生した車..."}
 {"at": "2026-10-15T09:05:58+0900", "id": "588", "company": "広島電鉄", "name": "広島電鉄宮島線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "踏切内点検の影響で、一部列車に遅..."}
 {"at": "2026-10-15T09:05:58+0900", "id": "589", "company": "広島電鉄", "name": "広島電鉄市内線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "広島電鉄宮島線内での踏切内点検の..."}
+{"at": "2026-10-15T09:11:01+0900", "id": "278", "company": "JR西日本", "name": "関西本線[亀山～加茂]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "09:05現在、ほぼ平常通り運転..."}
