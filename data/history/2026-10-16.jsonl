@@ -24,3 +24,4 @@
 {"at": "2026-10-16T08:14:39+0900", "id": "71", "company": "JR東日本", "name": "武蔵野線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "京葉線内でのドア点検の影響で、一..."}
 {"at": "2026-10-16T08:14:39+0900", "id": "204", "company": "JR東海", "name": "関西本線[名古屋～亀山]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T08:16:02+0900", "id": "603", "company": "伊予鉄道", "name": "伊予鉄松山市内線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "線路支障の影響で、ダイヤが乱れて..."}
+{"at": "2026-10-16T08:21:04+0900", "id": "199", "company": "JR東海", "name": "武豊線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "尾張森岡駅構内での踏切内点検の影..."}
