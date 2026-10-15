@@ -247,3 +247,4 @@
 {"at": "2026-10-15T23:15:58+0900", "id": "483", "company": "JR西日本", "name": "九頭竜線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T23:25:53+0900", "id": "507", "company": "JR西日本", "name": "山口線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T23:31:07+0900", "id": "68", "company": "JR東日本", "name": "成田線[千葉～成田空港・銚子]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T23:35:52+0900", "id": "547", "company": "JR西日本", "name": "山陰本線[園部～鳥取]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
