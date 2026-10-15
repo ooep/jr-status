@@ -163,3 +163,5 @@
 {"at": "2026-10-15T19:26:00+0900", "id": "479", "company": "JR東日本", "name": "上越線[水上～長岡]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "19:20現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T19:31:17+0900", "id": "50", "company": "JR東日本", "name": "埼京川越線[羽沢横浜国大～川越]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "19:25現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T19:31:17+0900", "id": "43", "company": "JR東日本", "name": "青梅線[立川～青梅]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "19:25現在、ほぼ平常通り運転..."}
+{"at": "2026-10-15T19:35:59+0900", "id": "281", "company": "JR西日本", "name": "和歌山線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "17:56頃、大阪環状線内での車..."}
+{"at": "2026-10-15T19:35:59+0900", "id": "333", "company": "JR西日本", "name": "きのくに線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
