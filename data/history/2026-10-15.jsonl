@@ -128,3 +128,5 @@
 {"at": "2026-10-15T16:45:57+0900", "id": "551", "company": "山形鉄道", "name": "山形鉄道フラワー長井線", "from": "resume", "to": "irregular", "from_label": "運転再開", "to_label": "運転状況", "detail": "長井〜荒砥駅間で発生した信号関係..."}
 {"at": "2026-10-15T16:45:57+0900", "id": "138", "company": "東京メトロ", "name": "東京メトロ半蔵門線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T17:01:08+0900", "id": "62", "company": "JR東日本", "name": "総武本線[千葉～銚子]", "from": "delay", "to": "irregular", "from_label": "列車遅延（他1件）", "to_label": "運転状況（他1件）", "detail": "佐倉駅でのポイント点検の影響で、..."}
+{"at": "2026-10-15T17:11:01+0900", "id": "62", "company": "JR東日本", "name": "総武本線[千葉～銚子]", "from": "irregular", "to": "suspend", "from_label": "運転状況（他1件）", "to_label": "運転見合わせ（他1件）", "detail": "佐倉駅でのポイント点検の影響で、..."}
+{"at": "2026-10-15T17:11:01+0900", "id": "551", "company": "山形鉄道", "name": "山形鉄道フラワー長井線", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "長井〜荒砥駅間で発生した信号関係..."}
