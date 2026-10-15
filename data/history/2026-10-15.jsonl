@@ -199,3 +199,4 @@
 {"at": "2026-10-15T20:55:58+0900", "id": "68", "company": "JR東日本", "name": "成田線[千葉～成田空港・銚子]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:50現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T20:55:58+0900", "id": "277", "company": "JR西日本", "name": "大和路線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "20:50現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T20:55:58+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:50現在、ほぼ平常通り運転..."}
+{"at": "2026-10-15T21:01:20+0900", "id": "281", "company": "JR西日本", "name": "和歌山線", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "17:56頃、大阪環状線内での車..."}
