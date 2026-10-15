@@ -172,3 +172,6 @@
 {"at": "2026-10-15T19:41:08+0900", "id": "200", "company": "JR東海", "name": "高山本線[岐阜～猪谷]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T19:41:08+0900", "id": "588", "company": "広島電鉄", "name": "広島電鉄宮島線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "19:30現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T19:41:08+0900", "id": "589", "company": "広島電鉄", "name": "広島電鉄市内線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "19:30現在、ほぼ平常通り運転..."}
+{"at": "2026-10-15T19:56:02+0900", "id": "68", "company": "JR東日本", "name": "成田線[千葉～成田空港・銚子]", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "佐倉駅でのポイント点検の影響で、..."}
+{"at": "2026-10-15T19:56:02+0900", "id": "62", "company": "JR東日本", "name": "総武本線[千葉～銚子]", "from": "irregular", "to": "delay", "from_label": "運転状況（他1件）", "to_label": "列車遅延（他1件）", "detail": "佐倉駅でのポイント点検の影響で、..."}
+{"at": "2026-10-15T19:56:02+0900", "id": "464", "company": "JR東日本", "name": "花輪線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "車輪空転の影響で、一部列車に遅れ..."}
