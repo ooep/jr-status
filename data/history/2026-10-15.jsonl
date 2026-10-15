@@ -194,3 +194,4 @@
 {"at": "2026-10-15T20:36:01+0900", "id": "589", "company": "広島電鉄", "name": "広島電鉄市内線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T20:36:01+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:30現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T20:41:07+0900", "id": "201", "company": "JR東海", "name": "中央本線[名古屋～中津川]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "20:35現在、ほぼ平常通り運転..."}
+{"at": "2026-10-15T20:46:08+0900", "id": "489", "company": "JR西日本", "name": "小浜線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "20:23頃、青郷〜三松駅間で発..."}
