@@ -69,3 +69,4 @@
 {"at": "2026-10-15T11:25:57+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "11:20現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T11:31:14+0900", "id": "29", "company": "JR東日本", "name": "横須賀線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "11:30現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T11:31:14+0900", "id": "25", "company": "JR東日本", "name": "湘南新宿ライン", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "11:30現在、ほぼ平常通り運転..."}
+{"at": "2026-10-15T11:35:57+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "08:12頃、JR神戸線内で発生..."}
