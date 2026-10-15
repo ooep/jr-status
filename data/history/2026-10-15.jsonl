@@ -49,3 +49,4 @@
 {"at": "2026-10-15T10:05:59+0900", "id": "589", "company": "広島電鉄", "name": "広島電鉄市内線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "10:00現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T10:05:59+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "10:00現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T10:11:01+0900", "id": "278", "company": "JR西日本", "name": "関西本線[亀山～加茂]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T10:16:01+0900", "id": "474", "company": "JR東日本", "name": "信越本線[直江津～新潟]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
