@@ -219,3 +219,5 @@
 {"at": "2026-10-15T21:47:14+0900", "id": "42", "company": "JR東日本", "name": "中央本線[高尾～大月]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T21:55:59+0900", "id": "277", "company": "JR西日本", "name": "大和路線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T21:55:59+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T22:01:22+0900", "id": "281", "company": "JR西日本", "name": "和歌山線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "22:00現在、ほぼ平常通り運転..."}
+{"at": "2026-10-15T22:01:22+0900", "id": "82", "company": "東武鉄道", "name": "東武東上線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "21:55現在、ほぼ平常通り運転..."}
