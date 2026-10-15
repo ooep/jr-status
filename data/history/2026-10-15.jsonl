@@ -165,3 +165,10 @@
 {"at": "2026-10-15T19:31:17+0900", "id": "43", "company": "JR東日本", "name": "青梅線[立川～青梅]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "19:25現在、ほぼ平常通り運転..."}
 {"at": "2026-10-15T19:35:59+0900", "id": "281", "company": "JR西日本", "name": "和歌山線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "17:56頃、大阪環状線内での車..."}
 {"at": "2026-10-15T19:35:59+0900", "id": "333", "company": "JR西日本", "name": "きのくに線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T19:41:08+0900", "id": "574", "company": "富山地方鉄道", "name": "富山地方鉄道富山市内軌道線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "下奥井電停付近で発生した車両故障..."}
+{"at": "2026-10-15T19:41:08+0900", "id": "42", "company": "JR東日本", "name": "中央本線[高尾～大月]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "中央線(快速)内での安全確認の影..."}
+{"at": "2026-10-15T19:41:08+0900", "id": "38", "company": "JR東日本", "name": "中央線(快速)[東京～高尾]", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "三鷹駅での安全確認の影響で、一部..."}
+{"at": "2026-10-15T19:41:08+0900", "id": "61", "company": "JR東日本", "name": "総武線(快速)[東京～千葉]", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "成田線内でのポイント点検の影響で..."}
+{"at": "2026-10-15T19:41:08+0900", "id": "200", "company": "JR東海", "name": "高山本線[岐阜～猪谷]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T19:41:08+0900", "id": "588", "company": "広島電鉄", "name": "広島電鉄宮島線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "19:30現在、ほぼ平常通り運転..."}
+{"at": "2026-10-15T19:41:08+0900", "id": "589", "company": "広島電鉄", "name": "広島電鉄市内線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "19:30現在、ほぼ平常通り運転..."}
