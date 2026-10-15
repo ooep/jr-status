@@ -217,3 +217,5 @@
 {"at": "2026-10-15T21:41:05+0900", "id": "201", "company": "JR東海", "name": "中央本線[名古屋～中津川]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-15T21:47:14+0900", "id": "489", "company": "JR西日本", "name": "小浜線", "from": "resume", "to": "delay", "from_label": "運転再開", "to_label": "列車遅延", "detail": "20:23頃、青郷駅で発生した動..."}
 {"at": "2026-10-15T21:47:14+0900", "id": "42", "company": "JR東日本", "name": "中央本線[高尾～大月]", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T21:55:59+0900", "id": "277", "company": "JR西日本", "name": "大和路線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-15T21:55:59+0900", "id": "125", "company": "相模鉄道", "name": "相鉄線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
