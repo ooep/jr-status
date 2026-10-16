@@ -78,3 +78,5 @@
 {"at": "2026-10-16T12:01:20+0900", "id": "274", "company": "JR西日本", "name": "阪和線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T12:21:05+0900", "id": "40", "company": "JR東日本", "name": "中央総武線(各停)", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T12:21:05+0900", "id": "503", "company": "JR西日本", "name": "可部線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T12:25:58+0900", "id": "267", "company": "JR西日本", "name": "JR京都線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "11:50頃、湖西線内で発生した..."}
+{"at": "2026-10-16T12:25:58+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "11:50頃、湖西線内で発生した..."}
