@@ -165,3 +165,6 @@
 {"at": "2026-10-16T15:41:01+0900", "id": "547", "company": "JR西日本", "name": "山陰本線[園部～鳥取]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "15:05頃、鍼灸大学前〜胡麻駅..."}
 {"at": "2026-10-16T15:41:01+0900", "id": "504", "company": "JR西日本", "name": "岩徳線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "15:35現在、ほぼ平常通り運転..."}
 {"at": "2026-10-16T15:41:01+0900", "id": "268", "company": "JR西日本", "name": "湖西線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T15:46:02+0900", "id": "81", "company": "東武鉄道", "name": "東武アーバンパークライン", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "川間駅で発生した人身事故の影響で..."}
+{"at": "2026-10-16T15:46:02+0900", "id": "465", "company": "JR東日本", "name": "男鹿線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T15:46:02+0900", "id": "323", "company": "大阪メトロ", "name": "大阪メトロ四つ橋線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
