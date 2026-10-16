@@ -256,16 +256,18 @@ def write_history(new: dict, prev: dict, now: datetime, cache: TranslationCache)
 
 
 def _history_fingerprint() -> str:
-    """基于 data/history/*.jsonl 与 data/translations.json 的指纹：
-    任一文件增删改（含译文更新）都会触发分页重建。"""
+    """基于 data/history/*.jsonl 与 data/translations.json 内容的指纹：
+    任一文件内容增删改（含译文更新）都会触发分页重建。
+    基于内容而非 mtime：CI 每次 checkout 后 mtime 必然变化，
+    用 mtime 会让分页在无变化时也被反复重建、产生无意义提交。"""
     h = hashlib.sha1()
     for p in sorted((DATA / "history").glob("*.jsonl")):
-        st = p.stat()
-        h.update(f"{p.name}:{st.st_size}:{st.st_mtime_ns}\n".encode())
+        h.update(p.name.encode("utf-8"))
+        h.update(p.read_text(encoding="utf-8").encode("utf-8"))
     tp = DATA / "translations.json"
     if tp.exists():
-        st = tp.stat()
-        h.update(f"translations:{st.st_size}:{st.st_mtime_ns}\n".encode())
+        h.update(b"translations:")
+        h.update(tp.read_text(encoding="utf-8").encode("utf-8"))
     return h.hexdigest()[:16]
 
 
