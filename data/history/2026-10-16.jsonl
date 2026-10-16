@@ -47,3 +47,4 @@
 {"at": "2026-10-16T09:31:09+0900", "id": "362", "company": "阪堺電気軌道", "name": "阪堺電気軌道線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T09:35:56+0900", "id": "109", "company": "小田急電鉄", "name": "小田急小田原線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T09:35:56+0900", "id": "142", "company": "東葉高速鉄道", "name": "東葉高速線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T09:41:02+0900", "id": "274", "company": "JR西日本", "name": "阪和線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "六十谷駅で発生した人身事故の影響..."}
