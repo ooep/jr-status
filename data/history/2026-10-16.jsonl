@@ -146,3 +146,5 @@
 {"at": "2026-10-16T14:51:02+0900", "id": "135", "company": "東京メトロ", "name": "東京メトロ東西線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T14:51:02+0900", "id": "578", "company": "長野電鉄", "name": "長野電鉄線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T14:55:58+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:50現在、ほぼ平常通り運転..."}
+{"at": "2026-10-16T15:01:17+0900", "id": "473", "company": "JR東日本", "name": "大糸線[松本～南小谷]", "from": "normal", "to": "plan", "from_label": "平常運転", "to_label": "運転計画", "detail": "神城駅での線路工事の影響で、17..."}
+{"at": "2026-10-16T15:01:17+0900", "id": "161", "company": "埼玉新都市交通", "name": "ニューシャトル", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
