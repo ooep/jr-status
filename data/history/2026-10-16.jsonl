@@ -195,3 +195,4 @@
 {"at": "2026-10-16T17:10:57+0900", "id": "132", "company": "東京メトロ", "name": "東京メトロ銀座線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "17:05現在、ほぼ平常通り運転..."}
 {"at": "2026-10-16T17:15:59+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "irregular", "to": "delay", "from_label": "運転状況", "to_label": "列車遅延", "detail": "15:01頃、JR京都線内で発生..."}
 {"at": "2026-10-16T17:15:59+0900", "id": "267", "company": "JR西日本", "name": "JR京都線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "17:05現在、ほぼ平常通り運転..."}
+{"at": "2026-10-16T17:25:54+0900", "id": "503", "company": "JR西日本", "name": "可部線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
