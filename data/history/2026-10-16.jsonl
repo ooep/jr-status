@@ -145,3 +145,4 @@
 {"at": "2026-10-16T14:51:02+0900", "id": "567", "company": "えちぜん鉄道", "name": "えちぜん鉄道三国芦原線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:45現在、ほぼ平常通り運転..."}
 {"at": "2026-10-16T14:51:02+0900", "id": "135", "company": "東京メトロ", "name": "東京メトロ東西線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T14:51:02+0900", "id": "578", "company": "長野電鉄", "name": "長野電鉄線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T14:55:58+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:50現在、ほぼ平常通り運転..."}
