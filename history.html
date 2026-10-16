@@ -59,6 +59,29 @@
   <!-- ── 分页 ───────────────────────────────────────────── -->
   <div class="pager" id="hPager" hidden></div>
 
+  <!-- ── 全文弹窗（查看完整故障详情） ───────────────────── -->
+  <div class="modal-overlay" id="srcModal" hidden>
+    <div class="modal glass" role="dialog" aria-modal="true" aria-labelledby="srcModalTitle">
+      <div class="modal-head">
+        <span class="dotc" id="srcModalDot" aria-hidden="true"></span>
+        <div class="modal-titles">
+          <div class="modal-title" id="srcModalTitle"></div>
+          <div class="modal-sub" id="srcModalSub"></div>
+        </div>
+        <span class="modal-status" id="srcModalStatus"></span>
+      </div>
+      <div class="modal-scroll" id="srcModalScroll">
+        <div class="modal-body" id="srcModalBody"></div>
+        <div class="modal-fade top" aria-hidden="true"></div>
+        <div class="modal-fade bottom" aria-hidden="true"></div>
+      </div>
+      <div class="modal-foot">
+        <span class="modal-pub" id="srcModalPub"></span>
+        <button class="btn btn-ok" id="srcModalOk" type="button" data-i18n="modalOk">OK</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div id="hFootMeta"></div>
     <div>

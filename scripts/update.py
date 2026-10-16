@@ -244,6 +244,13 @@ def write_history(new: dict, prev: dict, now: datetime, cache: TranslationCache)
                         e[f + "_zh"] = ent["zh"]
                     if ent.get("en"):
                         e[f + "_en"] = ent["en"]
+            # 完整详情（详情页全文）一并记录，供历史页「查看全文」展开；
+            # 字段与 status.json 一致：detail_full 原文 / detail_full_main 剥离掲載时间戳的正文 /
+            # detail_full_pub 掲載时间戳 / detail_full_zh、detail_full_en 中英译文
+            for k in ("detail_full", "detail_full_main", "detail_full_pub",
+                      "detail_full_zh", "detail_full_en"):
+                if l.get(k):
+                    e[k] = l[k]
             events.append(e)
     if events:
         DATA.mkdir(exist_ok=True)
@@ -284,7 +291,51 @@ def _enrich_event(e: dict, cache: TranslationCache) -> dict:
             e[f + "_zh"] = ent["zh"]
         if ent.get("en"):
             e[f + "_en"] = ent["en"]
+    # 完整详情的译文回填（按剥离掲載时间戳后的正文查缓存）
+    main = e.get("detail_full_main") or e.get("detail_full")
+    if main:
+        ent = cache.get(main)
+        if ent:
+            if ent.get("zh"):
+                e["detail_full_zh"] = ent["zh"]
+            if ent.get("en"):
+                e["detail_full_en"] = ent["en"]
     return e
+
+
+def _annotate_durations(events: List[dict]) -> None:
+    """按线路（id）沿时间轴追踪状态，为每条事件标注故障持续时间：
+
+      - dur_start：本次故障开始的事件时间（ISO8601，JST）
+      - dur_state："active"（故障仍在持续，前端用当前时间实时计算）
+                  / "ended"（已恢复正常，前端用事件时间 - dur_start 得到精确时长）
+
+    只依赖事件流自身（升序扫描），不依赖当前时间，保证分页内容稳定可重建。
+    """
+    asc = list(reversed(events))            # 时间升序
+    active: Dict[str, str] = {}             # id -> 故障开始 at
+    for e in asc:
+        lid, f, t = e.get("id"), e.get("from"), e.get("to")
+        if not lid:
+            continue
+        if f == "normal" and t != "normal":
+            # 故障开始（正常 -> 异常）
+            active[lid] = e["at"]
+            e["dur_start"] = e["at"]
+            e["dur_state"] = "active"
+        elif f != "normal" and t == "normal":
+            # 恢复正常（异常 -> 正常）：故障结束
+            s = active.pop(lid, None)
+            if s:
+                e["dur_start"] = s
+                e["dur_state"] = "ended"
+        elif f != "normal" and t != "normal":
+            # 故障状态间变化（仍在故障中）
+            s = active.get(lid)
+            if s:
+                e["dur_start"] = s
+                e["dur_state"] = "active"
+    # 扫描结束后仍 active 的线路即「进行中」的故障，保持 active 标记
 
 
 def build_history_pages() -> bool:
@@ -327,6 +378,9 @@ def build_history_pages() -> bool:
     cache = TranslationCache(DATA / "translations.json")
     for e in events:
         _enrich_event(e, cache)
+
+    # 按线路追踪状态，计算每次故障的持续时间（dur_start / dur_state）
+    _annotate_durations(events)
 
     now = datetime.now(JST).strftime("%Y-%m-%dT%H:%M:%S%z")
     total = len(events)

@@ -665,6 +665,14 @@ footer a:hover { color: var(--accent); }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 40%;
 }
 .harea { font-size: 11px; color: var(--fg-faint); white-space: nowrap; }
+/* 故障持续时间徽标（ended=已结束精确时长；active=进行中实时刷新） */
+.hdur {
+  display: inline-flex; align-items: center; white-space: nowrap;
+  font-size: 10.5px; font-weight: 620; padding: 2px 8px; border-radius: 999px;
+  border: 1px solid var(--hair-2); color: var(--fg-faint); font-variant-numeric: tabular-nums;
+}
+.hdur.ended { color: var(--c-resume); border-color: color-mix(in srgb, var(--c-resume) 34%, transparent); background: color-mix(in srgb, var(--c-resume) 9%, transparent); }
+.hdur.active { color: var(--c-delay); border-color: color-mix(in srgb, var(--c-delay) 34%, transparent); background: color-mix(in srgb, var(--c-delay) 9%, transparent); }
 .hrange { display: inline-flex; align-items: center; gap: 4px; }
 .harrow { color: var(--fg-faint); font-size: 12px; flex: 0 0 auto; }
 .hchip {
