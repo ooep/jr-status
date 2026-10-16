@@ -230,3 +230,6 @@
 {"at": "2026-10-16T19:21:06+0900", "id": "471", "company": "JR東日本", "name": "小海線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "羽黒下駅での車両点検の影響で、小..."}
 {"at": "2026-10-16T19:21:06+0900", "id": "128", "company": "東京都交通局", "name": "都営浅草線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "成田スカイアクセス線内で発生した..."}
 {"at": "2026-10-16T19:21:06+0900", "id": "547", "company": "JR西日本", "name": "山陰本線[園部～鳥取]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "19:15現在、ほぼ平常通り運転..."}
+{"at": "2026-10-16T19:26:05+0900", "id": "268", "company": "JR西日本", "name": "湖西線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "19:07頃、北小松〜近江高島駅..."}
+{"at": "2026-10-16T19:26:05+0900", "id": "622", "company": "京成電鉄", "name": "成田スカイアクセス線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "東松戸駅で発生した人身事故の影響..."}
+{"at": "2026-10-16T19:26:05+0900", "id": "141", "company": "北総鉄道", "name": "北総線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "東松戸駅で発生した人身事故の影響..."}
