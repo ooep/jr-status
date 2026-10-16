@@ -169,3 +169,7 @@
 {"at": "2026-10-16T15:46:02+0900", "id": "465", "company": "JR東日本", "name": "男鹿線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T15:46:02+0900", "id": "323", "company": "大阪メトロ", "name": "大阪メトロ四つ橋線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T15:51:06+0900", "id": "567", "company": "えちぜん鉄道", "name": "えちぜん鉄道三国芦原線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T15:56:01+0900", "id": "267", "company": "JR西日本", "name": "JR京都線", "from": "delay", "to": "irregular", "from_label": "列車遅延", "to_label": "運転状況", "detail": "15:01頃、向日町〜長岡京駅間..."}
+{"at": "2026-10-16T15:56:01+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "irregular", "to": "irregular", "from_label": "運転状況", "to_label": "運転状況", "detail": "15:01頃、JR京都線内で発生..."}
+{"at": "2026-10-16T15:56:01+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "15:01頃、JR京都線内で発生..."}
+{"at": "2026-10-16T15:56:01+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
