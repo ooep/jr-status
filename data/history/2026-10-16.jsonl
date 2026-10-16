@@ -71,3 +71,4 @@
 {"at": "2026-10-16T11:20:58+0900", "id": "40", "company": "JR東日本", "name": "中央総武線(各停)", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "11:15現在、ほぼ平常通り運転..."}
 {"at": "2026-10-16T11:26:01+0900", "id": "81", "company": "東武鉄道", "name": "東武アーバンパークライン", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T11:35:59+0900", "id": "114", "company": "東急電鉄", "name": "東急田園都市線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "11:30現在、ほぼ平常通り運転..."}
+{"at": "2026-10-16T11:40:59+0900", "id": "493", "company": "JR西日本", "name": "津山線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "11:12頃、福渡〜建部駅間での..."}
