@@ -81,3 +81,4 @@
 {"at": "2026-10-16T12:25:58+0900", "id": "267", "company": "JR西日本", "name": "JR京都線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "11:50頃、湖西線内で発生した..."}
 {"at": "2026-10-16T12:25:58+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "11:50頃、湖西線内で発生した..."}
 {"at": "2026-10-16T12:35:57+0900", "id": "114", "company": "東急電鉄", "name": "東急田園都市線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T12:41:43+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "12:15頃、桜田門駅での救護活..."}
