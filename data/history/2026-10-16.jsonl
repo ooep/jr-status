@@ -86,3 +86,6 @@
 {"at": "2026-10-16T12:51:05+0900", "id": "578", "company": "長野電鉄", "name": "長野電鉄線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "地震の影響で、運転を見合わせてい..."}
 {"at": "2026-10-16T12:51:05+0900", "id": "192", "company": "JR東海", "name": "東海道本線[熱海～豊橋]", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "地震の影響で、一部列車に遅れが出..."}
 {"at": "2026-10-16T12:51:05+0900", "id": "273", "company": "JR西日本", "name": "JR神戸線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "11:50頃、湖西線内で発生した..."}
+{"at": "2026-10-16T12:56:04+0900", "id": "545", "company": "札幌市交通事業振興公社", "name": "札幌市電", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "安全確認の影響で、運転を見合わせ..."}
+{"at": "2026-10-16T12:56:04+0900", "id": "146", "company": "秩父鉄道", "name": "秩父鉄道線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "安全確認の影響で、列車に遅れが出..."}
+{"at": "2026-10-16T12:56:04+0900", "id": "578", "company": "長野電鉄", "name": "長野電鉄線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "安全確認の影響で、運転を見合わせ..."}
