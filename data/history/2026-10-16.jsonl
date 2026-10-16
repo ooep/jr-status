@@ -52,3 +52,4 @@
 {"at": "2026-10-16T09:56:00+0900", "id": "603", "company": "伊予鉄道", "name": "伊予鉄松山市内線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "09:50現在、ほぼ平常通り運転..."}
 {"at": "2026-10-16T09:56:00+0900", "id": "638", "company": "道南いさりび鉄道", "name": "道南いさりび鉄道線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T10:05:54+0900", "id": "274", "company": "JR西日本", "name": "阪和線", "from": "resume", "to": "irregular", "from_label": "運転再開", "to_label": "運転状況", "detail": "08:13頃、六十谷駅で発生した..."}
+{"at": "2026-10-16T10:20:58+0900", "id": "81", "company": "東武鉄道", "name": "東武アーバンパークライン", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "10:20現在、ほぼ平常通り運転..."}
