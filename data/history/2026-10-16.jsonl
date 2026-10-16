@@ -102,3 +102,4 @@
 {"at": "2026-10-16T13:11:11+0900", "id": "161", "company": "埼玉新都市交通", "name": "ニューシャトル", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "緊急地震速報受信の影響で、列車に..."}
 {"at": "2026-10-16T13:11:11+0900", "id": "190", "company": "東京都交通局", "name": "都電荒川線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "混雑の影響で、ダイヤが乱れていま..."}
 {"at": "2026-10-16T13:11:11+0900", "id": "578", "company": "長野電鉄", "name": "長野電鉄線", "from": "resume", "to": "delay", "from_label": "運転再開", "to_label": "列車遅延", "detail": "安全確認の影響で、列車に遅れが出..."}
+{"at": "2026-10-16T13:21:09+0900", "id": "182", "company": "伊豆急行", "name": "伊豆急行線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "緊急地震速報受信の影響で、一部列..."}
