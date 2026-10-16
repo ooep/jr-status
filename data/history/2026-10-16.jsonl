@@ -206,3 +206,4 @@
 {"at": "2026-10-16T17:41:00+0900", "id": "196", "company": "JR東海", "name": "身延線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T17:45:56+0900", "id": "606", "company": "甘木鉄道", "name": "甘木鉄道線", "from": "resume", "to": "irregular", "from_label": "運転再開", "to_label": "運転状況", "detail": "信号関係故障の影響で、一部列車に..."}
 {"at": "2026-10-16T17:45:56+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "17:40現在、ほぼ平常通り運転..."}
+{"at": "2026-10-16T17:51:01+0900", "id": "499", "company": "JR西日本", "name": "福塩線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "17:31頃、備後安田〜吉舎駅間..."}
