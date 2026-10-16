@@ -73,3 +73,6 @@
 {"at": "2026-10-16T11:35:59+0900", "id": "114", "company": "東急電鉄", "name": "東急田園都市線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "11:30現在、ほぼ平常通り運転..."}
 {"at": "2026-10-16T11:40:59+0900", "id": "493", "company": "JR西日本", "name": "津山線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "11:12頃、福渡〜建部駅間での..."}
 {"at": "2026-10-16T11:51:00+0900", "id": "481", "company": "JR西日本", "name": "北陸本線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "10:57頃、湖西線内で発生した..."}
+{"at": "2026-10-16T12:01:20+0900", "id": "268", "company": "JR西日本", "name": "湖西線", "from": "delay", "to": "suspend", "from_label": "列車遅延", "to_label": "運転見合わせ", "detail": "11:50頃、大津京駅で発生した..."}
+{"at": "2026-10-16T12:01:20+0900", "id": "491", "company": "JR西日本", "name": "瀬戸大橋線[岡山～児島]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "12:00現在、ほぼ平常通り運転..."}
+{"at": "2026-10-16T12:01:20+0900", "id": "274", "company": "JR西日本", "name": "阪和線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
