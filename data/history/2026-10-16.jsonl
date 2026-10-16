@@ -174,3 +174,7 @@
 {"at": "2026-10-16T15:56:01+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "15:01頃、JR京都線内で発生..."}
 {"at": "2026-10-16T15:56:01+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T16:05:57+0900", "id": "63", "company": "JR東日本", "name": "内房線", "from": "other", "to": "delay", "from_label": "その他", "to_label": "列車遅延（他1件）", "detail": "浜野〜八幡宿駅間での踏切内点検の..."}
+{"at": "2026-10-16T16:11:04+0900", "id": "81", "company": "東武鉄道", "name": "東武アーバンパークライン", "from": "resume", "to": "irregular", "from_label": "運転再開", "to_label": "運転状況", "detail": "14:29頃、川間駅で発生した人..."}
+{"at": "2026-10-16T16:11:04+0900", "id": "481", "company": "JR西日本", "name": "北陸本線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T16:11:04+0900", "id": "282", "company": "JR西日本", "name": "関西空港線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T16:11:04+0900", "id": "274", "company": "JR西日本", "name": "阪和線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
