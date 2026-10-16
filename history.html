@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>历史故障 · JR-Status | Mini JapanRail</title>
+<meta name="description" content="JR-Status 历史故障记录：按时间倒序列出全部运行异常 / 停运 / 晚点状态变化，30 条一页。">
+<meta name="theme-color" content="#0b1017" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef2f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<meta property="og:title" content="历史故障 · JR-Status">
+<meta property="og:description" content="全日本铁道运行情报历史故障记录，按时间倒序，30 条一页。">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="skip" href="#hList" data-i18n="skipToResults">跳到故障列表</a>
+
+  <!-- ── 顶栏 ───────────────────────────────────────────── -->
+  <header class="glass topbar" id="topbar">
+    <a class="brand" href="https://jr.suki.ing/" target="_blank" rel="noopener">
+      <img class="brand-mark" src="assets/logo.png" alt="" width="34" height="34" decoding="async">
+      <span class="brand-body">
+        <span class="brand-text" data-i18n="appName">JR-Status</span>
+        <span class="brand-sub" data-i18n="brandSub">全日本铁道运行情报 · Mini JapanRail</span>
+      </span>
+    </a>
+    <span class="grow"></span>
+
+    <div class="topbtns">
+      <a class="btn small" href="index.html" title="返回实时状态">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </span><span class="txt" data-i18n="back">返回实时状态</span>
+      </a>
+      <button class="btn small" id="btnTheme" type="button" title="主题">
+        <span class="ic" id="themeIcon" aria-hidden="true"></span><span class="txt" id="themeTxt">深色</span>
+      </button>
+      <button class="btn small btn-lang" id="btnLang" type="button" title="语言">
+        <span class="ic" id="langIcon" aria-hidden="true"></span><span class="txt" id="langTxt">中</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Hero ───────────────────────────────────────────── -->
+  <section class="glass hero">
+    <div class="eyebrow"><i class="live-i" aria-hidden="true"></i><span data-i18n="eyebrow">MINI JAPANRAIL · INCIDENT HISTORY</span></div>
+    <h1 data-i18n="title">历史故障记录</h1>
+    <div class="meta" id="hMeta"><span data-i18n="loading">正在读取数据…</span></div>
+  </section>
+
+  <!-- ── 故障列表 ────────────────────────────────────────── -->
+  <section id="hList" class="hlist" aria-live="polite"></section>
+
+  <!-- ── 分页 ───────────────────────────────────────────── -->
+  <div class="pager" id="hPager" hidden></div>
+
+  <footer>
+    <div id="hFootMeta"></div>
+    <div>
+      <a href="index.html" data-i18n="back">返回实时状态</a>
+      ·
+      <a href="https://jr.suki.ing/" target="_blank" rel="noopener" data-i18n="mainSite">Mini JapanRail 主站</a>
+    </div>
+  </footer>
+</div>
+
+<script src="assets/logo-map.js"></script>
+<script src="assets/history.js"></script>
+</body>
+</html>

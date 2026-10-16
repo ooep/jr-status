@@ -1,11 +1,12 @@
 # jr-status · 全日本铁道运行情报
 
 自动采集 **公开运行情报源**（`transit.yahoo.co.jp/diainfo`）全国各铁道公司及其线路的运行状况，
-格式化落库，并**与主站 [Mini JapanRail 3D](https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/)** 的线路做映射，
+格式化落库，并**与主站 [Mini JapanRail 3D](https://jr.suki.ing/)** 的线路做映射，
 最后用一个液态玻璃风格的网页把全国运行情报呈现出来。
 
-- 🌐 展示页：<https://ooep.github.io/jr-status/>
-- 📦 数据表：`data/status.json`（主数据）、`data/summary.json`（轻量概览）
+- 🌐 实时状态页：<https://jrstatus.jr.suki.ing/>
+- 📜 历史故障页：<https://jrstatus.jr.suki.ing/history.html>（按时间倒序，30 条/页）
+- 📦 数据表：`data/status.json`（主数据）、`data/summary.json`（轻量概览）、`data/history/index.json` + `data/history/page-N.json`（历史故障分页）
 
 ---
 
@@ -18,9 +19,11 @@
                                                     ↓ 映射到主站 577 条权威线路
                                                scripts/update.py
                                                     ↓
-                                   data/status.json + summary.json + history/*.jsonl
+                          data/status.json + summary.json + history/*.jsonl
                                                     ↓
-                                               index.html（液态玻璃 UI）
+                          data/history/index.json + page-N.json（30 条/页）
+                                                    ↓
+                          index.html（实时状态 UI）· history.html（历史故障 UI）
 ```
 
 **单次快照规模**：约 **166 家铁道公司 / 513 条线路**，其中 **82%** 可映射到主站线路。
@@ -51,12 +54,12 @@
       "severity": 3,                  // 0 正常，越大越严重
       "label": "列車遅延",             // 源站原文状况标签
       "detail": "接続待ちの影響で、一部列車に遅れが出ています",
-      "url": "https://transit.yahoo.co.jp/diainfo/21/0",
+      // 注意：已按品牌中立化原则去掉源站 URL（data 中不再包含 Yahoo 链接）
       "mainline": {                   // ★ 与主站线路的映射，null 表示未映射
         "seq": 5, "line": "山手線", "rw_ids": [628],
         "method": "exact",            // exact / alias / company / operator / suffix / composite / fuzzy
         "confidence": 1.0,
-        "site": "https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/"
+        "site": "https://jr.suki.ing/"
       },
       "mainlines": null               // 「・」复合线名会映射到多条，此时此项为数组
     }
@@ -82,13 +85,24 @@
 |---|---|
 | `data/summary.json` | 轻量概览（统计 + 仅异常线路），便于快速轮询 |
 | `data/history/YYYY-MM-DD.jsonl` | 当日**状态变化**事件流（仅在变化时追加，>60 天自动清理） |
+| `data/history/index.json` | 历史故障分页索引（页数 / 总条数 / 时间范围 / 指纹） |
+| `data/history/page-N.json` | 历史故障分页数据（**仅状态变化事件**，按时间倒序，每页 30 条；分页避免单文件过大） |
 | `mapping/unmapped.json` | 未能映射到主站的线路清单，用于人工补 `aliases.json` |
+
+### 历史故障页（`history.html`）
+
+页面底部「历史故障」入口指向 `history.html`：汇总 `data/history/*.jsonl` 中的**状态变化事件**（`from ≠ to`，
+同状态详情刷新不计入「故障」），按时间倒序展示，30 条一页。分页数据由 `update.py` 每次运行同步重建：
+
+- 事件集合无变化时不改写分页文件（不产生无意义提交）；
+- 历史文件被清理（>60 天删除）后，下一次运行自动重建分页；
+- 单页数据 ≤30 条，远低于 GitHub / Cloudflare Pages 的单文件体积限制。
 
 ---
 
 ## 与主站的线路映射
 
-主站权威线路表取自 `floral-salad-8734` 的 `data/lines_index.json`（**577 条**），已固化为
+主站权威线路表取自主站 [jr.suki.ing](https://jr.suki.ing/) 的 `data/lines_index.json`（**577 条**），已固化为
 `mapping/lines_reference.json`。映射采用阶梯策略，**命中即停**：
 
 | 级别 | 方式 | 置信度 |
@@ -197,12 +211,19 @@ python3 scripts/map_lines.py       # 打印若干典型线路的映射结果与�
 
 ```
 jr-status/
-├── index.html                 # 展示页（GitHub Pages 根）
-├── assets/{app.css,app.js}    # 液态玻璃 UI（token 取自主站同源）
+├── index.html                 # 实时状态页（GitHub Pages / Cloudflare Pages 根）
+├── history.html               # 历史故障页（按时间倒序，30 条/页）
+├── assets/
+│   ├── app.css                # 液态玻璃 UI（token 取自主站同源）
+│   ├── app.js                 # 实时状态页逻辑
+│   └── history.js             # 历史故障页逻辑
 ├── data/
-│   ├── status.json            # 最新快照（生成）
+│   ├── status.json            # 最新快照（生成，不含源站 Yahoo URL）
 │   ├── summary.json           # 概览（生成）
-│   └── history/*.jsonl        # 变化事件流（生成）
+│   └── history/
+│       ├── YYYY-MM-DD.jsonl   # 变化事件流（生成）
+│       ├── index.json         # 历史故障分页索引（生成）
+│       └── page-N.json        # 历史故障分页数据（生成，30 条/页）
 ├── mapping/
 │   ├── lines_reference.json   # 主站 577 条权威线路
 │   ├── aliases.json           # ★ 人工别名表（可补充提升覆盖率）
@@ -210,6 +231,6 @@ jr-status/
 ├── scripts/
 │   ├── fetch_status.py        # 采集运行情报源
 │   ├── map_lines.py           # 映射引擎
-│   └── update.py              # 编排
+│   └── update.py              # 编排（含历史分页构建）
 └── .github/workflows/update.yml
 ```

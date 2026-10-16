@@ -6,9 +6,11 @@ jr-status / update.py
 （数据源按品牌中立化原则处理：功能 URL 保留，文案与对外字段去品牌。）
 
 产出：
-  data/status.json            最新快照（前端消费的主数据）
+  data/status.json            最新快照（前端消费的主数据，不含源站 Yahoo URL）
   data/summary.json           轻量概览（统计 + 有异常线路，便于快速轮询）
   data/history/YYYY-MM-DD.jsonl  当日状态变化事件流（仅在发生变化时追加）
+  data/history/index.json       历史故障分页索引（含指纹，数据无变化时不改写）
+  data/history/page-N.json       历史故障分页数据（仅状态变化事件，时间倒序，30 条/页）
   mapping/unmapped.json       未映射线路清单（便于人工补充 aliases.json）
 
 提交策略（配合 workflow 的 git diff 判断）：
@@ -18,6 +20,7 @@ jr-status / update.py
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import time
@@ -36,7 +39,9 @@ JST = timezone(timedelta(hours=9))
 HEARTBEAT_SEC = int(os.environ.get("HEARTBEAT_SEC", "1800"))  # 30 分钟
 FORCE = str(os.environ.get("FORCE", "")).lower() in ("1", "true", "yes")
 SCHEMA = "jr-status/v1"
-MAIN_SITE = "https://ooep.github.io/floral-salad-8734/mini-japanrail-3d/"
+HISTORY_SCHEMA = "jr-status/history/v1"
+HISTORY_PAGE_SIZE = 30
+MAIN_SITE = "https://jr.suki.ing/"
 
 STATUS_RULES = [
     # (关键字, category, severity)   —— 顺序即优先级
@@ -105,7 +110,6 @@ def build() -> dict:
             "severity": sev,
             "label": ln.status_label,
             "detail": ln.detail,
-            "url": ln.url,
             "mainline": mains[0] if mains else None,
             "mainlines": mains if len(mains) > 1 else None,
         }
@@ -174,6 +178,93 @@ def write_history(new: dict, prev: dict, now: datetime) -> int:
     return len(events)
 
 
+def _history_fingerprint() -> str:
+    """基于 data/history/*.jsonl 文件集合的指纹：任一文件增删改都会变化。"""
+    h = hashlib.sha1()
+    for p in sorted((DATA / "history").glob("*.jsonl")):
+        st = p.stat()
+        h.update(f"{p.name}:{st.st_size}:{st.st_mtime_ns}\n".encode())
+    return h.hexdigest()[:16]
+
+
+def build_history_pages() -> bool:
+    """把 data/history/*.jsonl 汇总为分页故障记录：
+
+      - 仅收录真正的状态变化事件（from != to）；同状态详情刷新不算故障。
+      - 按时间倒序排列（最新在前），每页 30 条，写入
+        data/history/index.json（索引 + 指纹）与 data/history/page-N.json。
+      - 事件集合无变化时不做任何写入（避免产生无意义提交）。
+      - 事件减少（历史清理）时删除多余的分页文件。
+
+    返回是否写入了文件。
+    """
+    hist_dir = DATA / "history"
+    hist_dir.mkdir(parents=True, exist_ok=True)
+    fp = _history_fingerprint()
+    index_p = hist_dir / "index.json"
+    try:
+        cur = json.loads(index_p.read_text(encoding="utf-8"))
+        if cur.get("fingerprint") == fp:
+            return False
+    except Exception:
+        cur = None
+
+    events: List[dict] = []
+    for p in sorted(hist_dir.glob("*.jsonl")):
+        for line in p.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                e = json.loads(line)
+            except Exception:
+                continue
+            if e.get("from") != e.get("to"):
+                events.append(e)
+    events.sort(key=lambda e: str(e.get("at", "")), reverse=True)
+
+    now = datetime.now(JST).strftime("%Y-%m-%dT%H:%M:%S%z")
+    total = len(events)
+    pages = (total + HISTORY_PAGE_SIZE - 1) // HISTORY_PAGE_SIZE
+    index = {
+        "schema": HISTORY_SCHEMA,
+        "page_size": HISTORY_PAGE_SIZE,
+        "pages": pages,
+        "total": total,
+        "updated_at": now,
+        "fingerprint": fp,
+        "range": {
+            "from": events[-1]["at"] if events else None,
+            "to": events[0]["at"] if events else None,
+        },
+    }
+    index_p.write_text(
+        json.dumps(index, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+    for i in range(1, pages + 1):
+        chunk = events[(i - 1) * HISTORY_PAGE_SIZE: i * HISTORY_PAGE_SIZE]
+        page = {
+            "schema": HISTORY_SCHEMA,
+            "page": i,
+            "page_size": HISTORY_PAGE_SIZE,
+            "updated_at": now,
+            "events": chunk,
+        }
+        (hist_dir / f"page-{i}.json").write_text(
+            json.dumps(page, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+    for p in hist_dir.glob("page-*.json"):
+        try:
+            n = int(p.stem.split("-")[1])
+        except Exception:
+            continue
+        if n > pages:
+            p.unlink()
+
+    print(f"[hist] {total} 条故障记录 -> {pages} 页（每页 {HISTORY_PAGE_SIZE} 条）")
+    return True
+
+
 def main() -> int:
     DATA.mkdir(exist_ok=True)
     prev = None
@@ -197,9 +288,12 @@ def main() -> int:
         changed = (not same) or (elapsed >= HEARTBEAT_SEC) or FORCE
         if not changed:
             print("[skip] 无语义变化且在心跳窗口内 -> 不改写文件（不产生提交）")
+            # 历史文件集合可能因清理而变化（jsonl 被删除），此时仍需重建分页
+            build_history_pages()
             return 0
 
     added = write_history(payload, prev, now)
+    build_history_pages()
     status_p.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
     summary = {
@@ -210,7 +304,7 @@ def main() -> int:
         "areas": payload["areas"],
         "trouble_lines": [
             {k: l[k] for k in ("id", "company", "area", "name", "status", "severity",
-                               "label", "detail", "url", "mainline")}
+                               "label", "detail", "mainline")}
             for l in payload["lines"] if l["severity"] > 0
         ],
     }

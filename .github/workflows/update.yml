@@ -38,6 +38,10 @@ jobs:
       - name: Install deps
         run: pip install --quiet requests beautifulsoup4
 
+      - name: Prune old history (>60 days)
+        run: |
+          find data/history -name '*.jsonl' -type f -mtime +60 -delete 2>/dev/null || true
+
       - name: Fetch & build
         env:
           HEARTBEAT_SEC: "1800"
@@ -45,10 +49,6 @@ jobs:
         run: |
           cd scripts
           python3 update.py
-
-      - name: Prune old history (>60 days)
-        run: |
-          find data/history -name '*.jsonl' -type f -mtime +60 -delete 2>/dev/null || true
 
       - name: Commit if changed
         id: commit

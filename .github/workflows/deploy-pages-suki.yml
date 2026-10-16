@@ -23,9 +23,11 @@ jobs:
       - name: Prepare deploy dir (纯静态)
         run: |
           rm -rf _deploy && mkdir -p _deploy
-          cp -r index.html assets data _deploy/
+          cp -r index.html history.html assets data _deploy/
           cat > _deploy/_headers << 'EOF'
           /index.html
+            Cache-Control: public, max-age=300
+          /history.html
             Cache-Control: public, max-age=300
           /data/*
             Cache-Control: no-cache

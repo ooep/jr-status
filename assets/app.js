@@ -13,7 +13,7 @@ const I18N = {
     eyebrow: 'MINI JAPANRAIL · STATUS',
     heroTitle: '全日本铁道 · 运行情报',
     all: '全部', troubleOnly: '仅异常', mappedOnly: '仅已映射主站',
-    srcLabel: '数据来源', mainSite: 'Mini JapanRail 主站',
+    srcLabel: '数据来源', mainSite: 'Mini JapanRail 主站', historyLink: '历史故障',
     theme: '主题', langLabel: '语言', clear: '清除',
     viewOriginal: '查看原文', modalOk: '确定', noDetail: '（暂无更详细的说明）',
     publishLabel: '发布于',
@@ -38,7 +38,7 @@ const I18N = {
     eyebrow: 'MINI JAPANRAIL · STATUS',
     heroTitle: '全国鉄道 · 運行情報',
     all: 'すべて', troubleOnly: '異常のみ', mappedOnly: 'マッピング済みのみ',
-    srcLabel: 'データ元', mainSite: 'Mini JapanRail 本サイト',
+    srcLabel: 'データ元', mainSite: 'Mini JapanRail 本サイト', historyLink: '過去の障害',
     theme: 'テーマ', langLabel: '言語', clear: 'クリア',
     viewOriginal: '原文を表示', modalOk: 'OK', noDetail: '（詳細な説明はありません）',
     publishLabel: '掲載',
@@ -63,7 +63,7 @@ const I18N = {
     eyebrow: 'MINI JAPANRAIL · STATUS',
     heroTitle: 'Japan Railways · Live Status',
     all: 'All', troubleOnly: 'Disrupted only', mappedOnly: 'Mapped only',
-    srcLabel: 'Source', mainSite: 'Mini JapanRail main site',
+    srcLabel: 'Source', mainSite: 'Mini JapanRail main site', historyLink: 'Incident history',
     theme: 'Theme', langLabel: 'Language', clear: 'Clear',
     viewOriginal: 'View original', modalOk: 'OK', noDetail: '(No further details)',
     publishLabel: 'Published',
@@ -264,7 +264,7 @@ function renderStats() {
     meta.innerHTML =
       `<span class="live"><i></i>${esc(t('updated'))} <b>${esc(d.updated_at_display)}</b>（${esc(ago(d.updated_at))}）</span>`;
   }
-  $('#footMeta').textContent = `${t('updated')} ${d.updated_at_display} · data/status.json`;
+  $('#footMeta').textContent = `${t('updated')} ${d.updated_at_display}`;
 }
 
 function renderAreaChips() {
@@ -299,8 +299,8 @@ function lineRow(l) {
   const mapped = l.mainline
     ? `<span class="tag map">${esc(t('mappedTag'))}${esc(l.mainline.line)}</span>` : '';
   const detail = l.detail ? `<div class="dt">${esc(l.detail)}</div>` : '';
-  // 「查看原文」：不再跳转源站，改为站内弹窗展示完整原文
-  const viewBtn = l.url
+  // 「查看原文」：不再跳转源站，改为站内弹窗展示完整原文（数据中已不含源站 URL）
+  const viewBtn = (l.detail_full || l.detail)
     ? `<button type="button" class="tag tag-act" data-view="1"
          data-name="${esc(l.name)}" data-status="${esc(l.status)}" data-label="${esc(l.label)}"
          data-company="${esc(l.company)}" data-area="${esc(l.area)}"
