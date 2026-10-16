@@ -221,3 +221,6 @@
 {"at": "2026-10-16T18:46:03+0900", "id": "266", "company": "JR西日本", "name": "琵琶湖線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T18:46:03+0900", "id": "190", "company": "東京都交通局", "name": "都電荒川線", "from": "irregular", "to": "normal", "from_label": "運転状況", "to_label": "平常運転", "detail": "18:40現在、ほぼ平常通り運転..."}
 {"at": "2026-10-16T19:01:21+0900", "id": "135", "company": "東京メトロ", "name": "東京メトロ東西線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "18:36頃、中野駅での安全確認..."}
+{"at": "2026-10-16T19:06:04+0900", "id": "622", "company": "京成電鉄", "name": "成田スカイアクセス線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "東松戸駅で発生した人身事故の影響..."}
+{"at": "2026-10-16T19:06:04+0900", "id": "141", "company": "北総鉄道", "name": "北総線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "東松戸駅で発生した人身事故の影響..."}
+{"at": "2026-10-16T19:06:04+0900", "id": "138", "company": "東京メトロ", "name": "東京メトロ半蔵門線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "18:27頃、東武スカイツリーラ..."}
