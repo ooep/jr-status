@@ -126,3 +126,4 @@
 {"at": "2026-10-16T14:06:00+0900", "id": "268", "company": "JR西日本", "name": "湖西線", "from": "resume", "to": "irregular", "from_label": "運転再開", "to_label": "運転状況", "detail": "11:50頃、大津京駅で発生した..."}
 {"at": "2026-10-16T14:06:00+0900", "id": "545", "company": "札幌市交通事業振興公社", "name": "札幌市電", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T14:06:00+0900", "id": "146", "company": "秩父鉄道", "name": "秩父鉄道線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "14:00現在、ほぼ平常通り運転..."}
+{"at": "2026-10-16T14:16:07+0900", "id": "504", "company": "JR西日本", "name": "岩徳線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "櫛ケ浜駅での接続待ちの影響で、一..."}
