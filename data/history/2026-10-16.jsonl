@@ -233,3 +233,5 @@
 {"at": "2026-10-16T19:26:05+0900", "id": "268", "company": "JR西日本", "name": "湖西線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "19:07頃、北小松〜近江高島駅..."}
 {"at": "2026-10-16T19:26:05+0900", "id": "622", "company": "京成電鉄", "name": "成田スカイアクセス線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "東松戸駅で発生した人身事故の影響..."}
 {"at": "2026-10-16T19:26:05+0900", "id": "141", "company": "北総鉄道", "name": "北総線", "from": "suspend", "to": "resume", "from_label": "運転見合わせ", "to_label": "運転再開", "detail": "東松戸駅で発生した人身事故の影響..."}
+{"at": "2026-10-16T19:31:16+0900", "id": "63", "company": "JR東日本", "name": "内房線", "from": "other", "to": "delay", "from_label": "その他", "to_label": "列車遅延（他1件）", "detail": "南三原〜和田浦駅間で発生した動物..."}
+{"at": "2026-10-16T19:31:16+0900", "id": "137", "company": "東京メトロ", "name": "東京メトロ有楽町線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "19:12頃、豊洲駅での救護活動..."}
