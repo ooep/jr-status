@@ -6,7 +6,7 @@
 
 - 🌐 实时状态页：<https://jrstatus.jr.suki.ing/>
 - 📜 历史故障页：<https://jrstatus.jr.suki.ing/history.html>（按时间倒序，30 条/页）
-- 📦 数据表：`data/status.json`（主数据）、`data/summary.json`（轻量概览）、`data/history/index.json` + `data/history/page-N.json`（历史故障分页）
+- 📦 数据表：`data/status.json`（主数据）、`data/summary.json`（轻量概览）、`data/history/index.json` + `data/history/page-N.json`（历史故障分页）、`data/translations.json`（日→中/英翻译缓存）
 
 ---
 
@@ -18,8 +18,10 @@
                                                scripts/map_lines.py
                                                     ↓ 映射到主站 577 条权威线路
                                                scripts/update.py
+                                                    ↓ 调用 scripts/translate.py（Index-Translate API）
+                                               data/translations.json（日→中/英缓存）
                                                     ↓
-                          data/status.json + summary.json + history/*.jsonl
+                          data/status.json + summary.json + history/*.jsonl（含中英译文字段）
                                                     ↓
                           data/history/index.json + page-N.json（30 条/页）
                                                     ↓
@@ -53,7 +55,11 @@
       "status": "delay",              // 归一化分类（见下表）
       "severity": 3,                  // 0 正常，越大越严重
       "label": "列車遅延",             // 源站原文状况标签
+      "label_zh": "列车晚点",          // ★ 中英译文（由翻译链路生成，缺失时前端回落日语原文）
+      "label_en": "Train delay",
       "detail": "接続待ちの影響で、一部列車に遅れが出ています",
+      "detail_zh": "受等待衔接列车的影响，部分列车出现晚点",
+      "detail_en": "Some trains are delayed due to connection waits",
       // 注意：已按品牌中立化原则去掉源站 URL（data 中不再包含 Yahoo 链接）
       "mainline": {                   // ★ 与主站线路的映射，null 表示未映射
         "seq": 5, "line": "山手線", "rw_ids": [628],
@@ -87,7 +93,24 @@
 | `data/history/YYYY-MM-DD.jsonl` | 当日**状态变化**事件流（仅在变化时追加，>60 天自动清理） |
 | `data/history/index.json` | 历史故障分页索引（页数 / 总条数 / 时间范围 / 指纹） |
 | `data/history/page-N.json` | 历史故障分页数据（**仅状态变化事件**，按时间倒序，每页 30 条；分页避免单文件过大） |
+| `data/translations.json` | 日→中/英翻译缓存（按原文 sha1 去重，只翻译新文本，控制 API 请求量） |
 | `mapping/unmapped.json` | 未能映射到主站的线路清单，用于人工补 `aliases.json` |
+
+### 多语言（翻译链路）
+
+源站运行情报为日语。`update.py` 每次拉取到新文本后，调用 **Index-Translate 免费公共 API**
+（`https://index-translate.bilibili.com/v1`，模型 `Index-Translate-35B-A3B`，`enable_thinking=false`）
+把每条**状态标签 / 故障详情**翻译为中文和英语：
+
+- **日语页面**始终展示源站原文；
+- **中文 / 英语页面**展示对应译文；译文缺失（API 未返回）时**自动回落日语原文**；
+- 翻译结果持久缓存在 `data/translations.json`，相同原文不重复请求；
+- 详情全文末尾的「（10月16日 18時55分掲載）」时间戳在翻译前剥离，
+  以 `detail_full_pub` 字段交给前端弹窗单独展示；
+- 历史故障事件同样携带 `from_label_zh/_en`、`to_label_zh/_en`、`detail_zh/_en`。
+
+> 翻译为尽力而为：单条失败会静默跳过并回落日语，不影响采集主流程。
+> 人工调试可用 `scripts/call_api.py`（Index-Translate 官方参考脚本，本仓库随附）。
 
 ### 历史故障页（`history.html`）
 
@@ -184,11 +207,12 @@ UptimeRobot 等纯 GET 监控无法携带认证头，不适用。
 
 ```bash
 python3 -m pip install requests beautifulsoup4
-python3 scripts/update.py          # 采集 + 映射 + 落盘
+python3 scripts/update.py          # 采集 + 映射 + 翻译 + 落盘
 python3 -m http.server 8000        # 然后打开 http://127.0.0.1:8000/
 ```
 
-（`file://` 直接打开无法 fetch 本地 JSON，必须走 HTTP。）
+（`file://` 直接打开无法 fetch 本地 JSON，必须走 HTTP。
+翻译模块为纯 stdlib，无需额外安装；首次运行会真实调用翻译 API 生成 `data/translations.json`。）
 
 单独调试映射：
 
@@ -218,8 +242,9 @@ jr-status/
 │   ├── app.js                 # 实时状态页逻辑
 │   └── history.js             # 历史故障页逻辑
 ├── data/
-│   ├── status.json            # 最新快照（生成，不含源站 Yahoo URL）
+│   ├── status.json            # 最新快照（生成，不含源站 Yahoo URL，含中英译文）
 │   ├── summary.json           # 概览（生成）
+│   ├── translations.json      # 日→中/英翻译缓存（生成）
 │   └── history/
 │       ├── YYYY-MM-DD.jsonl   # 变化事件流（生成）
 │       ├── index.json         # 历史故障分页索引（生成）
@@ -231,6 +256,8 @@ jr-status/
 ├── scripts/
 │   ├── fetch_status.py        # 采集运行情报源
 │   ├── map_lines.py           # 映射引擎
-│   └── update.py              # 编排（含历史分页构建）
+│   ├── translate.py           # ★ 日→中/英翻译（Index-Translate API + 缓存）
+│   ├── call_api.py            # Index-Translate 官方参考脚本（人工调试用）
+│   └── update.py              # 编排（含历史分页构建 + 翻译接入）
 └── .github/workflows/update.yml
 ```

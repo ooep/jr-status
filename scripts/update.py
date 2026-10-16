@@ -6,11 +6,12 @@ jr-status / update.py
 （数据源按品牌中立化原则处理：功能 URL 保留，文案与对外字段去品牌。）
 
 产出：
-  data/status.json            最新快照（前端消费的主数据，不含源站 Yahoo URL）
+  data/status.json            最新快照（前端消费的主数据，不含源站 Yahoo URL，含中英翻译）
   data/summary.json           轻量概览（统计 + 有异常线路，便于快速轮询）
   data/history/YYYY-MM-DD.jsonl  当日状态变化事件流（仅在发生变化时追加）
   data/history/index.json       历史故障分页索引（含指纹，数据无变化时不改写）
   data/history/page-N.json       历史故障分页数据（仅状态变化事件，时间倒序，30 条/页）
+  data/translations.json      日->中/英 翻译缓存（按原文 sha1 去重，只翻译新文本）
   mapping/unmapped.json       未映射线路清单（便于人工补充 aliases.json）
 
 提交策略（配合 workflow 的 git diff 判断）：
@@ -23,13 +24,15 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 from fetch_status import fetch_all, all_lines, enrich_trouble_details, LineRecord
 from map_lines import Mapper
+from translate import TranslationCache, translate_texts
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -42,6 +45,10 @@ SCHEMA = "jr-status/v1"
 HISTORY_SCHEMA = "jr-status/history/v1"
 HISTORY_PAGE_SIZE = 30
 MAIN_SITE = "https://jr.suki.ing/"
+
+# 详情页全文末尾的「掲載」时间戳（（10月16日 18時55分掲載）），翻译前剥离，
+# 译文只覆盖正文；原文时间戳单独以 detail_full_pub 存给前端展示
+PUBLISH_RE = re.compile(r"（(\d{1,2}月\d{1,2}日\s*\d{1,2}時\d{1,2}分)掲載）\s*$")
 
 STATUS_RULES = [
     # (关键字, category, severity)   —— 顺序即优先级
@@ -74,6 +81,66 @@ def _semantic(payload: dict) -> dict:
             for l in payload["lines"]
         ]
     }
+
+
+def _split_publish(text: str) -> Tuple[str, str]:
+    """剥离详情全文末尾的（…掲載）时间戳，返回 (正文, 时间戳)。"""
+    if not text:
+        return text, ""
+    m = PUBLISH_RE.search(text)
+    if not m:
+        return text, ""
+    return text[: m.start()].strip(), m.group(1)
+
+
+def _collect_texts(payload: dict, prev: dict | None) -> List[str]:
+    """收集需要翻译的原文集合：当前快照的标签/详情 + 上一快照的标签/详情
+    （后者的标签会出现在新追加的历史事件里，需保证也有译文）。"""
+    texts: List[str] = []
+    for src in (payload, prev):
+        if not src:
+            continue
+        for l in src.get("lines", []):
+            for f in ("label", "detail", "detail_full"):
+                v = l.get(f)
+                if not v:
+                    continue
+                if f == "detail_full":
+                    v, _ = _split_publish(v)
+                if v and v not in texts:
+                    texts.append(v)
+    return texts
+
+
+def _attach_translation(line: dict, cache: TranslationCache) -> None:
+    """把缓存里的 zh/en 译文挂到单条记录；翻译缺失时省略字段（前端回落日语）。"""
+    for f in ("label", "detail", "detail_full"):
+        v = line.get(f)
+        if not v:
+            continue
+        if f == "detail_full":
+            v, pub = _split_publish(v)
+            line["detail_full_main"] = v          # 剥离掲載时间戳后的正文（原文）
+            if pub:
+                line["detail_full_pub"] = pub     # （10月16日 18時55分掲載）时间戳
+        e = cache.get(v)
+        if not e:
+            continue
+        if e.get("zh"):
+            line[f + "_zh"] = e["zh"]
+        if e.get("en"):
+            line[f + "_en"] = e["en"]
+
+
+def translate_payload(payload: dict, prev: dict | None, cache: TranslationCache) -> None:
+    """把本次快照（及上一快照）涉及的全部日语文案翻译为 zh/en 并挂到记录上。"""
+    texts = _collect_texts(payload, prev)
+    translate_texts(texts, cache)
+    for l in payload["lines"]:
+        _attach_translation(l, cache)
+    done = sum(1 for l in payload["lines"]
+               if l.get("detail_zh") or l.get("detail_full_zh") or l.get("label_zh"))
+    print(f"[i18n] 已为 {done}/{len(payload['lines'])} 条记录补充中英翻译")
 
 
 def build() -> dict:
@@ -150,7 +217,7 @@ def build() -> dict:
     return payload, unmatched, now
 
 
-def write_history(new: dict, prev: dict, now: datetime) -> int:
+def write_history(new: dict, prev: dict, now: datetime, cache: TranslationCache) -> int:
     """对比新旧快照，仅在簇级状态变化时追加事件。返回追加条数。"""
     if not prev:
         return 0
@@ -161,13 +228,23 @@ def write_history(new: dict, prev: dict, now: datetime) -> int:
         if o is None:
             continue
         if o["status"] != l["status"] or o["detail"] != l["detail"]:
-            events.append({
+            e = {
                 "at": now.strftime("%Y-%m-%dT%H:%M:%S%z"),
                 "id": l["id"], "company": l["company"], "name": l["name"],
                 "from": o["status"], "to": l["status"],
                 "from_label": o["label"], "to_label": l["label"],
                 "detail": l["detail"],
-            })
+            }
+            # 事件也带中英译文（缺失时前端回落日语）
+            for f in ("from_label", "to_label", "detail"):
+                raw = e.get(f)
+                ent = cache.get(raw) if raw else None
+                if ent:
+                    if ent.get("zh"):
+                        e[f + "_zh"] = ent["zh"]
+                    if ent.get("en"):
+                        e[f + "_en"] = ent["en"]
+            events.append(e)
     if events:
         DATA.mkdir(exist_ok=True)
         p = DATA / "history" / f"{now.strftime('%Y-%m-%d')}.jsonl"
@@ -179,12 +256,33 @@ def write_history(new: dict, prev: dict, now: datetime) -> int:
 
 
 def _history_fingerprint() -> str:
-    """基于 data/history/*.jsonl 文件集合的指纹：任一文件增删改都会变化。"""
+    """基于 data/history/*.jsonl 与 data/translations.json 的指纹：
+    任一文件增删改（含译文更新）都会触发分页重建。"""
     h = hashlib.sha1()
     for p in sorted((DATA / "history").glob("*.jsonl")):
         st = p.stat()
         h.update(f"{p.name}:{st.st_size}:{st.st_mtime_ns}\n".encode())
+    tp = DATA / "translations.json"
+    if tp.exists():
+        st = tp.stat()
+        h.update(f"translations:{st.st_size}:{st.st_mtime_ns}\n".encode())
     return h.hexdigest()[:16]
+
+
+def _enrich_event(e: dict, cache: TranslationCache) -> dict:
+    """用最新翻译缓存刷新历史事件译文（缓存为权威，覆盖旧的或缺失的译文）。"""
+    for f in ("from_label", "to_label", "detail"):
+        raw = e.get(f)
+        if not raw:
+            continue
+        ent = cache.get(raw)
+        if not ent:
+            continue
+        if ent.get("zh"):
+            e[f + "_zh"] = ent["zh"]
+        if ent.get("en"):
+            e[f + "_en"] = ent["en"]
+    return e
 
 
 def build_history_pages() -> bool:
@@ -222,6 +320,11 @@ def build_history_pages() -> bool:
             if e.get("from") != e.get("to"):
                 events.append(e)
     events.sort(key=lambda e: str(e.get("at", "")), reverse=True)
+
+    # 用翻译缓存回填缺失译文（老事件也能获得中英版本）
+    cache = TranslationCache(DATA / "translations.json")
+    for e in events:
+        _enrich_event(e, cache)
 
     now = datetime.now(JST).strftime("%Y-%m-%dT%H:%M:%S%z")
     total = len(events)
@@ -292,7 +395,12 @@ def main() -> int:
             build_history_pages()
             return 0
 
-    added = write_history(payload, prev, now)
+    # 翻译链路：把日语文案翻译为中/英（缓存去重），并先行落盘，供事件与分页回填
+    cache = TranslationCache(DATA / "translations.json")
+    translate_payload(payload, prev, cache)
+    cache.save(payload["updated_at"])
+
+    added = write_history(payload, prev, now, cache)
     build_history_pages()
     status_p.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
@@ -304,7 +412,10 @@ def main() -> int:
         "areas": payload["areas"],
         "trouble_lines": [
             {k: l[k] for k in ("id", "company", "area", "name", "status", "severity",
-                               "label", "detail", "mainline")}
+                               "label", "detail", "mainline")
+             if k in l}
+            | {k: l[k] for k in ("label_zh", "label_en", "detail_zh", "detail_en")
+               if k in l}
             for l in payload["lines"] if l["severity"] > 0
         ],
     }

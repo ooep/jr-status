@@ -91,6 +91,14 @@ function t(key) {
 const stLabel = (cat) => t('st.' + cat) || cat;
 function esc(s) { return String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 
+/* 多语展示：ja 用原文；zh/en 用对应译文，缺失回落日语原文 */
+function tr(e, field) {
+  const raw = e[field];
+  if (!raw) return '';
+  if (state.lang === 'ja') return raw;
+  return e[field + (state.lang === 'zh' ? '_zh' : '_en')] || raw;
+}
+
 /* ───────── theme & lang ───────── */
 function resolveTheme() {
   return state.theme === 'auto'
@@ -153,10 +161,17 @@ function eventRow(e) {
   const colFrom = CAT_COLOR[e.from] || CAT_COLOR.unknown;
   const colTo = CAT_COLOR[e.to] || CAT_COLOR.unknown;
   const dot = (col, cat) => `<span class="dotc" style="background:${col};box-shadow:0 0 6px ${col}" title="${esc(stLabel(cat))}"></span>`;
-  const chip = (col, cat, raw) =>
-    `<span class="hchip" style="color:${col};background:color-mix(in srgb, ${col} 12%, transparent);border-color:color-mix(in srgb, ${col} 38%, transparent)">
-       ${esc(stLabel(cat))}${raw && raw !== stLabel(cat) ? `<i class="hraw">${esc(raw)}</i>` : ''}
+  const chip = (col, cat, raw) => {
+    const main = stLabel(cat);
+    // ja：分类名 + 原文（与分类名不同才显示）；zh/en：优先显示更具体的标签译文
+    const showRaw = raw && raw !== main;
+    const body = state.lang === 'ja'
+      ? `${main}${showRaw ? `<i class="hraw">${esc(raw)}</i>` : ''}`
+      : (showRaw ? esc(raw) : main);
+    return `<span class="hchip" style="color:${col};background:color-mix(in srgb, ${col} 12%, transparent);border-color:color-mix(in srgb, ${col} 38%, transparent)">
+       ${body}
      </span>`;
+  };
   return `<article class="hcard glass" style="--bc:${companyColor(e.company)}">
     <div class="hcard-head">
       <time class="htime">${esc(fmtTime(e.at))}</time>
@@ -170,11 +185,11 @@ function eventRow(e) {
       <div class="body">
         <div class="ttl">
           <span class="nm">${esc(e.name)}</span>
-          ${chip(colFrom, e.from, e.from_label)}
+          ${chip(colFrom, e.from, tr(e, 'from_label'))}
           <span class="harrow" aria-hidden="true">→</span>
-          ${chip(colTo, e.to, e.to_label)}
+          ${chip(colTo, e.to, tr(e, 'to_label'))}
         </div>
-        ${e.detail ? `<div class="dt">${esc(e.detail)}</div>` : ''}
+        ${tr(e, 'detail') ? `<div class="dt">${esc(tr(e, 'detail'))}</div>` : ''}
       </div>
     </div>
   </article>`;
@@ -229,6 +244,8 @@ function renderPager() {
 }
 
 /* ───────── 数据 ───────── */
+let lastEvents = null;   // 当前页事件缓存（切换语言时按新语种重渲染）
+
 async function loadPage(n) {
   const idx = state.index;
   const page = Math.max(1, Math.min(n, idx.pages || 1));
@@ -237,7 +254,8 @@ async function loadPage(n) {
     const r = await fetch(`data/history/page-${page}.json?t=${Date.now()}`, { cache: 'no-store' });
     if (!r.ok) throw new Error(r.status);
     const data = await r.json();
-    renderList(data.events);
+    lastEvents = data.events;
+    renderList(lastEvents);
     renderPager();
     const url = page === 1 ? location.pathname : `history.html?page=${page}`;
     history.replaceState(null, '', url);
@@ -302,6 +320,7 @@ function boot() {
     state.lang = seq[(seq.indexOf(state.lang) + 1) % seq.length];
     localStorage.setItem('jrs_lang', state.lang);
     applyLang();
+    if (lastEvents) renderList(lastEvents);
     if (state.index) renderPager();
   };
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);

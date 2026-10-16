@@ -130,6 +130,23 @@ function t(key) {
 const stLabel = (cat) => t('st.' + cat);
 const severityOf = (c) => CAT.indexOf(c) === -1 ? 1 : (8 - CAT.indexOf(c));
 
+/* ───────── 多语展示 ─────────
+   数据携带 源站日语原文 + *_zh / *_en 翻译（缺失时回落日语原文）。 */
+function i18nText(l, field) {
+  const raw = l[field];
+  if (!raw) return '';
+  if (state.lang === 'ja') return raw;
+  const key = field + (state.lang === 'zh' ? '_zh' : '_en');
+  return l[key] || raw;
+}
+/* 详情全文：译文只覆盖正文，掲載时间戳由 detail_full_pub 单独展示 */
+function fullDetail(l) {
+  const main = l.detail_full_main || l.detail_full || '';
+  if (state.lang === 'ja') return main;
+  const key = state.lang === 'zh' ? 'detail_full_zh' : 'detail_full_en';
+  return l[key] || main || i18nText(l, 'detail');
+}
+
 /* ───────── theme & lang ───────── */
 function resolveTheme() {
   return state.theme === 'auto'
@@ -298,13 +315,13 @@ function lineRow(l) {
   const col = CAT_COLOR[l.status] || CAT_COLOR.unknown;
   const mapped = l.mainline
     ? `<span class="tag map">${esc(t('mappedTag'))}${esc(l.mainline.line)}</span>` : '';
-  const detail = l.detail ? `<div class="dt">${esc(l.detail)}</div>` : '';
-  // 「查看原文」：不再跳转源站，改为站内弹窗展示完整原文（数据中已不含源站 URL）
+  const detail = l.detail ? `<div class="dt">${esc(i18nText(l, 'detail'))}</div>` : '';
+  // 「查看原文」：站内弹窗展示完整译文（缺失时回落日语），掲載时间戳单独展示
   const viewBtn = (l.detail_full || l.detail)
     ? `<button type="button" class="tag tag-act" data-view="1"
          data-name="${esc(l.name)}" data-status="${esc(l.status)}" data-label="${esc(l.label)}"
          data-company="${esc(l.company)}" data-area="${esc(l.area)}"
-         data-detail="${esc(l.detail_full || l.detail)}">${esc(t('viewOriginal'))}</button>`
+         data-detail="${esc(fullDetail(l))}" data-pub="${esc(l.detail_full_pub || '')}">${esc(t('viewOriginal'))}</button>`
     : '';
   return `<div class="lrow">
       <span class="dotc" style="background:${col}"></span>
@@ -312,7 +329,7 @@ function lineRow(l) {
         <div class="ttl">
           <span class="nm">${esc(l.name)}</span>
           <span class="st" style="color:${col}">${esc(stLabel(l.status))}</span>
-          <span class="tag">${esc(l.label)}</span>
+          <span class="tag">${esc(i18nText(l, 'label'))}</span>
         </div>
         ${detail}
         ${(mapped || viewBtn) ? `<div class="tags">
@@ -325,7 +342,7 @@ function lineRow(l) {
 
 function linePill(l) {
   const col = CAT_COLOR[l.status] || CAT_COLOR.unknown;
-  return `<span class="line" title="${esc(l.label)}"><span class="s" style="background:${col}"></span><span class="line-name">${esc(l.name)}</span></span>`;
+  return `<span class="line" title="${esc(i18nText(l, 'label'))}"><span class="s" style="background:${col}"></span><span class="line-name">${esc(l.name)}</span></span>`;
 }
 
 function render() {
@@ -488,7 +505,7 @@ function renderBeams() {
     return `<button type="button" class="beam" data-sev="${sev}" data-view="1"
         data-name="${esc(l.name)}" data-status="${esc(l.status)}" data-label="${esc(l.label)}"
         data-company="${esc(l.company)}" data-area="${esc(l.area)}"
-        data-detail="${esc(l.detail_full || l.detail)}">
+        data-detail="${esc(fullDetail(l))}" data-pub="${esc(l.detail_full_pub || '')}">
         <span class="dotc" style="background:${col}"></span>
         <span class="beam-name">${esc(l.name)}</span>
         <span class="beam-st">${esc(stLabel(l.status))}</span>
@@ -535,10 +552,11 @@ function openSourceModal(el) {
   chip.style.color = col;
   chip.style.background = `rgba(${rgb}, .13)`;
   chip.style.borderColor = `rgba(${rgb}, .34)`;
-  // 正文：剥离掲載时间；无内容给兜底文案
+  // 正文：优先用数据自带的掲載时间戳（detail_full_pub），否则从原文末尾剥离
   const { text, published } = splitPublished(d.detail || '');
   $('#srcModalBody').textContent = text.trim() || t('noDetail');
-  $('#srcModalPub').textContent = published ? `${t('publishLabel')} ${published}` : '';
+  const pub = (d.pub || published || '').replace(/\s+/g, ' ');
+  $('#srcModalPub').textContent = pub ? `${t('publishLabel')} ${pub}` : '';
 
   modalLastFocus = el;
   $('#srcModal').hidden = false;
@@ -613,6 +631,7 @@ function boot() {
     state.lang = seq[(seq.indexOf(state.lang) + 1) % seq.length];
     localStorage.setItem('jrs_lang', state.lang);
     applyLang(); renderStats(); renderAreaChips(); render();
+    if (state.data) renderMap();
   };
   $('#btnRefresh').onclick = () => load();
 
