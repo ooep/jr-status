@@ -182,3 +182,4 @@
 {"at": "2026-10-16T16:16:07+0900", "id": "503", "company": "JR西日本", "name": "可部線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "大町駅での旅客対応の影響で、一部..."}
 {"at": "2026-10-16T16:26:01+0900", "id": "606", "company": "甘木鉄道", "name": "甘木鉄道線", "from": "normal", "to": "suspend", "from_label": "平常運転", "to_label": "運転見合わせ", "detail": "信号関係故障の影響で、運転を見合..."}
 {"at": "2026-10-16T16:26:01+0900", "id": "503", "company": "JR西日本", "name": "可部線", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "16:20現在、ほぼ平常通り運転..."}
+{"at": "2026-10-16T16:31:12+0900", "id": "192", "company": "JR東海", "name": "東海道本線[熱海～豊橋]", "from": "delay", "to": "normal", "from_label": "列車遅延", "to_label": "平常運転", "detail": "16:25現在、ほぼ平常通り運転..."}
