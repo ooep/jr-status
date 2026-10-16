@@ -33,3 +33,4 @@
 {"at": "2026-10-16T08:40:59+0900", "id": "135", "company": "東京メトロ", "name": "東京メトロ東西線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "08:23頃、東陽町駅での安全確..."}
 {"at": "2026-10-16T08:46:06+0900", "id": "138", "company": "東京メトロ", "name": "東京メトロ半蔵門線", "from": "normal", "to": "irregular", "from_label": "平常運転", "to_label": "運転状況", "detail": "07:24頃、東武スカイツリーラ..."}
 {"at": "2026-10-16T08:51:00+0900", "id": "638", "company": "道南いさりび鉄道", "name": "道南いさりび鉄道線", "from": "suspend", "to": "normal", "from_label": "運転見合わせ", "to_label": "平常運転", "detail": "08:50現在、運転を再開し、ほ..."}
+{"at": "2026-10-16T09:01:23+0900", "id": "139", "company": "東京メトロ", "name": "東京メトロ南北線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "08:44頃、東大前駅での荷物挟..."}
