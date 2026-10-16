@@ -210,3 +210,5 @@
 {"at": "2026-10-16T17:55:56+0900", "id": "29", "company": "JR東日本", "name": "横須賀線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T17:55:56+0900", "id": "308", "company": "阪急電鉄", "name": "阪急今津線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
 {"at": "2026-10-16T18:01:17+0900", "id": "528", "company": "JR九州", "name": "久大本線", "from": "normal", "to": "delay", "from_label": "平常運転", "to_label": "列車遅延", "detail": "17:30頃、豊後中村〜野矢駅間..."}
+{"at": "2026-10-16T18:11:01+0900", "id": "267", "company": "JR西日本", "name": "JR京都線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
+{"at": "2026-10-16T18:11:01+0900", "id": "132", "company": "東京メトロ", "name": "東京メトロ銀座線", "from": "normal", "to": "normal", "from_label": "平常運転", "to_label": "平常運転", "detail": "事故・遅延情報はありません"}
