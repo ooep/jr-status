@@ -155,6 +155,48 @@ function companyLogoHTML(company, size) {
   </span>`;
 }
 
+/* ───────── 线路小图标（复用 jr-static CDN 映射，Yahoo 原始名归一化） ───────── */
+const LINE_PRE = ['大阪メトロ', '京急', '京成', '京阪', '小田急', 'えちぜん鉄道', '上信電鉄', '伊予鉄',
+  '富山地方鉄道', '東京メトロ', '東急', '東武', '西武', '阪急'];
+const LINE_COMBO = {
+  '中央総武線': ['中央線', '総武本線'], '京浜東北根岸線': ['京浜東北線', '根岸線'],
+  '八高川越線': ['八高線', '川越線'], '埼京川越線': ['埼京線', '川越線'],
+  '西武池袋線・秩父線': ['池袋線', '西武秩父線']
+};
+const LINE_ALIAS = {
+  'きのくに線': '紀勢本線', 'みなとみらい線': 'みなとみらい21線',
+  '総武線': '総武本線', '上信電鉄線': '上信線'
+};
+function lineIconName(base) {
+  if (!base) return '';
+  const map = window.LINE_ICON || {};
+  const inMap = (k) => (map[k] ? k : '');
+  if (map[base]) return base;
+  if (LINE_COMBO[base]) { for (const c of LINE_COMBO[base]) { const r = inMap(c); if (r) return r; } }
+  if (LINE_ALIAS[base]) { const r = inMap(LINE_ALIAS[base]); if (r) return r; }
+  if (base.startsWith('IR')) { const r = inMap('ir' + base.slice(2)); if (r) return r; }
+  if (base.startsWith('JR')) { const r = inMap('jr' + base.slice(2)); if (r) return r; }
+  if (base.startsWith('都営')) {
+    const r1 = inMap('都営地下鉄' + base.slice(2)); if (r1) return r1;
+    const r2 = inMap(base.slice(2)); if (r2) return r2;
+  }
+  if (base.startsWith('東武東上線')) { const r = inMap('東上本線'); if (r) return r; }
+  for (const p of LINE_PRE) {
+    if (base.startsWith(p)) { const r = inMap(base.slice(p.length)); if (r) return r; }
+  }
+  const rj = inMap('jr' + base); if (rj) return rj;
+  return '';
+}
+function lineIconHtml(name) {
+  let base = String(name || '').replace(/\[[^\]]*\]/g, '').replace(/[（(].*?[)）]/g, '').trim();
+  let hit = '';
+  if (base.includes('・')) {
+    for (const part of base.split('・')) { hit = lineIconName(part.trim()); if (hit) break; }
+  }
+  if (!hit) hit = lineIconName(base);
+  return hit ? `<img class="lic" src="${window.LINE_ICON[hit]}" alt="" loading="lazy">` : '';
+}
+
 /* ───────── 时间展示（事件 at 为 JST 偏移，直接取本地文本） ───────── */
 function fmtTime(iso) {
   const m = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/);
@@ -223,6 +265,7 @@ function eventRow(e) {
     </div>
     <div class="lrow">
       ${dot(colFrom, e.from)}
+      ${lineIconHtml(e.name)}
       <div class="body">
         <div class="ttl">
           <span class="nm">${esc(e.name)}</span>
