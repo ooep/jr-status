@@ -311,6 +311,16 @@ function lineMatch(l) {
   return hay.includes(q);
 }
 
+// 线路小图标：优先用已映射主站线路名查 LINE_ICON（多映射时逐个找），兜底 Yahoo 原名
+function lineIconHtml(l) {
+  const map = window.LINE_ICON || {};
+  let name = '';
+  if (l.mainline && l.mainline.line && map[l.mainline.line]) name = l.mainline.line;
+  else if (l.mainlines) { for (const m of l.mainlines) { if (m.line && map[m.line]) { name = m.line; break; } } }
+  else if (map[l.name]) name = l.name;
+  return name ? `<img class="lic" src="${map[name]}" alt="" loading="lazy">` : '';
+}
+
 function lineRow(l) {
   const col = CAT_COLOR[l.status] || CAT_COLOR.unknown;
   const mapped = l.mainline
@@ -325,6 +335,7 @@ function lineRow(l) {
     : '';
   return `<div class="lrow">
       <span class="dotc" style="background:${col}"></span>
+      ${lineIconHtml(l)}
       <div class="body">
         <div class="ttl">
           <span class="nm">${esc(l.name)}</span>
