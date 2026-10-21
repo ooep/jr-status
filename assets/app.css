@@ -430,7 +430,7 @@ body::after {
 }
 .lrow + .lrow { margin-top: 7px; }
 .lrow .dotc { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex: 0 0 8px; }
-.lrow .lic { width: 34px; height: 28px; flex: 0 0 34px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-top: 1px; }
+.lrow .lic { width: 34px; height: 28px; flex: 0 0 34px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-top: 1px; object-fit: contain; object-position: center; }
 .lrow .lic img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 1px; box-sizing: border-box; }
 .lrow .body { min-width: 0; flex: 1; }
 .lrow .ttl { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
