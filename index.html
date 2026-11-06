@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JR-Status · 全日本铁道运行情报 | Mini JapanRail</title>
+<meta name="description" content="全日本铁道线路实时运行情报：平常运营 / 晚点 / 停运一览，并与 Mini JapanRail 主站线路映射。每 10 分钟自动更新。">
+<meta name="theme-color" content="#0b1017" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef2f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<meta property="og:title" content="JR-Status · 全日本铁道运行情报">
+<meta property="og:description" content="全日本铁道线路实时运行情报一览，与 Mini JapanRail 主站线路映射，每 10 分钟更新。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://jr.suki.ing">
+<link rel="stylesheet" href="assets/app.css?v=20261021">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="skip" href="#results" data-i18n="skipToResults">跳到线路列表</a>
+
+  <!-- ── 顶栏 ───────────────────────────────────────────── -->
+  <header class="glass topbar" id="topbar">
+    <a class="brand" href="https://jr.suki.ing/" target="_blank" rel="noopener">
+      <img class="brand-mark" src="assets/logo.png" alt="" width="34" height="34" decoding="async">
+      <span class="brand-body">
+        <span class="brand-text" data-i18n="appName">JR-Status</span>
+        <span class="brand-sub" data-i18n="brandSub">全日本铁道运行情报 · Mini JapanRail</span>
+      </span>
+    </a>
+    <span class="grow"></span>
+
+    <label class="search" id="searchBox">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+      </svg>
+      <input id="q" type="search" autocomplete="off" spellcheck="false" data-i18n-ph="searchPh" placeholder="搜索线路 / 铁道公司…">
+      <span class="kbd" id="kbdHint" aria-hidden="true"></span>
+      <button class="search-clear" id="qClear" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </label>
+
+    <span class="grow"></span>
+
+    <div class="topbtns">
+      <button class="btn small" id="btnTheme" type="button" title="主题">
+        <span class="ic" id="themeIcon" aria-hidden="true"></span><span class="txt" id="themeTxt">深色</span>
+      </button>
+      <button class="btn small btn-lang" id="btnLang" type="button" title="语言">
+        <span class="ic" id="langIcon" aria-hidden="true"></span><span class="txt" id="langTxt">中</span>
+      </button>
+      <button class="btn small" id="btnRefresh" type="button" title="刷新">
+        <span class="ic" id="refreshIcon" aria-hidden="true"></span><span class="txt" id="refreshTxt" data-i18n="refresh">刷新</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Hero ───────────────────────────────────────────── -->
+  <section class="glass hero">
+    <div class="eyebrow"><i class="live-i" aria-hidden="true"></i><span data-i18n="eyebrow">MINI JAPANRAIL · STATUS</span></div>
+    <h1 data-i18n="heroTitle">全日本铁道 · 运行情报</h1>
+    <div class="verdict">
+      <span class="pulse" id="verdictPulse"></span>
+      <span id="verdictText">…</span>
+    </div>
+    <div class="statstrip" id="stats"></div>
+    <div class="legend" id="legend"></div>
+    <div class="meta" id="meta"></div>
+  </section>
+
+  <!-- ── 全国态势图 ─────────────────────────────────────── -->
+  <section class="glass mapcard">
+    <div class="map-head">
+      <div class="map-title" data-i18n="mapTitle">全国运行态势图</div>
+      <div class="map-legend2">
+        <span class="lg2 lg2-bad"><i></i><span data-i18n="mapSuspend">停运</span></span>
+        <span class="lg2 lg2-warn"><i></i><span data-i18n="mapDelay">延迟 · 异常</span></span>
+        <span class="lg2 lg2-ok"><i></i><span data-i18n="mapOk">正常</span></span>
+      </div>
+    </div>
+    <div class="map-flex">
+      <div class="map-beams" id="mapBeamsL"></div>
+      <div class="map-stage">
+        <svg id="jpMap" viewBox="30 40 960 700" role="img" aria-label="Japan region status map"></svg>
+        <div class="map-note" data-i18n="mapNote">点击地区可筛选 · 示意地图非精确比例</div>
+      </div>
+      <div class="map-beams" id="mapBeamsR"></div>
+    </div>
+  </section>
+
+  <!-- ── 工具栏 ─────────────────────────────────────────── -->
+  <section class="glass toolbar">
+    <div class="chips" id="areaChips"></div>
+    <span class="grow"></span>
+    <div class="chips">
+      <button class="chip" id="filterAll" aria-pressed="true" data-i18n="all">全部</button>
+      <button class="chip" id="filterTrouble" aria-pressed="false" data-i18n="troubleOnly">仅异常</button>
+      <button class="chip" id="toggleMapped" aria-pressed="false" data-i18n="mappedOnly">仅已映射主站</button>
+    </div>
+  </section>
+
+  <!-- ── 结果 ───────────────────────────────────────────── -->
+  <div id="results" class="grid"></div>
+
+  <!-- ── 原文弹窗（液态玻璃） ───────────────────────────── -->
+  <div class="modal-overlay" id="srcModal" hidden>
+    <div class="modal glass" role="dialog" aria-modal="true" aria-labelledby="srcModalTitle">
+      <div class="modal-head">
+        <span class="dotc" id="srcModalDot" aria-hidden="true"></span>
+        <div class="modal-titles">
+          <div class="modal-title" id="srcModalTitle"></div>
+          <div class="modal-sub" id="srcModalSub"></div>
+        </div>
+        <span class="modal-status" id="srcModalStatus"></span>
+      </div>
+      <div class="modal-scroll" id="srcModalScroll">
+        <div class="modal-body" id="srcModalBody"></div>
+        <div class="modal-fade top" aria-hidden="true"></div>
+        <div class="modal-fade bottom" aria-hidden="true"></div>
+      </div>
+      <div class="modal-foot">
+        <span class="modal-pub" id="srcModalPub"></span>
+        <button class="btn btn-ok" id="srcModalOk" type="button" data-i18n="modalOk">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div id="footMeta"></div>
+    <div>
+      <a href="history.html" data-i18n="historyLink">历史故障</a>
+      ·
+      <span data-i18n="srcLabel">数据来源</span>：<b>公开运行情报源</b>
+      ·
+      <a href="https://jr.suki.ing/" target="_blank" rel="noopener" data-i18n="mainSite">Mini JapanRail 主站</a>
+      ·
+      <a href="https://simplemaps.com" target="_blank" rel="noopener" title="Map data: simplemaps.com">Map: simplemaps</a>
+    </div>
+  </footer>
+</div>
+
+<script src="https://jr-static.suki.ing/data/line_icons.js"></script>
+<script src="assets/japan-paths.js"></script>
+<script src="assets/logo-map.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

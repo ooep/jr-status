@@ -1,0 +1,119 @@
+name: Update JR status
+
+on:
+  schedule:
+    # 每整 10 分钟抓取一次。
+    # GitHub cron 使用 UTC；日本JST = UTC+9 为整小时偏移，分钟位保持不变，
+    # 因此 */10 天然对齐 JST 的 :00/:10/…/:50，无需补偿。
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "强制忽略心跳窗口，无论如何都提交"
+        type: boolean
+        default: false
+      dry_run:
+        description: "dry-run：执行解密/抓取/构建，但跳过提交与 Pages 部署触发"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write   # 提交后主动触发 Cloudflare Pages 部署（GITHUB_TOKEN 的 push 不触发其他 workflow）
+
+concurrency:
+  group: jr-status-update
+  cancel-in-progress: false
+
+# 加密（2026-11）：具备外部抓取能力的脚本（运行情报采集/翻译/入口编排）入库即密文
+# （encrypted/*.enc + encryption/manifest.tsv），运行时经 prep.sh 先验后写解密、
+# 用毕 clean 删除，finalize 断言工作区干净。钥匙来自 Secret: CODE_KEY。
+# workflow YAML 本身无法加密（GitHub 只从明文 YAML 调度），调度名/步骤名公开。
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    # 采集 + 翻译（首次数百条原文 × 2 语言，4 并发约 1-3 分钟）需要更多余量
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install deps
+        run: pip install --quiet requests beautifulsoup4
+
+      - name: Prune old history (>60 days)
+        run: |
+          find data/history -name '*.jsonl' -type f -mtime +60 -delete 2>/dev/null || true
+
+      - name: Step 1/3 verify ciphertext (verify-only, zero writes)
+        env:
+          OOEP_PASSPHRASE: ${{ secrets.CODE_KEY }}
+        run: bash encryption/logrun.sh 1/3 bash encryption/prep.sh 1
+
+      - name: Step 2/3 materialize fetchers
+        env:
+          OOEP_PASSPHRASE: ${{ secrets.CODE_KEY }}
+        run: bash encryption/logrun.sh 2/3 bash encryption/prep.sh 2
+
+      - name: Step 3/3 Fetch & build
+        env:
+          OOEP_PASSPHRASE: ${{ secrets.CODE_KEY }}
+          HEARTBEAT_SEC: "1800"
+          FORCE: ${{ github.event.inputs.force }}
+        run: bash encryption/logrun.sh 3/3 bash ci/step.sh update 3
+
+      # 抓取窗口结束：删除明文脚本（提交只涉及 data/ 与 mapping/，不含 scripts/）
+      - name: Remove plaintext fetchers
+        run: python3 encryption/decrypt.py clean --out .
+
+      - name: Commit if changed
+        if: ${{ !inputs.dry_run }}
+        id: commit
+        run: |
+          git config user.name  "jr-status bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A data mapping
+          if git diff --quiet --cached; then
+            echo "no semantic change -> skip commit"
+            exit 0
+          fi
+          TS=$(TZ=Asia/Tokyo date +'%Y/%m/%d %H:%M')
+          TROUBLE=$(python3 -c "import json;d=json.load(open('data/summary.json'));print(d['totals']['trouble'])" 2>/dev/null || echo "?")
+          git commit -m "chore(status): update ${TS} JST (trouble=${TROUBLE})"
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin ${{ github.ref_name }} || true
+            if git push origin HEAD:${{ github.ref_name }}; then
+              echo "pushed"
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "push attempt $i failed, retrying…"; sleep 5
+          done
+          echo "push failed after retries"; exit 1
+
+      - name: Trigger Cloudflare Pages deploy (jrstatus.jr.suki.ing)
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run deploy-pages-suki.yml --ref ${{ github.ref_name }}
+          echo "deploy workflow triggered"
+
+      # dry-run：还原工作区（抓取产物不提交），保证 finalize 断言与生产路径一致
+      - name: Reset worktree (dry-run only)
+        if: ${{ inputs.dry_run }}
+        run: |
+          git checkout -- . 2>/dev/null || true
+          git clean -fd data mapping 2>/dev/null || true
+
+      # 常开收尾：再清一次（幂等）并断言工作区干净；任何明文残留都会在此暴露。
+      - name: Finalize (cleanup + worktree assertion)
+        if: always()
+        run: bash encryption/finalize.sh
