@@ -1,1 +1,1 @@
-{"schema":"jr-status/history/v1","page_size":30,"pages":234,"total":7000,"updated_at":"2026-11-13T01:36:04+0900","fingerprint":"766980b195317028","range":{"from":"2026-10-13T08:32:36+0900","to":"2026-11-13T00:46:15+0900"}}
+{"schema":"jr-status/history/v1","page_size":30,"pages":234,"total":7002,"updated_at":"2026-11-13T01:46:29+0900","fingerprint":"0e10730d790941bf","range":{"from":"2026-10-13T08:32:36+0900","to":"2026-11-13T01:46:10+0900"}}
